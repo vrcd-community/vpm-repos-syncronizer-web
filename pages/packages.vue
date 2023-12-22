@@ -3,7 +3,7 @@
     <Title>包列表 - VPM Repos Synchronizer</Title>
   </Head>
 
-  <h2>包列表</h2>
+  <h1 class="text-4xl font-semibold mb-8">包列表</h1>
   <p>Lorem ipsum dolor sit amet nonumy. Eirmod erat amet sed kasd ut rebum aliquyam sed ea sit voluptua sea sadipscing
     amet delenit amet. Sadipscing dolores takimata ullamcorper lorem takimata stet iriure sed iriure. Amet sed ex quis
     magna takimata facilisis erat accusam nostrud ipsum at at takimata. Duis sed diam in dolores takimata vel stet
