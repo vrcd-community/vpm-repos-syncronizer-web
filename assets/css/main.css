@@ -1,3 +1,4 @@
 .dark body {
-  background-color: rgb(var(--color-gray-950));
+  @apply bg-gray-950;
+  @apply w-full;
 }

@@ -2496,7 +2496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/nuxt@npm:^10.5.0":
+"@vueuse/nuxt@npm:^10.5.0, @vueuse/nuxt@npm:^10.7.0":
   version: 10.7.0
   resolution: "@vueuse/nuxt@npm:10.7.0"
   dependencies:
@@ -7342,6 +7342,7 @@ __metadata:
     "@nuxt/content": "npm:^2.9.0"
     "@nuxt/devtools": "npm:^1.0.6"
     "@nuxt/ui": "npm:^2.11.1"
+    "@vueuse/nuxt": "npm:^10.7.0"
     nuxt: "npm:^3.8.2"
     vue: "npm:^3.3.12"
     vue-router: "npm:^4.2.5"
