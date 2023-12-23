@@ -24,9 +24,18 @@ const columns = [{
   label: '状态信息'
 }]
 
-const { pending, data: status } = await useLazyFetch('https://vpm.vrczh.org/status/sync')
+const { pending, data: status } = await useLazyFetch('https://vpm.vrczh.org/status/sync', {
+  server: false
+})
 
-const result = (status.value as any[]).map((item) => formatStatusData(item))
+const result = ref(null)
+
+watch(pending, (loading) => {
+  if (loading)
+    return
+
+  (result.value as any) = (status.value as any[]).map((item) => formatStatusData(item))
+})
 
 function formatStatusData(item: any) {
   return {
