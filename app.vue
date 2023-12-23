@@ -9,7 +9,7 @@
         <NavBar />
       </nav>
     </header>
-    <main class="my-10 max-w-4xl mx-auto">
+    <main class="my-10 mx-auto">
       <NuxtPage />
     </main>
   </UContainer>

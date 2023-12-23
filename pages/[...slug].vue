@@ -1,3 +1,5 @@
 <template>
-  <ContentDoc class="prose dark:prose-invert max-w-none" />
+  <UCard>
+    <ContentDoc class="prose dark:prose-invert max-w-none" />
+  </UCard>
 </template>
