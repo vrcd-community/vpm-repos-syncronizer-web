@@ -6,31 +6,28 @@
 
 <script setup lang="ts">
 const container = ref(null)
-const { width, height } = useElementSize(container)
+const { width } = useElementSize(container)
 
 const route = useRoute()
 const router = useRouter()
 
 const items = [{
-  label: '开始',
+  label: '首页',
   route: '/',
 }, {
-  label: 'FAQ',
-  route: '/faq',
-}, {
-  label: '联系我们',
-  route: '/contact',
+  label: '文档',
+  route: '/docs',
 }, {
   label: '包列表',
   route: '/packages'
 }, {
-  label: '服务器状态',
+  label: '同步状态',
   route: '/status'
 }]
 
 const selected = computed({
   get() {
-    const index = items.findIndex((item) => item.route === route.path)
+    const index = items.findIndex((item) => item.route === route.path || (item.route !== '/' && route.path.startsWith(item.route)))
     if (index === -1) {
       return 0
     }
@@ -44,7 +41,6 @@ const selected = computed({
 })
 
 const orientation = computed(() => {
-  console.log(width.value)
   return width.value < 450 ? 'vertical' : 'horizontal'
 })
 </script>

@@ -1,7 +1,3 @@
----
-title: '开始 - VPM Repos Synchronizer'
----
-
 # 这是什么
 
 这是一个 VPM 仓库源的镜像，简单来说就是：这个镜像站能够加速 VCC（VRChat Creator Companion）下载包的过程。

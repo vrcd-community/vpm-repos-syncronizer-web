@@ -4,31 +4,35 @@
 </template>
 
 <script setup lang="ts">
-const columns = [{
-  key: 'url',
-  label: '上游'
-}, {
-  key: 'syncStarted',
-  label: '开始同步时间',
-  sortable: true
-}, {
-  key: 'syncEnded',
-  label: '同步完成时间',
-  sortable: true
-}, {
-  key: 'status',
-  label: '同步状态',
-  sortable: true
-}, {
-  key: 'message',
-  label: '状态信息'
-}]
+const columns = [
+  {
+    key: 'id',
+    label: '上游仓库 ID'
+  }, {
+    key: 'url',
+    label: '上游 URL'
+  }, {
+    key: 'syncStarted',
+    label: '开始同步时间',
+    sortable: true
+  }, {
+    key: 'syncEnded',
+    label: '同步完成时间',
+    sortable: true
+  }, {
+    key: 'status',
+    label: '同步状态',
+    sortable: true
+  }, {
+    key: 'message',
+    label: '状态信息'
+  }]
 
 const { pending, data: status } = await useLazyFetch('https://vpm.vrczh.org/status/sync', {
   server: false
 })
 
-const result = ref(null)
+const result = ref(null as any)
 
 watch(pending, (loading) => {
   if (loading)
@@ -43,7 +47,8 @@ function formatStatusData(item: any) {
     syncEnded: new Date(item.syncEnded).toLocaleString(),
     status: getStatusText(item.status),
     url: item.url,
-    message: item.message == '' ? '无状态信息' : item.message
+    message: item.message == '' ? '无状态信息' : item.message,
+    id: item.id
   }
 }
 

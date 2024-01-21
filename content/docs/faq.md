@@ -1,7 +1,3 @@
----
-title: '常见问题 - VPM Repos Synchronizer'
----
-
 # 常见问题
 
 ## 这是什么东西？
