@@ -19,7 +19,7 @@ const items = [{
   route: '/docs',
 }, {
   label: '包列表',
-  route: '/packages'
+  route: '/repos'
 }, {
   label: '同步状态',
   route: '/status'

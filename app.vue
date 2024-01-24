@@ -1,5 +1,5 @@
 <template>
-  <UContainer class="pt-24">
+  <UContainer class="pt-12">
     <header class="flex flex-col text-center">
       <img class="max-h-48" src="/assets/images/icon.svg" width="100%" />
       <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>

@@ -1,9 +1,11 @@
 <template>
   <h2 class="text-2xl font-semibold mb-4">同步状态</h2>
-  <UTable :loading="pending" :rows="result" :columns="columns" />
+  <UTable :rows="result" :columns="columns" />
 </template>
 
 <script setup lang="ts">
+import type { SyncStatus } from '~/types/status';
+
 const columns = [
   {
     key: 'id',
@@ -28,29 +30,20 @@ const columns = [
     label: '状态信息'
   }]
 
-const { pending, data: status } = await useLazyFetch('https://vpm.vrczh.org/status/sync', {
-  server: false
+const { data: status } = await useFetch<SyncStatus[]>('https://vpm.vrczh.org/status/sync')
+
+const result = computed(() => {
+  return status.value?.map(item => {
+    return {
+      syncStarted: new Date(item.syncStarted).toLocaleString(),
+      syncEnded: new Date(item.syncEnded).toLocaleString(),
+      status: getStatusText(item.status),
+      url: item.url,
+      message: item.message == '' ? '无状态信息' : item.message,
+      id: item.id
+    }
+  })
 })
-
-const result = ref(null as any)
-
-watch(pending, (loading) => {
-  if (loading)
-    return
-
-  (result.value as any) = (status.value as any[]).map((item) => formatStatusData(item))
-})
-
-function formatStatusData(item: any) {
-  return {
-    syncStarted: new Date(item.syncStarted).toLocaleString(),
-    syncEnded: new Date(item.syncEnded).toLocaleString(),
-    status: getStatusText(item.status),
-    url: item.url,
-    message: item.message == '' ? '无状态信息' : item.message,
-    id: item.id
-  }
-}
 
 function getStatusText(input: number) {
   switch (input) {
