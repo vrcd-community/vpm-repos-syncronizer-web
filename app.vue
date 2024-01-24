@@ -1,4 +1,5 @@
 <template>
+  <Title>VPM Repos Synchronizer</Title>
   <UContainer class="pt-12">
     <header class="flex flex-col text-center">
       <img class="max-h-48" src="/assets/images/icon.svg" width="100%" />
@@ -21,6 +22,9 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'VPM Repos Synchronizer'
+  title: 'VPM Repos Synchronizer',
+  script: [
+    { defer: true, src: 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "3168db74ae4a4271991b1639a4044784"}' }
+  ]
 })
 </script>
