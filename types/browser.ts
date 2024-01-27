@@ -11,9 +11,11 @@ export interface BrowserRepo {
   syncStatus: SyncStatus
 }
 
-export interface BrowserPackages {
+export interface BrowserPackage {
   latest: BrowserPackageVersion;
   versions: BrowserPackageVersion[];
+  repoId: string,
+  repoUrl: string
 }
 
 export interface BrowserPackageVersion {

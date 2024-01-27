@@ -6,13 +6,55 @@
       <RepoCard :repo="repo" is-link />
     </NuxtLink>
   </div>
-  <div v-else class="mt-4 space-y-2 flex flex-col">
-    {{ keyword }}
+  <div v-else class="mt-4 space-y-4 flex flex-col">
+    <PackageCard v-if="Array.isArray(packages)" v-for="pkg in packages" :pkg="pkg" :repoId="pkg.repoId"
+      :repoUrl="pkg.repoUrl" />
   </div>
 </template>
 
 <script setup lang="ts">
 const { data: repos } = await useFetchRepos()
 
-const keyword = ref('')
+const route = useRoute()
+const router = useRouter()
+
+const keyword = ref(route.query.keyword as string | undefined | null ?? '')
+const actualKeyword = ref(keyword.value)
+
+const { data: packages } = await useSearchPackages(actualKeyword)
+
+let lastTypeTime = Date.now()
+let searchRateLimitLock = false
+
+watch(keyword, () => {
+  lastTypeTime = Date.now()
+
+  if (keyword.value === '') {
+    router.replace({ query: {} })
+  } else {
+    router.replace({ query: { keyword: keyword.value } })
+  }
+
+  if (!process.client) {
+    return
+  }
+
+  console.log(searchRateLimitLock)
+  if (!searchRateLimitLock) {
+    tryInvokeSearch()
+  }
+})
+
+async function tryInvokeSearch() {
+  searchRateLimitLock = true
+  const timeout = Date.now() - lastTypeTime
+
+  console.log(timeout)
+  if (timeout > 200) {
+    actualKeyword.value = keyword.value
+    searchRateLimitLock = false
+  } else {
+    setTimeout(tryInvokeSearch, 100)
+  }
+}
 </script>

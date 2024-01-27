@@ -7,13 +7,13 @@
       <div class="flex-1 space-y-1">
         <div class="flex space-x-2 items-center">
           <h3 class="text-xl font-semibold">{{ repo.name }}</h3>
-          <UBadge variant="subtle">{{ repo.apiId }}</UBadge>
-          <UBadge variant="subtle">{{ repo.upstreamId }}</UBadge>
-          <UBadge :color="getBadgeColorByStatus(repo.syncStatus.status)">{{
+          <UBadge variant="subtle" class="hidden md:block">{{ repo.apiId }}</UBadge>
+          <UBadge variant="subtle" class="hidden md:block">{{ repo.upstreamId }}</UBadge>
+          <UBadge class="hidden md:block" :color="getBadgeColorByStatus(repo.syncStatus.status)">{{
             getStatusText(repo.syncStatus.status, repo.syncStatus.syncEnded,
               repo.syncStatus.syncStarted) }}</UBadge>
         </div>
-        <p class="text-sm text-slate-400">由 {{ repo.author }} 提供</p>
+        <p class="text-xs md:text-sm text-slate-400">由 {{ repo.author }} 提供</p>
         <div>
           <div class="flex items-center space-x-1">
             <span class="text-xs text-slate-400">镜像 URL</span>
