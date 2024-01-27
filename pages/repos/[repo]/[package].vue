@@ -11,9 +11,11 @@ const links = [{
   to: '/repos'
 }, {
   label: route.params.repo,
-  icon: 'i-heroicons-inbox-stack-solid'
+  icon: 'i-heroicons-inbox-stack-solid',
+  to: '/repos/' + route.params.repo
 }, {
   label: route.params.package,
-  icon: 'i-heroicons-archive-box-solid'
+  icon: 'i-heroicons-archive-box-solid',
+  to: '/repos/' + route.params.repo + '/' + route.params.package
 }]
 </script>
