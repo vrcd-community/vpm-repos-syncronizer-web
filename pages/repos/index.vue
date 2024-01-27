@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import type { BrowserRepo } from '~/types/browser';
 
-const { data: repos } = await useFetch<BrowserRepo[]>('http://localhost:5218/browser/repos')
+const { data: repos } = await useFetch<BrowserRepo[]>('https://vpm.vrczh.org/browser/repos')
 
 const keyword = ref('')
 </script>
