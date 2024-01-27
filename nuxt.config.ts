@@ -9,5 +9,10 @@ export default defineNuxtConfig({
     markdown: {
       anchorLinks: false
     }
+  },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: 'https://vpm.vrczh.org',
+    }
   }
 })

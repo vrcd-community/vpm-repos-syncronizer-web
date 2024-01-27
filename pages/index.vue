@@ -12,12 +12,23 @@
           <div class="flex-1 flex items-center justify-between relative truncate">
             <div class="space-x-2 flex items-center">
               <span class="font-bold">{{ link.label }}</span>
+
               <code
                 class="bg-slate-200 dark:bg-slate-950 px-2 py-0 rounded sm:inline-block hidden">https://vpm.vrczh.org/vpm/{{ link.id }}</code>
+
               <UTooltip text="复制仓库链接" :popper="{ placement: 'top' }" class="sm:inline hidden">
                 <UButton @click.prevent="copy(`https://vpm.vrczh.org/vpm/${link.id}`)" class="h-5 m-0" size="2xs"
                   variant="outline" icon="i-heroicons-clipboard-document" />
               </UTooltip>
+
+              <UTooltip text="添加到 VCC" :popper="{ placement: 'top' }" class="sm:inline hidden">
+                <!-- 不要移除这个 ClientOnly，否则会出现一些匪夷所思的问题 -->
+                <ClientOnly>
+                  <UButton @click.stop :to="'vcc://vpm/addRepo?url=' + link.repoUrl" class="h-5 m-0" size="2xs"
+                    variant="outline" icon="i-heroicons-plus" />
+                </ClientOnly>
+              </UTooltip>
+
               <UTooltip text="这是仓库描述~" :popper="{ placement: 'top' }" class="md:inline-block hidden">
                 <div class="flex items-center space-x-1">
                   <span>仓库描述</span>
@@ -37,19 +48,19 @@
 
 <script setup lang="ts">
 import type { VerticalNavigationLink } from '@nuxt/ui/dist/runtime/types/vertical-navigation';
-import type { SyncStatus } from '@/types/status'
 
-const { data: status } = await useFetch<SyncStatus[]>('https://vpm.vrczh.org/status/sync')
+const { data: repos } = await useFetchRepos()
 
-const links = status.value?.map(item => {
+const links = repos.value?.map(item => {
   return {
-    label: item.id,
-    badge: getStatusText(item.status, new Date(item.syncEnded).toLocaleString(), new Date(item.syncStarted).toLocaleString()),
-    upstream: item.url,
-    syncEnded: new Date(item.syncEnded).toLocaleString(),
-    syncStarted: new Date(item.syncStarted).toLocaleString(),
-    id: item.id,
-    to: `/repos/${item.id}`
+    label: item.apiId,
+    badge: getStatusText(item.syncStatus.status, new Date(item.syncStatus.syncEnded).toLocaleString(), new Date(item.syncStatus.syncStarted).toLocaleString()),
+    upstream: item.upstreamUrl,
+    syncEnded: new Date(item.syncStatus.syncEnded).toLocaleString(),
+    syncStarted: new Date(item.syncStatus.syncStarted).toLocaleString(),
+    id: item.apiId,
+    to: `/repos/${item.apiId}`,
+    repoUrl: item.repoUrl
   } as VerticalNavigationLink
 }) as VerticalNavigationLink[]
 

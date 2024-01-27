@@ -64,8 +64,8 @@ const links = [{
 
 const keyword = ref('')
 
-const { data: repo } = await useFetch<BrowserRepo>('https://vpm.vrczh.org/browser/repos/' + route.params.repo)
-const { data: packages } = await useFetch<BrowserPackages[]>(`https://vpm.vrczh.org/browser/repos/${route.params.repo}/packages`)
+const { data: repo } = await useFetchRepo(route.params.repo)
+const { data: packages } = await useFetchRepoPackages(route.params.repo)
 
 const filterPackages = computed(() => {
   return packages.value?.filter(pkg => pkg.latest.name.includes(keyword.value) || pkg.latest.displayName.includes(keyword.value) || pkg.latest.description?.includes(keyword.value))

@@ -12,9 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BrowserRepo } from '~/types/browser';
-
-const { data: repos } = await useFetch<BrowserRepo[]>('https://vpm.vrczh.org/browser/repos')
+const { data: repos } = await useFetchRepos()
 
 const keyword = ref('')
 </script>

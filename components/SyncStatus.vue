@@ -30,7 +30,7 @@ const columns = [
     label: '状态信息'
   }]
 
-const { data: status } = await useFetch<SyncStatus[]>('https://vpm.vrczh.org/status/sync')
+const { data: status } = await useFetchStatus()
 
 const result = computed(() => {
   return status.value?.map(item => {
