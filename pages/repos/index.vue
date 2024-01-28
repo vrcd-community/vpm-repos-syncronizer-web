@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>包列表</Title>
+  </Head>
   <UInput v-model="keyword" icon="i-heroicons-magnifying-glass-20-solid" placeholder="在所有的仓库内搜索包..." size="xl" />
   <div v-if="keyword === ''" class="mt-4 space-y-2 flex flex-col">
     <h2 class="text-2xl font-semibold">仓库列表</h2>

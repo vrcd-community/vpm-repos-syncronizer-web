@@ -12,7 +12,11 @@
 <script setup lang="ts">
 import type { VerticalNavigationLink } from '@nuxt/ui/dist/runtime/types/vertical-navigation';
 
+const { data: page } = await useAsyncData('page', queryContent('docs').findOne)
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation(queryContent('docs')))
+
+// @ts-expect-error
+useContentHead(page)
 
 const links = computed(() => {
   if (navigation.value === null) {

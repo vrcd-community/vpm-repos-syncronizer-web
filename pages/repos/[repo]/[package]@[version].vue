@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>{{ pkg?.latest.name }}@{{ selectedVersion }}</Title>
+  </Head>
   <div class="space-y-4">
     <UBreadcrumb :links="links" />
     <UProgress animation="carousel" v-if="packageLoading" />
@@ -37,6 +40,12 @@ const selectedPackageVersion = computed(() => {
 
 const versionOptions = computed(() => ['latest'].concat(pkg.value?.versions.map(ver => ver.version) as string[]))
 const selectedVersion = ref(route.params.version as string)
+
+useSeoMeta({
+  description: selectedPackageVersion.value?.description,
+  ogDescription: selectedPackageVersion.value?.description,
+  twitterDescription: selectedPackageVersion.value?.description
+})
 
 watch(selectedVersion, ver => {
   router.push(`/repos/${pkg.value?.repoId}/${pkg.value?.latest.name}@${ver}`)

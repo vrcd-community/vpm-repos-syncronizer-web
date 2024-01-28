@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Title>服务器状态 - VPM Repos Synchronizer</Title>
+    <Title>服务器状态</Title>
   </Head>
   <UCard>
     <SyncStatus />

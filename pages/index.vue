@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>镜像列表</Title>
+  </Head>
   <div class="space-y-4">
     <UCard class="max-w-none">
       <h2 class="text-2xl font-bold mb-2">初来乍到？</h2>

@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>{{ repo?.name }} 仓库</Title>
+  </Head>
   <div class="space-y-4">
     <UBreadcrumb :links="links" />
     <UProgress animation="carousel" v-if="repoLoading" />
