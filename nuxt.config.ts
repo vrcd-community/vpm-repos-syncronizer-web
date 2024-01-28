@@ -6,8 +6,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     '@nuxtjs/sitemap',
     "nuxt-simple-robots",
-    "nuxt-og-image",
-    "nuxt-link-checker"
+    // "nuxt-og-image"
   ],
   devtools: { enabled: true },
   site: {
@@ -17,11 +16,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'system',
     fallback: 'dark',
-  },
-  ogImage: {
-    fonts: [
-      'Noto+Sans+SC:400'
-    ]
   },
   ui: {
     icons: ['mdi']

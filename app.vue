@@ -41,11 +41,6 @@ useHead({
 watch(() => route.fullPath, () => updateSeo())
 updateSeo()
 
-defineOgImageComponent('NuxtSeo', {
-  siteName: 'VPM Repos Synchronizer',
-  icon: '/icon.svg'
-})
-
 function updateSeo() {
   useSeoMeta({
     ogTitle: '%s - VPM Repos Synchronizer - 一个 VPM 镜像站',
@@ -53,6 +48,13 @@ function updateSeo() {
     description: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
     ogDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
     twitterDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
+    ogImage: '/icon.svg',
+    twitterImage: '/icon.svg',
+    twitterCard: 'summary',
+    ogImageHeight: 300,
+    ogImageWidth: 300,
+    // @ts-expect-error
+    ogImageType: 'image/svg+xml',
     ogLocale: 'zh_Hans',
     ogUrl: 'https://vcc.vrczh.org' + route.fullPath,
   })
