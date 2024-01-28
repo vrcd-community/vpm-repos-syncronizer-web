@@ -7,7 +7,8 @@
     </UCard>
     <UCard>
       <h2 class="text-2xl font-bold mb-4">镜像列表</h2>
-      <UVerticalNavigation :links="links" :ui="{ label: 'truncate relative text-xl font-semibold' }">
+      <UProgress animation="carousel" v-if="loading" />
+      <UVerticalNavigation v-if="!loading" :links="links" :ui="{ label: 'truncate relative text-xl font-semibold' }">
         <template #default="{ link }">
           <div class="flex-1 flex items-center justify-between relative truncate">
             <div class="space-x-2 flex items-center">
@@ -49,7 +50,7 @@
 <script setup lang="ts">
 import type { VerticalNavigationLink } from '@nuxt/ui/dist/runtime/types/vertical-navigation';
 
-const { data: repos } = await useFetchRepos()
+const { data: repos, pending: loading } = await useFetchRepos({ lazy: true })
 
 const links = repos.value?.map(item => {
   return {

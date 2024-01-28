@@ -2,18 +2,19 @@
   <UInput v-model="keyword" icon="i-heroicons-magnifying-glass-20-solid" placeholder="在所有的仓库内搜索包..." size="xl" />
   <div v-if="keyword === ''" class="mt-4 space-y-2 flex flex-col">
     <h2 class="text-2xl font-semibold">仓库列表</h2>
-    <NuxtLink v-for="repo in repos" :to="'/repos/' + repo.apiId">
+    <UProgress animation="carousel" v-if="repoLoading" />
+    <NuxtLink v-if="!repoLoading" v-for="repo in repos" :to="'/repos/' + repo.apiId">
       <RepoCard :repo="repo" is-link />
     </NuxtLink>
   </div>
   <div v-else class="mt-4 space-y-4 flex flex-col">
-    <PackageCard v-if="Array.isArray(packages)" v-for="pkg in packages" :pkg="pkg" :repoId="pkg.repoId"
-      :repoUrl="pkg.repoUrl" />
+    <UProgress animation="carousel" v-if="packagesLoading" />
+    <PackageCard v-if="!packagesLoading" v-for="pkg in packages" :pkg="pkg" :repoId="pkg.repoId" :repoUrl="pkg.repoUrl" />
   </div>
 </template>
 
 <script setup lang="ts">
-const { data: repos } = await useFetchRepos()
+const { data: repos, pending: repoLoading } = await useFetchRepos({ lazy: true })
 
 const route = useRoute()
 const router = useRouter()
@@ -21,7 +22,7 @@ const router = useRouter()
 const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 const actualKeyword = ref(keyword.value)
 
-const { data: packages } = await useSearchPackages(actualKeyword)
+const { data: packages, pending: packagesLoading } = await useSearchPackages(actualKeyword, { lazy: true })
 
 let lastTypeTime = Date.now()
 let searchRateLimitLock = false

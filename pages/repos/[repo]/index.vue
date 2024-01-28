@@ -1,11 +1,13 @@
 <template>
   <div class="space-y-4">
     <UBreadcrumb :links="links" />
-    <div v-if="repo !== null" class="space-y-4">
+    <UProgress animation="carousel" v-if="repoLoading" />
+    <div v-if="!repoLoading && repo" class="space-y-4">
       <RepoCard :repo="repo" />
       <UInput v-model="keyword" icon="i-heroicons-magnifying-glass-20-solid" :placeholder="`搜索 ${repo.name} 仓库中的包...`"
         size="xl" />
-      <div class="flex flex-col space-y-4">
+      <UProgress animation="carousel" v-if="packagesLoading" />
+      <div v-if="!packagesLoading" class="flex flex-col space-y-4">
         <PackageCard v-for="pkg in filterPackages" :pkg="pkg" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
       </div>
     </div>
@@ -32,8 +34,8 @@ const links = [{
 
 const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 
-const { data: repo } = await useFetchRepo(route.params.repo as string)
-const { data: packages } = await useFetchRepoPackages(route.params.repo as string)
+const { data: repo, pending: repoLoading } = await useFetchRepo(route.params.repo as string, { lazy: true })
+const { data: packages, pending: packagesLoading } = await useFetchRepoPackages(route.params.repo as string, { lazy: true })
 
 const filterPackages = computed(() => {
   return packages.value?.filter(pkg => pkg.latest.name.includes(keyword.value) || pkg.latest.displayName.includes(keyword.value) || pkg.latest.description?.includes(keyword.value))

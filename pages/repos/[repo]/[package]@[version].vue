@@ -1,7 +1,8 @@
 <template>
   <div class="space-y-4">
     <UBreadcrumb :links="links" />
-    <div v-if="pkg !== null && selectedPackageVersion !== undefined" class="space-y-4">
+    <UProgress animation="carousel" v-if="packageLoading" />
+    <div v-if="!packageLoading && pkg && selectedPackageVersion !== undefined" class="space-y-4">
       <USelectMenu :options="versionOptions" v-model="selectedVersion" />
       <PackageVersionCard :version="selectedPackageVersion" :repo-url="pkg.repoUrl" />
     </div>
@@ -28,9 +29,11 @@ const links = [{
   to: '/repos/' + route.params.repo + '/' + route.params.package
 }] as BreadcrumbLink[]
 
-const { data: pkg } = await useFetchRepoPackage(route.params.repo as string, route.params.package as string)
+const { data: pkg, pending: packageLoading } = await useFetchRepoPackage(route.params.repo as string, route.params.package as string, { lazy: true })
 
-const selectedPackageVersion = route.params.version === 'latest' ? pkg.value?.latest : pkg.value?.versions.find(ver => ver.version === route.params.version)
+const selectedPackageVersion = computed(() => {
+  return route.params.version === 'latest' ? pkg.value?.latest : pkg.value?.versions.find(ver => ver.version === route.params.version)
+})
 
 const versionOptions = computed(() => ['latest'].concat(pkg.value?.versions.map(ver => ver.version) as string[]))
 const selectedVersion = ref(route.params.version as string)

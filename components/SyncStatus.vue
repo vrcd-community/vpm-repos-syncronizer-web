@@ -1,11 +1,9 @@
 <template>
   <h2 class="text-2xl font-semibold mb-4">同步状态</h2>
-  <UTable :rows="result" :columns="columns" />
+  <UTable :rows="result" :columns="columns" :loading="loading" />
 </template>
 
 <script setup lang="ts">
-import type { SyncStatus } from '~/types/status';
-
 const columns = [
   {
     key: 'id',
@@ -30,7 +28,7 @@ const columns = [
     label: '状态信息'
   }]
 
-const { data: status } = await useFetchStatus()
+const { data: status, pending: loading } = await useFetchStatus({ lazy: true })
 
 const result = computed(() => {
   return status.value?.map(item => {
