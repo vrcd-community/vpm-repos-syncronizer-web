@@ -26,7 +26,7 @@
             <span v-if="pkg.latest.author !== null">·</span>
             <span class="font-mono">{{ pkg.latest.name }}</span>
           </div>
-          <p>{{ pkg.latest.description }}</p>
+          <p class="max-h-10 overflow-clip whitespace-pre-wrap text-ellipsis">{{ pkg.latest.description }}</p>
         </div>
         <div class="flex items-center">
           <UButton @click.stop :to="'vcc://vpm/addRepo?url=' + repoUrl">添加到 VCC</UButton>

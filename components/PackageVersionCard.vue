@@ -33,7 +33,7 @@
     </template>
     <div class="space-y-3">
       <h2 class="text-2xl font-bold">描述</h2>
-      <p>{{ version.description }}</p>
+      <p class="whitespace-pre-wrap">{{ version.description }}</p>
       <div class="space-x-3" v-if="version.author && (version.author.email || version.author.url)">
         <h2 class="text-2xl font-bold mb-3">开发者联系方式</h2>
         <ul>
