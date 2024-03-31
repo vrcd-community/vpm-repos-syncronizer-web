@@ -20,7 +20,7 @@
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.1",
   "dependencies": {
     "@iconify-json/mdi": "^1.1.64",
     "@nuxt/ui": "^2.15.0"
