@@ -14,7 +14,7 @@
     "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/sitemap": "^5.0.5",
     "@vueuse/nuxt": "^10.7.2",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.11.1",
     "nuxt-simple-robots": "^4.0.0-rc.13",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
