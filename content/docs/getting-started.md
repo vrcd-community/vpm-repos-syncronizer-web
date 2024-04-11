@@ -24,8 +24,41 @@
 ## 如何使用
 
 理论上，你可以在任何使用 VPM 源且支持修改仓库源的应用中使用该镜像源。下面列出 VCC (VRChat Creator Companion) 的使用方法。
+### 使用 Official，Curated 镜像源
+1. [ 下载 ](https://github.com/misaka-l/CreatorCompanionPatcher/Realease)最新版 `CreatorCompanionPatcher.exe`
+2. 打开创作者助手所在文件夹 ，将 `CreatorCompanionPatcher.exe` 文件放入刚刚打开的文件夹中。
+3. 双击启动 `CreatorCompanionPatcher.exe` ，观察并等待其命令行窗口加载完毕，并弹出创作者助手窗口后，关闭创作者助手与命令行窗口。
+4. 在文件夹下新建文件`patcher.json`，复制如下内容后粘贴到前文文件中：
 
-您可以在[ VRChat 入门包](https://docs.vrcd.org.cn/books/vrchat/page/2)中查看如何使用该镜像源中的官方，精选，与第三方源。
+```
+{
+    "EnabledPatches": [
+        "LoggerPatch",
+        "PackageInstallTimeoutPatch",
+        "ReplaceOfficialReposPatch",
+        "DisableTelemetryPatch",
+        "DetailVPMLoggingPatch"
+    ],
+    "ReplaceOfficialReposUrl": "https://vpm.vrczh.org/vpm/official",
+    "ReplaceCuratedReposUrl": "https://vpm.vrczh.org/vpm/curated"
+}h","PackageInstallTimeoutPatch","DisableTelemetryPatch"],"ReplaceOfficialReposUrl":null,{
+    "EnabledPatches": [
+        "LoggerPatch",
+        "PackageInstallTimeoutPatch",
+        "ReplaceOfficialReposPatch",
+        "DisableTelemetryPatch",
+        "DetailVPMLoggingPatch"
+    ],
+    "ReplaceOfficialReposUrl": "https://vpm.vrczh.org/vpm/official",
+    "ReplaceCuratedReposUrl": "https://vpm.vrczh.org/vpm/curated"
+}
+```
+5.打开`CreatorCompanionPatcher.exe`，正常订阅并下载使用 `Official`，`Curated` 镜像源
+### 使用其他镜像源
+1. 访问镜像站，并在后台开启创作者助手
+2. 查找您想订阅的 vpm 包，并点击添加到 `VCC` 或`＋`号按钮
+3. 返回创作者助手界面，点击 `I Understand, Add Repository`添加镜像源
+4. 打开`CreatorCompanionPatcher.exe`，正常订阅并下载使用其他镜像源
 
 镜像源地址: `https://vpm.vrczh.org/vpm`
 
