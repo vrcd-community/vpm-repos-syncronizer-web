@@ -25,7 +25,7 @@
 
 理论上，你可以在任何使用 VPM 源且支持修改仓库源的应用中使用该镜像源。下面列出 VCC (VRChat Creator Companion) 的使用方法。
 
-您可以在[ VRChat 入门包](https://docs.qq.com/aio/DQlVwTlZPckZPT050?p=FZ2a1bDeoF5HQx5pduXmb4)中查看如何使用该镜像源中的官方，精选，与第三方源。
+您可以在[ VRChat 入门包](https://docs.vrcd.org.cn/books/vrchat/page/2)中查看如何使用该镜像源中的官方，精选，与第三方源。
 
 镜像源地址: `https://vpm.vrczh.org/vpm`
 
