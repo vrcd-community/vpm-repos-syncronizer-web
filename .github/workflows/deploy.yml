@@ -28,6 +28,8 @@ jobs:
         with:
           node-version: lts/*
 
+      - run: "corepack enable"
+
       - name: Install step
         run: "yarn install"
 
