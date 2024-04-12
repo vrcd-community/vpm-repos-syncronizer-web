@@ -1,4 +1,5 @@
 <template>
+
   <Head>
     <Title>镜像列表</Title>
   </Head>
@@ -11,7 +12,7 @@
     <UCard>
       <h2 class="text-2xl font-bold mb-4">镜像列表</h2>
       <UProgress animation="carousel" v-if="loading" />
-      <UVerticalNavigation v-if="!loading" :links="links" :ui="{ label: 'truncate relative text-xl font-semibold' }">
+      <UVerticalNavigation v-else :links="links" :ui="{ label: 'truncate relative text-xl font-semibold' }">
         <template #default="{ link }">
           <div class="flex-1 flex items-center justify-between relative truncate">
             <div class="space-x-2 flex items-center">
@@ -51,8 +52,6 @@
 </template>
 
 <script setup lang="ts">
-import type { VerticalNavigationLink } from '@nuxt/ui/dist/runtime/types/vertical-navigation';
-
 const { data: repos, pending: loading } = await useFetchRepos({ lazy: true })
 
 const links = repos.value?.map(item => {
@@ -65,8 +64,8 @@ const links = repos.value?.map(item => {
     id: item.apiId,
     to: `/repos/${item.apiId}`,
     repoUrl: item.repoUrl
-  } as VerticalNavigationLink
-}) as VerticalNavigationLink[]
+  }
+})
 
 function getStatusText(input: number, endedTime: string, startedTime: string) {
   switch (input) {

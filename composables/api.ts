@@ -38,7 +38,7 @@ export function useFetchApi<T>(url: string, options: UseFetchOptions<T> = {}) {
 
   const config = useRuntimeConfig()
 
-  options.key = hash(["api-fetch", url, { headers, ...options }])
+  options.key = hash(["api-fetch", url, options])
 
   return useFetch(config.public.apiBaseUrl + url, { headers, ...options })
 }
