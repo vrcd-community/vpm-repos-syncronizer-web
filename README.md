@@ -1,4 +1,6 @@
 # vpm-repos-syncronizer-web
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web?ref=badge_shield)
+
 
 The frontend for [VPMReposSyncronizer](https://github.com/vrcd-community/VPMReposSynchronizer)
 
@@ -35,3 +37,7 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web?ref=badge_large)
