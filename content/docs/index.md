@@ -6,7 +6,7 @@
 
 关于如何使用这个镜像站，请参考 [使用指南](/docs/getting-started)。
 
-### 相关链接
+## 相关链接
 
 - 后端 Github 仓库地址：[https://github.com/vrcd-community/VPMReposSynchronizer](https://github.com/vrcd-community/VPMReposSynchronizer)
 - 前端 Github 仓库地址：[https://github.com/vrcd-community/vpm-repos-syncronizer-web](https://github.com/vrcd-community/vpm-repos-syncronizer-web)

@@ -27,7 +27,7 @@
 
 ### 使用 Official，Curated 镜像源
 
-1. [下载](https://github.com/Misaka-L/CreatorCompanionPatcher/releases/latest) 最新版 `CreatorCompanionPatcher.exe`
+1. [下载](https://github.com/Misaka-L/CreatorCompanionPatcher/releases/latest) 最新版 `CreatorCompanionPatcher.exe`（如果你无法访问下载页面，也可以在[这里](https://rainelve.lanzouw.com/iEfDq1wpk6kf)下载）
 2. 打开创作者助手所在文件夹 ，将 `CreatorCompanionPatcher.exe` 文件放入刚刚打开的文件夹中。
 3. 双击启动 `CreatorCompanionPatcher.exe` ，观察并等待其命令行窗口加载完毕，并弹出创作者助手窗口后，关闭创作者助手与命令行窗口。
 4. 在文件夹下新建文件`patcher.json`，复制如下内容后粘贴到前文文件中：
