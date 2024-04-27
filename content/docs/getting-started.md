@@ -25,7 +25,7 @@
 
 理论上，你可以在任何使用 VPM 源且支持修改仓库源的应用中使用该镜像源。下面列出 VCC (VRChat Creator Companion) 的使用方法。
 ### 使用 Official，Curated 镜像源
-1. [ 下载 ](https://github.com/misaka-l/CreatorCompanionPatcher/Realease)最新版 `CreatorCompanionPatcher.exe`
+1. [ 下载 ](https://github.com/Misaka-L/CreatorCompanionPatcher/releases)最新版 `CreatorCompanionPatcher.exe`
 2. 打开创作者助手所在文件夹 ，将 `CreatorCompanionPatcher.exe` 文件放入刚刚打开的文件夹中。
 3. 双击启动 `CreatorCompanionPatcher.exe` ，观察并等待其命令行窗口加载完毕，并弹出创作者助手窗口后，关闭创作者助手与命令行窗口。
 4. 在文件夹下新建文件`patcher.json`，复制如下内容后粘贴到前文文件中：
