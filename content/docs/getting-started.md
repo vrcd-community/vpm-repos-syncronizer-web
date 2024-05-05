@@ -2,6 +2,10 @@
 
 理论上，你可以在任何使用 VPM 源且支持修改仓库源的应用中使用该镜像源。
 
+## 镜像源解释
+Official 与 Curated 镜像源
+
+第三方社区镜像源
 ## 不同包管理器的使用方法
 
 - [VRChat Creator Companion](#vrchat-creator-companion)
@@ -11,46 +15,56 @@
 
 ## VRChat Creator Companion
 
+![图片](/images/setup-guide/getting-started-vcc.png)
+
 > - VCC 官方文档 - 社区仓库: [https://vcc.docs.vrchat.com/guides/community-repositories](https://vcc.docs.vrchat.com/guides/community-repositories)
 > - VCC 官方文档 - 社区仓库 (社区简体中文翻译版本): [https://docs.vrczh.org/vcc.docs.vrchat.com/guides/community-repositories](https://docs.vrczh.org/vcc.docs.vrchat.com/guides/community-repositories)
 
-> 由于 VRChat Creator Companion 不提供修改官方源的功能，故使用 Official 和 Curated 源需要对 VCC 本体打补丁。详细请见 [使用 Official，Curated 镜像源](#使用-officialcurated-镜像源)
+> 由于 VCC 本体设计局限，如需在该工具中使用 Official 和 Curated 源，请参阅 [使用 Official 与 Curated 镜像源](#使用-official-与-curated-镜像源)
 
-[VRChat Creator Companion](https://vcc.docs.vrchat.com) 是 VRChat 官方提供的 VPM 包管理器和 VRChat 项目管理器。截止本文档编写时间（2024年4月27日）仅支持 Windows 平台。
+[VRChat Creator Companion](https://vcc.docs.vrchat.com) 是 VRChat 官方提供的 VPM 包管理器和 VRChat 项目管理器。
+> 截止本文档编写时间（2024年4月27日）仅支持 Windows 平台。<br>
+> 请先按照官方文档说明，[下载与安装 VRChat Creator Companion](https://vcc.docs.vrchat.com/#download-it)
 
-注：请先[按照官方文档说明安装 VRChat Creator Companion](https://vcc.docs.vrchat.com/#download-it)
 
-1. 前往 [包列表](/repos) 搜索查找需要添加的包或仓库
-2. 查找您想订阅的包或仓库，并点击“添加到 VCC”或`＋`按钮
-3. 返回创作者助手界面，点击 `I Understand, Add Repository` 添加镜像源
-4. 完成
-
-### 使用 Official，Curated 镜像源
-
-1. [下载](https://github.com/Misaka-L/CreatorCompanionPatcher/releases/latest) 最新版 `CreatorCompanionPatcher.exe`（如果你无法访问下载页面，也可以在[这里](https://rainelve.lanzouw.com/iEfDq1wpk6kf)下载）
-2. 打开创作者助手所在文件夹 ，将 `CreatorCompanionPatcher.exe` 文件放入刚刚打开的文件夹中。
-3. 双击启动 `CreatorCompanionPatcher.exe` ，观察并等待其命令行窗口加载完毕，并弹出创作者助手窗口后，关闭创作者助手与命令行窗口。
-4. 在文件夹下新建文件`patcher.json`，复制如下内容后粘贴到前文文件中：
-
+## 使用 Official 与 Curated 镜像源
+> Official 和 Curated 镜像源，包含 VRChat - Avatar SDK，VRChat - World SDK，Gesture Manager 等
+1. 下载并安装 [.NET 6.0 Desktop Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.28-windows-x64-installer)，双击运行后在安装窗口中选择 `安装` 或 `修复`。
+    ![图片](/images/setup-guide/setup-guide-vcc-1.png)
+2. 点击 [此处](https://github.com/Misaka-L/CreatorCompanionPatcher/releases/latest) 下载最新版 `CreatorCompanionPatcher.exe`（如果您无法访问下载页面，也可以在 [这里](https://rainelve.lanzouw.com/iEfDq1wpk6kf) 下载）
+3. 新建一个文件 `patcher.json`，将其内容修改如下（您也可以在 [这里](https://raincloud.glaorg.top/d/storage/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/VRCD/patcher.json?sign=W7YZdq2nnHxtzHTU8n6XrtSdLJPsPeQM_fFT7bEFrCI=:0) 直接下载这个文件）：
 ```json
 {
-    "EnabledPatches": [
-        "LoggerPatch",
-        "PackageInstallTimeoutPatch",
-        "ReplaceOfficialReposPatch",
-        "DisableTelemetryPatch",
-        "DetailVPMLoggingPatch"
-    ],
-    "ReplaceOfficialReposUrl": "https://vpm.vrczh.org/vpm/official",
-    "ReplaceCuratedReposUrl": "https://vpm.vrczh.org/vpm/curated"
+"EnabledPatches": [
+"LoggerPatch",
+"PackageInstallTimeoutPatch",
+"ReplaceOfficialReposPatch",
+"DisableTelemetryPatch",
+"DetailVPMLoggingPatch"
+],
+"ReplaceOfficialReposUrl": "https://vpm.vrczh.org/vpm/official",
+"ReplaceCuratedReposUrl": "https://vpm.vrczh.org/vpm/curated"
 }
 ```
 
-5.打开`CreatorCompanionPatcher.exe`，正常订阅并下载使用 `Official`，`Curated` 镜像源
+4. 将 `CreatorCompanionPatcher.exe` 与 `patcher.json` 文件一起剪切或复制粘贴到您的 VRChat Creator Companion 安装文件夹下，示例如下。
+    ![图片](/images/setup-guide/setup-guide-vcc-2.png)
+    > 您可以右键单击桌面上的 **CreatorCompanion** 快捷方式，并点击打开文件所在的位置，来找到创作者助手的安装文件夹。
+        ![图片](/images/setup-guide/setup-guide-vcc-3.png)
+5. 启动 `CreatorCompanionPatcher.exe` ，观察并等待命令行窗口加载完毕，等待弹出 VRChat Creator Companion 即完成操作。
+
+## 使用第三方社区镜像源
+> 非 `Official` 和 `Curated` 的镜像源，以下为订阅 `liltoon` 着色器 `VPM` 包或 `lilxyzw` 仓库源示例
+1. 前往 [包列表](/repos) 搜索查找需要添加的包或仓库，点击 `添加到 VCC` 或 `＋` 按钮。
+    ![图片](/images/setup-guide/setup-guide-vcc-4.png)
+2. 返回创作者助手，点击 `I Understand, Add Repository` 添加镜像源。
+    ![图片](/images/setup-guide/setup-guide-vcc-5.png)
 
 ## VPM-CLI
 
 > 目前 VPM-CLI 无法使用 Official 和 Curated 镜像，因为其无法修改官方源的 URL。
+
+![图片](/images/setup-guide/getting-started-vpmcli.png)
 
 [VPM CLI](https://vcc.docs.vrchat.com/vpm/cli) 是 VRChat 官方提供的 VPM 管理器。
 
@@ -62,6 +76,8 @@
 
 ## vrc-get
 
+![图片](/images/setup-guide/getting-started-vrcget.png)
+
 [vrc-get](https://github.com/vrc-get/vrc-get) 是一个由社区开发的开源 VPM 包管理器，相较于 VRChat 官方的 VPM ~~遥遥领先~~有更好的性能表现和更好的使用体验，支持在 Windows、Linux 和 MacOS 上运行。vrc-get 本体为 CLI，不过同时也提供了[实验性的 GUI 版本](https://github.com/vrc-get/vrc-get/tree/master/vrc-get-gui)。
 
 注：请先[按照官方文档说明安装 vrc-get](https://github.com/vrc-get/vrc-get?tab=readme-ov-file#installation)
@@ -72,6 +88,8 @@
 4. 完成
 
 ## ALCOM (vrc-get-gui)
+
+![图片](/images/setup-guide/getting-started-alcom.png)
 
 > 注：ALCOM 目前还处于实验性阶段，可能随时会发生重大更改。本文档可能无法及时跟进 ALCOM 最新版本的修改，请始终以官方文档为准。
 
