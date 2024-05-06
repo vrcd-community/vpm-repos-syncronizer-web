@@ -11,8 +11,13 @@
 - 后端 Github 仓库地址：[https://github.com/vrcd-community/VPMReposSynchronizer](https://github.com/vrcd-community/VPMReposSynchronizer)
 - 前端 Github 仓库地址：[https://github.com/vrcd-community/vpm-repos-syncronizer-web](https://github.com/vrcd-community/vpm-repos-syncronizer-web)
 
-## 目前正在镜像的源
+## 目前正在镜像的仓库
 
-请移步 [包列表](/repos) 查看。
+- **Official** 与 **Curated** 仓库
+    - 包含 **VRChat - Avatar SDK，VRChat - World SDK，Gesture Manager** 等 VPM 包
+- 第三方社区仓库镜像，如 **bd_**，**vrcfury**，**lilxyzw**，**poiyomi**
+    - 包含 **Modular Avatar，VRCFury，liltoon，Poiyomi** 等 VPM 包
+    
+更多请移步 [包列表](/repos) 查看。
 
 我们会在未来添加更多源，参考 [常见问题 #你们会添加其他源吗](/docs/faq#你们会添加其他源吗)。

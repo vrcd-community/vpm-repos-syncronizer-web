@@ -35,6 +35,11 @@
 
 ## 目前正在镜像的仓库
 
+- **Official** 与 **Curated** 仓库
+    - 包含 **VRChat - Avatar SDK，VRChat - World SDK，Gesture Manager** 等 VPM 包
+- 第三方社区仓库，如 **bd_**，**vrcfury**，**lilxyzw**，**poiyomi**
+    - 包含 **Modular Avatar，VRCFury，liltoon，Poiyomi** 等 VPM 包
+
 您可在本站首页浏览目前已镜像的库
 
 我们可能会在未来添加更多源。请参阅 [你们会添加其他源吗](#你们会添加其他源吗)
