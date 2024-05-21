@@ -57,7 +57,7 @@
 
     > 您可以右键单击桌面上的 **CreatorCompanion** 快捷方式，并点击打开文件所在的位置，来找到创作者助手的安装文件夹。
 
-        ![图片](/images/setup-guide/setup-guide-vcc-3.png)
+    ![图片](/images/setup-guide/setup-guide-vcc-3.png)
         
 5. 启动 `CreatorCompanionPatcher.exe` ，观察并等待命令行窗口加载完毕，等待弹出 VRChat Creator Companion 即完成操作。
 
