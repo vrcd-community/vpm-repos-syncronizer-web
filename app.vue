@@ -1,5 +1,5 @@
 <template>
-  <UContainer class="pt-12">
+  <!-- <div class="w-11/12 mx-auto">
     <header class="flex flex-col text-center">
       <img class="max-h-48" src="/icon.svg" width="100%" />
       <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
@@ -12,7 +12,27 @@
     <main class="my-10 mx-auto">
       <NuxtPage />
     </main>
-  </UContainer>
+  </div> -->
+  <n-config-provider :theme="uiTheme" inline-theme-disabled>
+    <n-notification-provider>
+      <n-message-provider>
+        <n-layout position="absolute" :native-scrollbar="false">
+          <div class="md:w-4/6 mx-auto pb-8">
+            <header class="flex flex-col text-center">
+              <img class="max-h-48" src="/icon.svg" width="100%" />
+              <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
+              <p class="text-sm">一个 VCC 仓库镜像站</p>
+              <nav class="flex flex-col items-center mb-4">
+                <ToolBar />
+                <NavBar />
+              </nav>
+            </header>
+            <nuxt-page />
+          </div>
+        </n-layout>
+      </n-message-provider>
+    </n-notification-provider>
+  </n-config-provider>
 </template>
 
 <style>
@@ -20,6 +40,12 @@
 </style>
 
 <script setup lang="ts">
+import { useOsTheme, darkTheme } from 'naive-ui'
+
+const colorMode = useColorMode()
+const osIsDark = computed(() => useOsTheme().value === 'dark')
+const uiTheme = computed(() => ((colorMode.preference === 'system' && osIsDark) || colorMode.preference === 'dark') ? darkTheme : null)
+
 const route = useRoute()
 
 useHead({

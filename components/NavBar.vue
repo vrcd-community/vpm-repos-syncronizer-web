@@ -1,13 +1,14 @@
 <template>
-  <div ref="container" class="w-full max-w-xl">
-    <UTabs v-model:model-value="selected" :orientation="orientation" :items="items" />
+  <div class="w-full">
+    <n-tabs justify-content="space-evenly" type="line" v-model:value="selected">
+      <n-tab :name="item.route" v-for="item in items">
+        {{ item.label }}
+      </n-tab>
+    </n-tabs>
   </div>
 </template>
 
 <script setup lang="ts">
-const container = ref(null)
-const { width } = useElementSize(container)
-
 const route = useRoute()
 const router = useRouter()
 
@@ -29,18 +30,13 @@ const selected = computed({
   get() {
     const index = items.findIndex((item) => item.route === route.path || (item.route !== '/' && route.path.startsWith(item.route)))
     if (index === -1) {
-      return 0
+      return '/'
     }
 
-    return index
+    return items[index].route
   },
   set(value) {
-    // Hash is specified here to prevent the page from scrolling to the top
-    router.replace(items[value].route)
+    router.push(value)
   }
-})
-
-const orientation = computed(() => {
-  return width.value < 450 ? 'vertical' : 'horizontal'
 })
 </script>

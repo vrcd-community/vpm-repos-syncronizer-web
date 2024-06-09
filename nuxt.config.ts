@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "nuxt-simple-robots",
     // "nuxt-og-image"
+    "@bg-dev/nuxt-naiveui",
+    "nuxt-time"
   ],
   routeRules: {
     "/docs/**": { isr: true },
