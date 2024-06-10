@@ -17,7 +17,7 @@
     <n-notification-provider>
       <n-message-provider>
         <n-layout position="absolute" :native-scrollbar="false">
-          <div class="md:w-4/6 mx-auto pb-8">
+          <div class="md:w-4/6 mx-auto pb-24">
             <header class="flex flex-col text-center">
               <img class="max-h-48" src="/icon.svg" width="100%" />
               <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>

@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     // "nuxt-og-image"
     "@bg-dev/nuxt-naiveui",
-    "nuxt-time"
+    "nuxt-time",
+    "@vueuse/nuxt",
   ],
   routeRules: {
     "/docs/**": { isr: true },

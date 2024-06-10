@@ -13,14 +13,11 @@ const route = useRoute()
 const router = useRouter()
 
 const items = [{
-  label: '首页',
+  label: '镜像',
   route: '/',
 }, {
   label: '文档',
   route: '/docs',
-}, {
-  label: '包列表',
-  route: '/repos'
 }, {
   label: '同步状态',
   route: '/status'
