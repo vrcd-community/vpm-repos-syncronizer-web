@@ -30,6 +30,10 @@ export default defineNuxtConfig({
   content: {
     markdown: {
       anchorLinks: false,
+      toc: {
+        depth: 5,
+        searchDepth: 5,
+      },
     },
   },
   runtimeConfig: {
