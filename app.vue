@@ -1,23 +1,9 @@
 <template>
-  <!-- <div class="w-11/12 mx-auto">
-    <header class="flex flex-col text-center">
-      <img class="max-h-48" src="/icon.svg" width="100%" />
-      <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
-      <p class="text-sm">一个 VCC 仓库镜像站</p>
-      <nav class="flex flex-col items-center">
-        <ToolBar />
-        <NavBar />
-      </nav>
-    </header>
-    <main class="my-10 mx-auto">
-      <NuxtPage />
-    </main>
-  </div> -->
   <n-config-provider :theme="uiTheme" inline-theme-disabled>
     <n-notification-provider>
       <n-message-provider>
         <n-layout position="absolute" :native-scrollbar="false">
-          <div class="md:w-4/6 mx-auto pb-24">
+          <div class="md:w-5/6 mx-auto pb-24">
             <header class="flex flex-col text-center">
               <img class="max-h-48" src="/icon.svg" width="100%" />
               <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
@@ -27,7 +13,9 @@
                 <NavBar />
               </nav>
             </header>
-            <nuxt-page />
+            <nuxt-layout>
+              <nuxt-page />
+            </nuxt-layout>
           </div>
         </n-layout>
       </n-message-provider>

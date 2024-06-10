@@ -1,12 +1,12 @@
 <template>
-  <div class="flex space-x-4 mt-8">
-    <div class="w-48 sticky top-8 self-start">
+  <div class="flex space-x-8 mt-8">
+    <div class="w-72 sticky top-8 self-start">
       <n-menu :options="options" :value="selected" />
     </div>
     <n-card class="flex-1">
       <content-doc class="prose dark:prose-invert max-w-none" />
     </n-card>
-    <div class="w-48 sticky self-start top-8 space-y-2">
+    <div class="w-72 sticky self-start top-8 space-y-2">
       <span class="font-semibold">本页目录</span>
       <div>
         <n-anchor>
@@ -20,6 +20,10 @@
 <script setup lang="ts">
 import { type MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router';
+
+definePageMeta({
+  layout: 'docs',
+})
 
 const route = useRoute()
 
