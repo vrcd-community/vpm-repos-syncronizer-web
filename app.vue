@@ -3,20 +3,19 @@
     <n-notification-provider>
       <n-message-provider>
         <n-layout position="absolute" :native-scrollbar="false">
-          <div class="md:w-5/6 mx-auto pb-24">
-            <header class="flex flex-col text-center">
-              <img class="max-h-48" src="/icon.svg" width="100%" />
-              <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
-              <p class="text-sm">一个 VCC 仓库镜像站</p>
-              <nav class="flex flex-col items-center mb-4">
-                <ToolBar />
-                <NavBar />
-              </nav>
-            </header>
-            <nuxt-layout>
-              <nuxt-page />
-            </nuxt-layout>
-          </div>
+          <n-layout-header>
+            <page-header />
+          </n-layout-header>
+          <n-layout-content>
+            <div class="md:w-5/6 mx-auto pb-24 pt-8">
+              <nuxt-layout>
+                <nuxt-page />
+              </nuxt-layout>
+            </div>
+          </n-layout-content>
+          <n-layout-footer>
+            <page-footer />
+          </n-layout-footer>
         </n-layout>
       </n-message-provider>
     </n-notification-provider>
