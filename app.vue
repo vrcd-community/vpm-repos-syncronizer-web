@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme="uiTheme" inline-theme-disabled>
+  <naive-config>
     <n-notification-provider>
       <n-message-provider>
         <n-layout position="absolute" :native-scrollbar="false">
@@ -19,7 +19,7 @@
         </n-layout>
       </n-message-provider>
     </n-notification-provider>
-  </n-config-provider>
+  </naive-config>
 </template>
 
 <style>
@@ -27,11 +27,15 @@
 </style>
 
 <script setup lang="ts">
-import { useOsTheme, darkTheme } from 'naive-ui'
-
 const colorMode = useColorMode()
-const osIsDark = computed(() => useOsTheme().value === 'dark')
-const uiTheme = computed(() => ((colorMode.preference === 'system' && osIsDark) || colorMode.preference === 'dark') ? darkTheme : null)
+
+onMounted(() => updateColorMode())
+watch(colorMode, () => updateColorMode())
+
+function updateColorMode() {
+  // @ts-expect-error
+  useNaiveColorMode().colorModePreference.set(colorMode.preference)
+}
 
 const route = useRoute()
 
