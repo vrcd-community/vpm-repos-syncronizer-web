@@ -12,7 +12,7 @@ const items = [{
   route: '/'
 }, {
   label: '文档',
-  route: '/docs/'
+  route: '/docs'
 }, {
   label: '同步状态',
   route: '/status'

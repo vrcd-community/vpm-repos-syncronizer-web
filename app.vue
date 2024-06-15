@@ -2,17 +2,17 @@
   <naive-config>
     <n-notification-provider>
       <n-message-provider>
-        <n-layout position="absolute" :native-scrollbar="false">
-          <n-layout-header>
+        <n-layout position="absolute">
+          <n-layout-header bordered>
             <page-header />
           </n-layout-header>
-          <n-layout-content>
-            <div class="md:w-5/6 mx-auto pb-24 pt-8">
+          <n-layout position="absolute" style="top: 70px;" :native-scrollbar="false">
+            <div class="md:w-5/6 mx-auto pb-24 pt-12">
               <nuxt-layout>
                 <nuxt-page />
               </nuxt-layout>
             </div>
-          </n-layout-content>
+          </n-layout>
           <n-layout-footer>
             <page-footer />
           </n-layout-footer>

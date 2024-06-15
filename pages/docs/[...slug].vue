@@ -1,18 +1,25 @@
 <template>
-  <div class="flex space-x-8 mt-8">
-    <div class="w-72 sticky top-8 self-start">
-      <n-menu :options="options" :value="selected" />
+  <div class="flex space-x-8">
+    <div class="w-72">
+      <n-affix listen-to=".n-scrollbar-container" :top="80">
+        <div class="space-y-2 pt-12">
+          <span class="font-semibold ml-8">所有文档</span>
+          <n-menu class="w-72" :options="options" :value="selected" />
+        </div>
+      </n-affix>
     </div>
     <n-card class="flex-1">
       <content-doc class="prose dark:prose-invert max-w-none" />
     </n-card>
-    <div class="w-72 sticky self-start top-8 space-y-2">
-      <span class="font-semibold">本页目录</span>
-      <div>
-        <n-anchor>
-          <doc-anchor-link-item v-for="item in page?.body?.toc?.links" :link="item" />
-        </n-anchor>
-      </div>
+    <div class="w-72">
+      <n-affix listen-to=".n-scrollbar-container" :top="80">
+        <div class="space-y-2 pt-12">
+          <span class="font-semibold">本页目录</span>
+          <n-anchor>
+            <doc-anchor-link-item v-for="item in page?.body?.toc?.links" :link="item" />
+          </n-anchor>
+        </div>
+      </n-affix>
     </div>
   </div>
 </template>

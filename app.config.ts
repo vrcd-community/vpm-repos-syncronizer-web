@@ -1,6 +1,1 @@
-export default defineAppConfig({
-  ui: {
-    primary: 'green',
-    gray: 'slate'
-  }
-})
+export default defineAppConfig({})
