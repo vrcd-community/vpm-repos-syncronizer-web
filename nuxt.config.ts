@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "nuxt-simple-robots",
     // "nuxt-og-image"
+    "@bg-dev/nuxt-naiveui",
+    "nuxt-time",
+    "@vueuse/nuxt",
   ],
   routeRules: {
     "/docs/**": { isr: true },
@@ -27,6 +30,10 @@ export default defineNuxtConfig({
   content: {
     markdown: {
       anchorLinks: false,
+      toc: {
+        depth: 5,
+        searchDepth: 5,
+      },
     },
   },
   runtimeConfig: {

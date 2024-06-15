@@ -1,4 +1,5 @@
 <template>
+
   <Head>
     <Title>包列表</Title>
   </Head>
@@ -12,7 +13,8 @@
   </div>
   <div v-else class="mt-4 space-y-4 flex flex-col">
     <UProgress animation="carousel" v-if="packagesLoading" />
-    <PackageCard v-if="!packagesLoading" v-for="pkg in packages" :pkg="pkg" :repoId="pkg.repoId" :repoUrl="pkg.repoUrl" />
+    <package-item v-if="!packagesLoading" v-for="pkg in packages" :pkg="pkg.latest" :repoId="pkg.repoId"
+      :repoUrl="pkg.repoUrl" />
   </div>
 </template>
 

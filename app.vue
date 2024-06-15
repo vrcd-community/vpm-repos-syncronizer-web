@@ -1,18 +1,25 @@
 <template>
-  <UContainer class="pt-12">
-    <header class="flex flex-col text-center">
-      <img class="max-h-48" src="/icon.svg" width="100%" />
-      <h1 class="text-xl font-bold">VPM Repos Synchronizer</h1>
-      <p class="text-sm">一个 VCC 仓库镜像站</p>
-      <nav class="flex flex-col items-center">
-        <ToolBar />
-        <NavBar />
-      </nav>
-    </header>
-    <main class="my-10 mx-auto">
-      <NuxtPage />
-    </main>
-  </UContainer>
+  <naive-config>
+    <n-notification-provider>
+      <n-message-provider>
+        <n-layout position="absolute">
+          <n-layout-header bordered>
+            <page-header />
+          </n-layout-header>
+          <n-layout position="absolute" style="top: 70px;" :native-scrollbar="false">
+            <div class="md:w-5/6 mx-auto pb-24 pt-12">
+              <nuxt-layout>
+                <nuxt-page />
+              </nuxt-layout>
+            </div>
+          </n-layout>
+          <n-layout-footer>
+            <page-footer />
+          </n-layout-footer>
+        </n-layout>
+      </n-message-provider>
+    </n-notification-provider>
+  </naive-config>
 </template>
 
 <style>
@@ -20,6 +27,16 @@
 </style>
 
 <script setup lang="ts">
+const colorMode = useColorMode()
+
+onMounted(() => updateColorMode())
+watch(colorMode, () => updateColorMode())
+
+function updateColorMode() {
+  // @ts-expect-error
+  useNaiveColorMode().colorModePreference.set(colorMode.preference)
+}
+
 const route = useRoute()
 
 useHead({

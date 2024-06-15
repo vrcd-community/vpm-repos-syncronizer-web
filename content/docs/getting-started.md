@@ -6,6 +6,7 @@
     - 包含 **VRChat - Avatar SDK，VRChat - World SDK，Gesture Manager** 等 VPM 包
 - 第三方社区仓库镜像，如 **bd_**，**vrcfury**，**lilxyzw**，**poiyomi**
     - 包含 **Modular Avatar，VRCFury，liltoon，Poiyomi** 等 VPM 包
+
 ## 不同包管理器的使用方法
 
 - [VRChat Creator Companion](#vrchat-creator-companion)
@@ -13,7 +14,7 @@
 - [vrc-get](#vrc-get)
 - [ALCOM (vrc-get-gui)](#alcom-vrc-get-gui)
 
-## VRChat Creator Companion
+### VRChat Creator Companion
 
 ![图片](/images/setup-guide/getting-started-vcc.png)
 
@@ -26,9 +27,7 @@
 > 截止本文档编写时间（2024年4月27日）仅支持 Windows 平台。<br>
 > 请先按照官方文档说明，[下载与安装 VRChat Creator Companion](https://vcc.docs.vrchat.com/#download-it)
 
-
-## 使用 Official 与 Curated 仓库镜像
-
+#### 使用 Official 与 Curated 仓库镜像
 
 1. 下载并安装 [.NET 6.0 Desktop Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.28-windows-x64-installer)，双击运行后在安装窗口中选择 `安装` 或 `修复`。
 
@@ -37,6 +36,7 @@
 2. 点击 [此处](https://github.com/Misaka-L/CreatorCompanionPatcher/releases/latest) 下载最新版 `CreatorCompanionPatcher.exe`（如果您无法访问下载页面，也可以在 [这里](https://rainelve.lanzouw.com/iEfDq1wpk6kf) 下载）
 
 3. 新建一个文件 `patcher.json`，将其内容修改如下（您也可以在 [这里](https://raincloud.glaorg.top/d/storage/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/VRCD/patcher.json?sign=W7YZdq2nnHxtzHTU8n6XrtSdLJPsPeQM_fFT7bEFrCI=:0) 直接下载这个文件）：
+
 ```json
 {
 "EnabledPatches": [
@@ -51,7 +51,7 @@
 }
 ```
 
-4. 将 `CreatorCompanionPatcher.exe` 与 `patcher.json` 文件一起剪切或复制粘贴到您的 VRChat Creator Companion 安装文件夹下，示例如下。
+1. 将 `CreatorCompanionPatcher.exe` 与 `patcher.json` 文件一起剪切或复制粘贴到您的 VRChat Creator Companion 安装文件夹下，示例如下。
 
     ![图片](/images/setup-guide/setup-guide-vcc-2.png)
 
@@ -59,9 +59,9 @@
 
     ![图片](/images/setup-guide/setup-guide-vcc-3.png)
         
-5. 启动 `CreatorCompanionPatcher.exe` ，观察并等待命令行窗口加载完毕，等待弹出 VRChat Creator Companion 即完成操作。
+2. 启动 `CreatorCompanionPatcher.exe` ，观察并等待命令行窗口加载完毕，等待弹出 VRChat Creator Companion 即完成操作。
 
-## 使用第三方社区仓库镜像
+#### 使用第三方社区仓库镜像
 
 > 以下为订阅`liltoon` 着色器 VPM 包或 `lilxyzw` 仓库源示例
 
@@ -70,7 +70,7 @@
 2. 返回创作者助手，点击 `I Understand, Add Repository` 添加仓库。
     ![图片](/images/setup-guide/setup-guide-vcc-5.png)
 
-## VPM-CLI
+### VPM-CLI
 
 ![图片](/images/setup-guide/getting-started-vpmcli.png)
 
@@ -84,7 +84,7 @@
 2. 复制“镜像 URL”
 3. 打开终端，运行 `vpm add repo <镜像 URL>`（注：请去掉 `<` 和 `>`，由于忘记去掉这两个符号导致的问题的求助信息会被直接忽略）
 
-## vrc-get
+### vrc-get
 
 ![图片](/images/setup-guide/getting-started-vrcget.png)
 
@@ -99,7 +99,7 @@
 3. 打开终端，运行 `vrc-get repo add <镜像 URL> <仓库的别名，请自己起一个>`（注：请去掉 `<` 和 `>`，由于忘记去掉这两个符号导致的问题的求助信息会被直接忽略）
 4. 完成
 
-## ALCOM (vrc-get-gui)
+### ALCOM (vrc-get-gui)
 
 ![图片](/images/setup-guide/getting-started-alcom.png)
 
