@@ -44,7 +44,7 @@
       <div v-else class="flex flex-col space-y-4">
         <n-list hoverable clickable>
           <n-list-item v-for="pkg in filterPackages">
-            <package-item :pkg="pkg" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
+            <package-item :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
           </n-list-item>
         </n-list>
       </div>

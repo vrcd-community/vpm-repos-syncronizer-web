@@ -13,7 +13,7 @@
   </div>
   <div v-else class="mt-4 space-y-4 flex flex-col">
     <UProgress animation="carousel" v-if="packagesLoading" />
-    <package-item v-if="!packagesLoading" v-for="pkg in packages" :pkg="pkg" :repoId="pkg.repoId"
+    <package-item v-if="!packagesLoading" v-for="pkg in packages" :pkg="pkg.latest" :repoId="pkg.repoId"
       :repoUrl="pkg.repoUrl" />
   </div>
 </template>
