@@ -25,7 +25,7 @@
     </n-spin>
     <div v-else class="space-y-4">
       <n-collapse accordion>
-        <repo-item v-for="repo in repos" :repo="repo" />
+        <repo-item v-for="repo in repos" :repo="repo" :key="repo.apiId" />
       </n-collapse>
     </div>
   </div>
