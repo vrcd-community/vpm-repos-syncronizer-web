@@ -13,14 +13,11 @@ export default defineNuxtConfig({
     "@nuxtjs/robots",
     "./vrcd-nuxt-server-side-logging/src/module",
   ],
-
   routeRules: {
     "/docs/**": { isr: true },
     "/docs": { isr: true },
   },
-
   devtools: { enabled: true },
-
   site: {
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
@@ -36,11 +33,9 @@ export default defineNuxtConfig({
     preference: "system",
     fallback: "dark",
   },
-
   ui: {
     icons: ["mdi"],
   },
-
   content: {
     markdown: {
       anchorLinks: false,
@@ -50,7 +45,6 @@ export default defineNuxtConfig({
       },
     },
   },
-
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
@@ -65,6 +59,4 @@ export default defineNuxtConfig({
       pipeline: "",
     },
   },
-
-  compatibilityDate: "2024-07-24",
 })
