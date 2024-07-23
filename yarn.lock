@@ -1049,31 +1049,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.1.0":
-  version: 1.6.5
-  resolution: "@floating-ui/core@npm:1.6.5"
-  dependencies:
-    "@floating-ui/utils": "npm:^0.2.5"
-  checksum: 10c0/41651f6ebed3123809a3992966d9d6b740048fe255e4754df61043ce28b40ba7202cf7ac163873b7f4c5f9969930e9d7cd3691e178739304eed1adc42bb6c628
-  languageName: node
-  linkType: hard
-
-"@floating-ui/dom@npm:~1.1.1":
-  version: 1.1.1
-  resolution: "@floating-ui/dom@npm:1.1.1"
-  dependencies:
-    "@floating-ui/core": "npm:^1.1.0"
-  checksum: 10c0/2e508c834fed7567fc496ee946d092056487958330fd5260768536282eb19e990087ddbfe60a39cfe7ed87f8ec0741cc11fa33505c478238d78515a27dd69b6d
-  languageName: node
-  linkType: hard
-
-"@floating-ui/utils@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "@floating-ui/utils@npm:0.2.5"
-  checksum: 10c0/9e1c7330433c3a8f226c5a44ed1dcdda13b313c4126ce3281f970d1e471b1c9fd9e1559cc76a0592af25d55a3f81afe1a5778aa7b80e51c9fa01930cd1d5557e
-  languageName: node
-  linkType: hard
-
 "@headlessui/tailwindcss@npm:^0.2.1":
   version: 0.2.1
   resolution: "@headlessui/tailwindcss@npm:0.2.1"
@@ -1707,6 +1682,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxtjs/robots@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@nuxtjs/robots@npm:4.0.2"
+  dependencies:
+    "@nuxt/devtools-kit": "npm:^1.3.9"
+    "@nuxt/kit": "npm:^3.12.4"
+    consola: "npm:^3.2.3"
+    defu: "npm:^6.1.4"
+    nuxt-site-config: "npm:^2.2.15"
+    nuxt-site-config-kit: "npm:^2.2.15"
+    pathe: "npm:^1.1.2"
+    pkg-types: "npm:^1.1.3"
+    sirv: "npm:^2.0.4"
+    std-env: "npm:^3.7.0"
+    ufo: "npm:^1.5.4"
+  checksum: 10c0/80b03ba2cc05fe560912af3f8293b410dd6ba31de033c4f286ec050fcdd6aedf74ff67af15d8c270ebab62fd06a1ae0727752981bff89adc92353c2f7c0d63bb
+  languageName: node
+  linkType: hard
+
 "@nuxtjs/sitemap@npm:^5.3.5":
   version: 5.3.5
   resolution: "@nuxtjs/sitemap@npm:5.3.5"
@@ -2164,15 +2158,6 @@ __metadata:
   version: 4.19.0
   resolution: "@rollup/rollup-win32-x64-msvc@npm:4.19.0"
   conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@shikijs/core@npm:1.10.3":
-  version: 1.10.3
-  resolution: "@shikijs/core@npm:1.10.3"
-  dependencies:
-    "@types/hast": "npm:^3.0.4"
-  checksum: 10c0/6792c3a6228fe2085aa39616139087aeaa85748a0f49740576c55f6c41b3f2cad911720f653cdba1e175c5b6a8876eee8982750f70b9de17d2944b7f69a8066d
   languageName: node
   linkType: hard
 
@@ -4979,22 +4964,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"floating-vue@npm:^5.2.2":
-  version: 5.2.2
-  resolution: "floating-vue@npm:5.2.2"
-  dependencies:
-    "@floating-ui/dom": "npm:~1.1.1"
-    vue-resize: "npm:^2.0.0-alpha.1"
-  peerDependencies:
-    "@nuxt/kit": ^3.2.0
-    vue: ^3.2.0
-  peerDependenciesMeta:
-    "@nuxt/kit":
-      optional: true
-  checksum: 10c0/f765c4ef62c4bdbc6b38167c472d2badabdd3ace4484819532b099f1a027bcba6dba1916414cca14f6c375e33f399bd42111db3cbf69a3803f44bc3dd88e6761
-  languageName: node
-  linkType: hard
-
 "foreground-child@npm:^3.1.0":
   version: 3.2.1
   resolution: "foreground-child@npm:3.2.1"
@@ -7695,29 +7664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-simple-robots@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "nuxt-simple-robots@npm:4.0.1"
-  dependencies:
-    "@nuxt/devtools-kit": "npm:^1.3.9"
-    "@nuxt/kit": "npm:^3.12.3"
-    consola: "npm:^3.2.3"
-    defu: "npm:^6.1.4"
-    flatted: "npm:^3.3.1"
-    floating-vue: "npm:^5.2.2"
-    nuxt-site-config: "npm:^2.2.14"
-    nuxt-site-config-kit: "npm:^2.2.14"
-    pathe: "npm:^1.1.2"
-    pkg-types: "npm:^1.1.3"
-    shiki: "npm:1.10.3"
-    sirv: "npm:^2.0.4"
-    std-env: "npm:^3.7.0"
-    ufo: "npm:^1.5.3"
-  checksum: 10c0/8c6e0679bb5b1dba619dc50d1dfba2d5f7fb133b35fe9272a9aa76a0cf99c695bf75b5b1dae9f105c024b92ac9050b53a475ee3a3b1738e28ad7facfd6e66577
-  languageName: node
-  linkType: hard
-
-"nuxt-site-config-kit@npm:2.2.15, nuxt-site-config-kit@npm:^2.2.14, nuxt-site-config-kit@npm:^2.2.15":
+"nuxt-site-config-kit@npm:2.2.15, nuxt-site-config-kit@npm:^2.2.15":
   version: 2.2.15
   resolution: "nuxt-site-config-kit@npm:2.2.15"
   dependencies:
@@ -7731,7 +7678,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-site-config@npm:^2.2.14, nuxt-site-config@npm:^2.2.15":
+"nuxt-site-config@npm:^2.2.15":
   version: 2.2.15
   resolution: "nuxt-site-config@npm:2.2.15"
   dependencies:
@@ -9355,16 +9302,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:1.10.3":
-  version: 1.10.3
-  resolution: "shiki@npm:1.10.3"
-  dependencies:
-    "@shikijs/core": "npm:1.10.3"
-    "@types/hast": "npm:^3.0.4"
-  checksum: 10c0/b2f7db15a837c24973d4906cbfc6ad7d2c32931e610470d129b85c372da1561f57370676e23a63d889341450359befdfdacbbab0230fe3c222dc59c5f52e5623
-  languageName: node
-  linkType: hard
-
 "shiki@npm:1.11.1, shiki@npm:^1.10.0, shiki@npm:^1.10.3":
   version: 1.11.1
   resolution: "shiki@npm:1.11.1"
@@ -10751,12 +10688,12 @@ __metadata:
     "@nuxt/devtools": "npm:^1.3.9"
     "@nuxt/image": "npm:^1.7.0"
     "@nuxt/ui": "npm:^2.17.0"
+    "@nuxtjs/robots": "npm:^4.0.2"
     "@nuxtjs/sitemap": "npm:^5.3.5"
     "@vueuse/core": "npm:^10.11.0"
     "@vueuse/nuxt": "npm:^10.11.0"
     naive-ui: "npm:^2.39.0"
     nuxt: "npm:^3.12.4"
-    nuxt-simple-robots: "npm:^4.0.1"
     nuxt-time: "npm:^0.1.3"
     vite: "npm:^5.3.4"
     vue: "npm:^3.4.33"
@@ -10853,15 +10790,6 @@ __metadata:
   version: 0.1.0
   resolution: "vue-devtools-stub@npm:0.1.0"
   checksum: 10c0/527af4b887eb82b000e5f56d555618d0ef5494a10d0f701899e4e8b98773a6e4af33d282c47283fb2e8f7f640d05bced7c94b31968abf4a949bc3d92075c7ce0
-  languageName: node
-  linkType: hard
-
-"vue-resize@npm:^2.0.0-alpha.1":
-  version: 2.0.0-alpha.1
-  resolution: "vue-resize@npm:2.0.0-alpha.1"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 10c0/47691bd15565d28d5ea83bcad07086f5b35584518d91b816b748d041ce4eee40a889a4e5ad6514d7bb65af642d36823a4b7e442d1e63f195f770d3d646848954
   languageName: node
   linkType: hard
 

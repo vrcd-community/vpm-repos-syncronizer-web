@@ -5,12 +5,12 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@vueuse/nuxt",
     "@nuxtjs/sitemap",
-    "nuxt-simple-robots",
     // "nuxt-og-image"
     "@bg-dev/nuxt-naiveui",
     "nuxt-time",
     "@vueuse/nuxt",
-    "@nuxt/image"
+    "@nuxt/image",
+    "@nuxtjs/robots"
   ],
 
   routeRules: {
@@ -23,6 +23,12 @@ export default defineNuxtConfig({
   site: {
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
+  },
+
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls'
+    ]
   },
 
   colorMode: {
