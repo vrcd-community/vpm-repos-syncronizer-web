@@ -1,0 +1,3 @@
+[submodule "vrcd-nuxt-server-side-logging"]
+	path = vrcd-nuxt-server-side-logging
+	url = https://github.com/vrcd-community/nuxt-server-side-logging.git

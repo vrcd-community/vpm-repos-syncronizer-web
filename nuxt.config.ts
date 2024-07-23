@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     "nuxt-time",
     "@vueuse/nuxt",
     "@nuxt/image",
-    "@nuxtjs/robots"
+    "@nuxtjs/robots",
+    "./vrcd-nuxt-server-side-logging/src/module",
   ],
 
   routeRules: {
@@ -53,6 +54,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
+    },
+    vrcdServerSideLogging: {
+      enabled: false,
+      postLogEnabled: false,
+      baseUrl: "",
+      prefix: "",
+      zone: "",
+      apiKey: "",
+      pipeline: "",
     },
   },
 
