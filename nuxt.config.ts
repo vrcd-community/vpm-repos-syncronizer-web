@@ -11,22 +11,28 @@ export default defineNuxtConfig({
     "nuxt-time",
     "@vueuse/nuxt",
   ],
+
   routeRules: {
     "/docs/**": { isr: true },
     "/docs": { isr: true },
   },
+
   devtools: { enabled: true },
+
   site: {
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
   },
+
   colorMode: {
     preference: "system",
     fallback: "dark",
   },
+
   ui: {
     icons: ["mdi"],
   },
+
   content: {
     markdown: {
       anchorLinks: false,
@@ -36,9 +42,12 @@ export default defineNuxtConfig({
       },
     },
   },
+
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
     },
   },
+
+  compatibilityDate: "2024-07-24",
 })
