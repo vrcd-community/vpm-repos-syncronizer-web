@@ -5,11 +5,13 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@vueuse/nuxt",
     "@nuxtjs/sitemap",
-    "nuxt-simple-robots",
     // "nuxt-og-image"
     "@bg-dev/nuxt-naiveui",
     "nuxt-time",
     "@vueuse/nuxt",
+    "@nuxt/image",
+    "@nuxtjs/robots",
+    "./vrcd-nuxt-server-side-logging/src/module",
   ],
   routeRules: {
     "/docs/**": { isr: true },
@@ -20,6 +22,13 @@ export default defineNuxtConfig({
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
   },
+
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls'
+    ]
+  },
+
   colorMode: {
     preference: "system",
     fallback: "dark",
@@ -39,6 +48,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
+    },
+    vrcdServerSideLogging: {
+      enabled: false,
+      postLogEnabled: false,
+      baseUrl: "",
+      prefix: "",
+      zone: "",
+      apiKey: "",
+      pipeline: "",
     },
   },
 })
