@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@bg-dev/nuxt-naiveui",
     "nuxt-time",
     "@vueuse/nuxt",
+    "@nuxt/image"
   ],
 
   routeRules: {
