@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/image",
     "@nuxtjs/robots",
-    "./vrcd-nuxt-server-side-logging/src/module",
   ],
   routeRules: {
     "/docs/**": { isr: true },
