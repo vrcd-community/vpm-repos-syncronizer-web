@@ -1,5 +1,5 @@
 import type { Author, Sample } from "./packages"
-import type { SyncTask } from "./status"
+import type { SyncStatus } from "./status"
 
 export interface BrowserRepo {
   name: string
@@ -10,7 +10,7 @@ export interface BrowserRepo {
   apiId: string
   description?: string
   syncTaskCron?: string
-  syncStatus: SyncTask
+  syncStatus: SyncStatus
 }
 
 export interface BrowserPackage {
