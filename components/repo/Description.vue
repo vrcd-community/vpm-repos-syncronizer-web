@@ -15,12 +15,12 @@ defineProps<{
       <text-copy :text="repo.repoUrl" tooltip="复制镜像地址">复制镜像地址</text-copy>
     </n-descriptions-item>
     <n-descriptions-item label="同步开始时间">
-      <nuxt-time :datetime="repo.syncStatus.syncStarted" dateStyle="full" time-style="long" />
+      <nuxt-time :datetime="repo.syncStatus.startTime" dateStyle="full" time-style="long" />
     </n-descriptions-item>
     <n-descriptions-item label="同步结束时间">
-      <nuxt-time :datetime="repo.syncStatus.syncEnded" dateStyle="full" time-style="long" />
+      <nuxt-time :datetime="repo.syncStatus.endTime" dateStyle="full" time-style="long" />
     </n-descriptions-item>
   </n-descriptions>
   <n-divider />
-  <n-text>仓库描述~</n-text>
+  <n-text>{{ repo.description }}</n-text>
 </template>
