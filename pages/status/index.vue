@@ -9,8 +9,8 @@
   </div>
   <n-list hoverable clickable>
     <n-list-item v-for="task in status">
-      <div class="flex items-center space-x-2">
-        <Icon :name="getSyncStatusIcon(task.status)" class="size-6" />
+      <div class="flex items-center space-x-4">
+        <SyncTaskStatusIcon :status="task.status" />
         <div class="flex-1 flex flex-col">
           <div class="flex items-baseline space-x-1">
             <h2 class="text-xl font-semibold">{{ task.repoId }}</h2>
@@ -36,17 +36,4 @@
 
 <script setup lang="ts">
 const { data: status, pending: loading } = await useFetchStatus({ lazy: true })
-
-function getSyncStatusIcon(status: 0 | 1 | 2 | 3) {
-  switch (status) {
-    case 0:
-      return 'mdi:sync'
-    case 1:
-      return 'mdi:checkbox-marked-circle'
-    case 2:
-      return 'mdi:close-circle'
-    case 3:
-      return 'mdi:alert-circle'
-  }
-}
 </script>

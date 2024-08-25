@@ -1,7 +1,7 @@
 export interface SyncTask {
   id: number
   repoId: string
-  status: 0 | 1 | 2 | 3
+  status: SyncTaskStatus
   startTime: string
   endTime?: string
 }
@@ -9,9 +9,11 @@ export interface SyncTask {
 export interface SyncStatus {
   syncStarted: string
   syncEnded?: string
-  status: 0 | 1 | 2 | 3
+  status: SyncTaskStatus
   syncTaskId: number
   repoId: string
   repoUpstreamUrl: string
   message: string
 }
+
+export type SyncTaskStatus = 0 | 1 | 2 | 3 | 4
