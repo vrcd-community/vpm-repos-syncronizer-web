@@ -35,5 +35,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: 'sync-status'
+})
+
 const { data: status, pending: loading } = await useFetchStatus({ lazy: true })
 </script>

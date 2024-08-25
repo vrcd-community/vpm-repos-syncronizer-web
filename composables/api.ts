@@ -1,12 +1,14 @@
 import type { UseFetchOptions } from "#app"
 import type { BrowserPackage, BrowserRepo } from "@/types/browser"
-import type { SyncStatus } from "~/types/status"
+import type { SyncStatus, SyncTask } from "~/types/status"
 import { hash } from "ohash"
 
 export const useFetchRepos = (options: UseFetchOptions<BrowserRepo[]> = {}) =>
   useFetchApi<BrowserRepo[]>("/repos", options)
 export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
+export const useFetchSyncTasks = (options: UseFetchOptions<SyncTask[]> = {}) =>
+  useFetchApi<SyncTask[]>("/syncTasks", options)
 export const useFetchRepo = (
   repoId: string,
   options: UseFetchOptions<BrowserRepo> = {}
