@@ -8,6 +8,8 @@ export interface BrowserRepo {
   upstreamId: string
   repoUrl: string
   apiId: string
+  description?: string
+  syncTaskCron?: string
   syncStatus: SyncStatus
 }
 

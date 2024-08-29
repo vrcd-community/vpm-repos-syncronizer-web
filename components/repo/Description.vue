@@ -22,5 +22,5 @@ defineProps<{
     </n-descriptions-item>
   </n-descriptions>
   <n-divider />
-  <n-text>仓库描述~</n-text>
+  <n-text>{{ repo.description }}</n-text>
 </template>

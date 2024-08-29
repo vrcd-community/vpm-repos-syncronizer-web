@@ -7,11 +7,9 @@
             <page-header />
           </n-layout-header>
           <n-layout position="absolute" style="top: 70px;" :native-scrollbar="false">
-            <div class="md:w-5/6 mx-auto pb-24 pt-12">
-              <nuxt-layout>
-                <nuxt-page />
-              </nuxt-layout>
-            </div>
+            <nuxt-layout>
+              <nuxt-page />
+            </nuxt-layout>
           </n-layout>
           <n-layout-footer>
             <page-footer />

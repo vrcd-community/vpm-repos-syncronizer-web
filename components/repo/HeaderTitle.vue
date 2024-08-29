@@ -10,8 +10,8 @@ defineProps<{
   <div class="flex flex-col">
     <div class="space-x-2">
       <n-text class="font-semibold">{{ repo.apiId }}</n-text>
-      <status-tag :status="repo.syncStatus.status" :ended-time="new Date(repo.syncStatus.syncEnded)"
-        :started-time="new Date(repo.syncStatus.syncStarted)" />
+      <status-tag :status="repo.syncStatus.status" :ended-time="repo.syncStatus.syncEnded"
+        :started-time="repo.syncStatus.syncStarted" />
     </div>
     <div class="flex items-center">
       <n-text>由 {{ repo.author }} 提供</n-text>

@@ -1,34 +1,40 @@
 import type { UseFetchOptions } from "#app"
 import type { BrowserPackage, BrowserRepo } from "@/types/browser"
-import type { SyncStatus } from "~/types/status"
+import type { SyncStatus, SyncTask } from "~/types/status"
 import { hash } from "ohash"
 
 export const useFetchRepos = (options: UseFetchOptions<BrowserRepo[]> = {}) =>
-  useFetchApi<BrowserRepo[]>("/browser/repos", options)
+  useFetchApi<BrowserRepo[]>("/repos", options)
 export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
+export const useFetchSyncTasks = (options: UseFetchOptions<SyncTask[]> = {}) =>
+  useFetchApi<SyncTask[]>("/syncTasks", options)
+export const useFetchSyncTask = (id: number, options: UseFetchOptions<SyncTask> = {}) =>
+  useFetchApi<SyncTask>("/syncTasks/" + id, options)
+export const useFetchSyncTaskLog = (id: number, options: UseFetchOptions<string> = {}) =>
+  useFetchApi<string>("/syncTasks/" + id + "/logs", options)
 export const useFetchRepo = (
   repoId: string,
   options: UseFetchOptions<BrowserRepo> = {}
-) => useFetchApi<BrowserRepo>("/browser/repos/" + repoId, options)
+) => useFetchApi<BrowserRepo>("/repos/" + repoId, options)
 export const useFetchRepoPackages = (
   repoId: string,
   options: UseFetchOptions<BrowserPackage[]> = {}
-) => useFetchApi<BrowserPackage[]>(`/browser/repos/${repoId}/packages`, options)
+) => useFetchApi<BrowserPackage[]>(`/repos/${repoId}/packages`, options)
 export const useFetchRepoPackage = (
   repoId: string,
   packageName: string,
   options: UseFetchOptions<BrowserPackage> = {}
 ) =>
   useFetchApi<BrowserPackage>(
-    `/browser/repos/${repoId}/packages/${packageName}`,
+    `/repos/${repoId}/packages/${packageName}`,
     options
   )
 export const useSearchPackages = (
   keyword: string | globalThis.Ref,
   options: UseFetchOptions<BrowserPackage[]> = {}
 ) =>
-  useFetchApi<BrowserPackage[]>("/browser/packages/search", {
+  useFetchApi<BrowserPackage[]>("/packages/search", {
     ...{ query: { keyword: keyword } },
     ...options,
   })
