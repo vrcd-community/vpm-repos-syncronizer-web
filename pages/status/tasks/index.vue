@@ -27,16 +27,7 @@ const { data: tasks } = await useFetchSyncTasks({ lazy: true })
           <!-- <n-text class="mb-1 text-xs" depth="3">{{ task }}</n-text> -->
           <!-- <n-text class="text-xs" depth="2">{{ task.message ? task.message : '无状态消息' }}</n-text> -->
         </div>
-        <div class="flex flex-col">
-          <n-text class="text-xs" depth="2">
-            <Icon name="mdi:calendar-clock" />
-            同步开始于 <nuxt-time :date="task.startTime" dateStyle="full" time-style="long" />
-          </n-text>
-          <n-text v-if="task.endTime" class="text-xs" depth="2">
-            <Icon name="mdi:calendar-check" />
-            同步结束于 <nuxt-time :date="task.endTime" dateStyle="full" time-style="long" />
-          </n-text>
-        </div>
+        <SyncTaskItemTime :start-time="task.startTime" :end-time="task.endTime" />
       </div>
     </n-list-item>
   </n-list>
