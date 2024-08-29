@@ -3,7 +3,26 @@ definePageMeta({
   layout: 'sync-status'
 })
 
-const { data: tasks } = await useFetchStatus({ lazy: true })
+const route = useRoute()
+
+const { data: task } = await useFetchSyncTask(Number(route.params.id))
+const { data: log } = await useFetchSyncTaskLog(Number(route.params.id), { lazy: true })
+const { data: repo } = await useFetchRepo(task.value?.repoId ?? '', { lazy: true })
+
+const lines = computed(() => {
+  return log.value?.split('\n')
+    .map(line => {
+      const regexResult = /\[\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d (.+?)] \[(.+?)\].+/.exec(line)
+
+      const level = regexResult?.at(1)
+
+      return {
+        level,
+        levelColor: level === 'INF' ? 'current' : level === 'WRN' ? 'amber' : (level === 'ERR' || level === 'FTL') ? 'red' : 'gray',
+        text: line
+      }
+    })
+})
 </script>
 
 <template>
@@ -11,33 +30,38 @@ const { data: tasks } = await useFetchStatus({ lazy: true })
   <Head>
     <Title>所有同步任务</Title>
   </Head>
-  <div class="mb-4">
-    <n-h1>所有同步任务</n-h1>
-    <n-text>在此查看所有同步任务</n-text>
-  </div>
-  <n-list hoverable clickable>
-    <n-list-item v-for="task in tasks">
-      <div class="flex items-center space-x-4">
-        <SyncTaskStatusIcon :status="task.status" />
-        <div class="flex-1 flex flex-col">
-          <div class="flex items-baseline space-x-1">
-            <h2 class="text-xl font-semibold">{{ task.repoId }}</h2>
-            <n-text class="text-md" depth="3">#{{ task.syncTaskId }}</n-text>
-          </div>
-          <n-text class="mb-1 text-xs" depth="3">{{ task.repoUpstreamUrl }}</n-text>
-          <n-text class="text-xs" depth="2">{{ task.message ? task.message : '无状态消息' }}</n-text>
+  <div v-if="task" class="mb-4">
+    <div class="flex items-baseline space-x-2">
+      <SyncTaskStatusIcon :status="task.status" />
+      <n-h1>{{ task.repoId }}</n-h1>
+      <n-text class="text-xl" depth="3">#{{ task.id }}</n-text>
+    </div>
+    <div v-if="repo">
+      <n-descriptions :column="2">
+        <n-descriptions-item label="上游地址">
+          <text-copy :text="repo.upstreamUrl" tooltip="复制上游地址">复制上游地址</text-copy>
+        </n-descriptions-item>
+        <n-descriptions-item label="镜像地址">
+          <text-copy :text="repo.repoUrl" tooltip="复制镜像地址">复制镜像地址</text-copy>
+        </n-descriptions-item>
+        <n-descriptions-item label="同步开始时间">
+          <nuxt-time :datetime="task.startTime" dateStyle="full" time-style="long" />
+        </n-descriptions-item>
+        <n-descriptions-item label="同步结束时间">
+          <nuxt-time :datetime="task.endTime" dateStyle="full" time-style="long" />
+        </n-descriptions-item>
+      </n-descriptions>
+    </div>
+    <n-h2>任务日志</n-h2>
+    <div class="dark:border-gray-700 border rounded-md">
+      <div class="flex flex-row items-start space-x-2 p-1 hover:bg-black/5 dark:hover:bg-white/10"
+        v-for="(line, index) in lines">
+        <div class="flex flex-col w-12 items-end">
+          <span class="text-gray-400 text-xs font-mono">{{ index }}</span>
         </div>
-        <div class="flex flex-col">
-          <n-text class="text-xs" depth="2">
-            <Icon name="mdi:calendar-clock" />
-            同步开始于 <nuxt-time :date="task.syncStarted" dateStyle="full" time-style="long" />
-          </n-text>
-          <n-text v-if="task.syncEnded" class="text-xs" depth="2">
-            <Icon name="mdi:calendar-check" />
-            同步结束于 <nuxt-time :date="task.syncEnded" dateStyle="full" time-style="long" />
-          </n-text>
-        </div>
+        <!-- text-red-500 text-amber-500 text-yellow-500 -->
+        <code class="m-0 text-xs flex-1" :class="['text-' + line.levelColor + '-500']">{{ line.text }}</code>
       </div>
-    </n-list-item>
-  </n-list>
+    </div>
+  </div>
 </template>

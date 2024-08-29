@@ -2,7 +2,8 @@
 import type { SyncTaskStatus } from '~/types/status';
 
 const props = defineProps<{
-  status: SyncTaskStatus
+  status: SyncTaskStatus,
+  showDescription?: boolean
 }>()
 
 const syncTaskIcon = computed(() => {
@@ -61,6 +62,6 @@ const syncTaskColor = computed(() => {
   <div class="flex flex-col items-center space-y-1">
     <!-- text-green-500 text-red-500 text-gray-400 text-amber-400 text-current -->
     <Icon :name="syncTaskIcon" class="size-6" :class="syncTaskColor" />
-    <span>{{ syncTaskDescription }}</span>
+    <span v-if="showDescription">{{ syncTaskDescription }}</span>
   </div>
 </template>

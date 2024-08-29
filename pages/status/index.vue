@@ -10,7 +10,7 @@
   <n-list hoverable clickable>
     <n-list-item v-for="task in status">
       <div class="flex items-center space-x-4">
-        <SyncTaskStatusIcon :status="task.status" />
+        <SyncTaskStatusIcon :status="task.status" show-description />
         <div class="flex-1 flex flex-col">
           <div class="flex items-baseline space-x-1">
             <h2 class="text-xl font-semibold">{{ task.repoId }}</h2>
