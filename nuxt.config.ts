@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    "@nuxt/ui",
     "@nuxt/content",
+    "@nuxtjs/color-mode",
+    "@nuxt/icon",
+    "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
     "@nuxtjs/sitemap",
     // "nuxt-og-image"
@@ -31,9 +33,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "system",
     fallback: "dark",
-  },
-  ui: {
-    icons: ["mdi"],
   },
   content: {
     markdown: {
