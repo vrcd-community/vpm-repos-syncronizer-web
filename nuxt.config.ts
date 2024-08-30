@@ -14,11 +14,14 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/robots",
   ],
+
   routeRules: {
     "/docs/**": { isr: true },
     "/docs": { isr: true },
   },
+
   devtools: { enabled: true },
+
   site: {
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
@@ -34,6 +37,7 @@ export default defineNuxtConfig({
     preference: "system",
     fallback: "dark",
   },
+
   content: {
     markdown: {
       anchorLinks: false,
@@ -43,6 +47,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
@@ -57,4 +62,6 @@ export default defineNuxtConfig({
       pipeline: "",
     },
   },
+
+  compatibilityDate: "2024-08-30",
 })
