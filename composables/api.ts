@@ -9,6 +9,8 @@ export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
 export const useFetchSyncTasks = (limit: number, offset: number, options: UseFetchOptions<SyncTask[]> = {}) =>
   useFetchApi<SyncTask[]>("/syncTasks?limit=" + limit + "&offset=" + offset, options)
+export const useFetchRepoSyncTasks = (repo: string, limit: number, offset: number, options: UseFetchOptions<SyncTask[]> = {}) =>
+  useFetchApi<SyncTask[]>("/syncTasks?limit=" + limit + "&offset=" + offset + "&repoId=" + repo, options)
 export const useFetchSyncTask = (id: number, options: UseFetchOptions<SyncTask> = {}) =>
   useFetchApi<SyncTask>("/syncTasks/" + id, options)
 export const useFetchSyncTaskLog = (id: number, options: UseFetchOptions<string> = {}) =>
