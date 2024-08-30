@@ -22,12 +22,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/colors@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "@ant-design/colors@npm:7.0.2"
+"@ant-design/colors@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@ant-design/colors@npm:7.1.0"
   dependencies:
     "@ctrl/tinycolor": "npm:^3.6.1"
-  checksum: 10c0/b44f7136a9f8edead342c05945fa338be68a61d6de3255bc6fcf90f38fa011a6f0ebadd2746f9557fe74ccdb71b424aa7c6daef0e81e2ff94514f5e7c8cf46ff
+  checksum: 10c0/057fa10e1d0e787235149ef66cfac8c0060b50a5de29bc40d8f3226672e5f4d7d713a8c3f48d21a54d790a0269340897ebf3575af762caa3c006eacf5f883fa9
   languageName: node
   linkType: hard
 
@@ -472,17 +472,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bg-dev/nuxt-naiveui@npm:^1.14.0":
-  version: 1.14.0
-  resolution: "@bg-dev/nuxt-naiveui@npm:1.14.0"
+"@bg-dev/nuxt-naiveui@npm:^2.0.0-rc.1":
+  version: 2.0.0-rc.1
+  resolution: "@bg-dev/nuxt-naiveui@npm:2.0.0-rc.1"
   dependencies:
-    "@ant-design/colors": "npm:^7.0.2"
+    "@ant-design/colors": "npm:^7.1.0"
     "@iconify/vue": "npm:^4.1.2"
-    "@nuxt/kit": "npm:^3.12.2"
+    "@nuxt/kit": "npm:^3.12.4"
     defu: "npm:^6.1.4"
     js-cookie: "npm:^3.0.5"
-    naive-ui: "npm:^2.38.2"
-  checksum: 10c0/064f27ebe484b7182ffec5b590f9163e933208f5c8c46a7d58cffd76d79b10c5349b75b2b57b25d9c5a17467381a0f7d84108ebcb8ab6752f483fcdef3e7c49a
+    naive-ui: "npm:^2.39.0"
+  checksum: 10c0/dc04b854020f2c7fa27bd878ec54b00452f573093d3aea77ee3897da8d1e51c8407610fec9ef8ef4f05f660dff11b4adb41f33e5f5cb184d8856d8394d718c3c
   languageName: node
   linkType: hard
 
@@ -7589,9 +7589,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"naive-ui@npm:^2.38.2":
-  version: 2.38.2
-  resolution: "naive-ui@npm:2.38.2"
+"naive-ui@npm:^2.39.0":
+  version: 2.39.0
+  resolution: "naive-ui@npm:2.39.0"
   dependencies:
     "@css-render/plugin-bem": "npm:^0.15.12"
     "@css-render/vue3-ssr": "npm:^0.15.12"
@@ -7614,7 +7614,7 @@ __metadata:
     vueuc: "npm:^0.4.58"
   peerDependencies:
     vue: ^3.0.0
-  checksum: 10c0/aee4c32fee41ff8a6cafa3db96edf1134bf3b8b3e9f04243c6b0d7b7f2ac7f7c13fe4641481fbf50827cb2a2fad88cd3de724390c5ba38b4ebc34a86804b4a9e
+  checksum: 10c0/fa3301166bd0ae8f43567afbead5d9139d53205868b5d5eebfc5c85ccb52c79373d48b36f1e9c2ab626ebf98d1aac1c52f834a1f5879de0dd9e2d9e8748241f5
   languageName: node
   linkType: hard
 
@@ -10646,6 +10646,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.5.4":
+  version: 5.5.4
+  resolution: "typescript@npm:5.5.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/422be60f89e661eab29ac488c974b6cc0a660fb2228003b297c3d10c32c90f3bcffc1009b43876a082515a3c376b1eefcce823d6e78982e6878408b9a923199c
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.5.4#optional!builtin<compat/typescript>":
+  version: 5.5.4
+  resolution: "typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=5adc0c"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/10dd9881baba22763de859e8050d6cb6e2db854197495c6f1929b08d1eb2b2b00d0b5d9b0bcee8472f1c3f4a7ef6a5d7ebe0cfd703f853aa5ae465b8404bc1ba
+  languageName: node
+  linkType: hard
+
 "ufo@npm:^1.1.2, ufo@npm:^1.2.0, ufo@npm:^1.3.2, ufo@npm:^1.4.0, ufo@npm:^1.5.2, ufo@npm:^1.5.3":
   version: 1.5.3
   resolution: "ufo@npm:1.5.3"
@@ -11449,7 +11469,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vpm-repos-synchronizer@workspace:."
   dependencies:
-    "@bg-dev/nuxt-naiveui": "npm:^1.14.0"
+    "@bg-dev/nuxt-naiveui": "npm:^2.0.0-rc.1"
     "@iconify-json/mdi": "npm:^1.1.65"
     "@nuxt/content": "npm:^2.13.2"
     "@nuxt/devtools": "npm:^1.3.9"
@@ -11462,9 +11482,10 @@ __metadata:
     "@tailwindcss/typography": "npm:^0.5.15"
     "@vueuse/core": "npm:^10.10.0"
     "@vueuse/nuxt": "npm:^10.11.0"
-    naive-ui: "npm:^2.38.2"
+    naive-ui: "npm:^2.39.0"
     nuxt: "npm:^3.11.1"
     nuxt-time: "npm:^0.1.3"
+    typescript: "npm:^5.5.4"
     vite: "npm:^5.2.13"
     vue: "npm:^3.4.21"
     vue-router: "npm:^4.3.0"

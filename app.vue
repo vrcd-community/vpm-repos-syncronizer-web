@@ -31,7 +31,6 @@ onMounted(() => updateColorMode())
 watch(colorMode, () => updateColorMode())
 
 function updateColorMode() {
-  // @ts-expect-error
   useNaiveColorMode().colorModePreference.set(colorMode.preference)
 }
 
