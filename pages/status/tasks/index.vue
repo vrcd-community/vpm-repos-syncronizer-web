@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'sync-status'
 })
 
-const { data: tasks } = await useFetchSyncTasks({ lazy: true })
+const { data: tasks } = await useFetchSyncTasks(100, 0, { lazy: true })
 </script>
 
 <template>

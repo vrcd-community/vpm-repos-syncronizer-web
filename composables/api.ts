@@ -7,8 +7,8 @@ export const useFetchRepos = (options: UseFetchOptions<BrowserRepo[]> = {}) =>
   useFetchApi<BrowserRepo[]>("/repos", options)
 export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
-export const useFetchSyncTasks = (options: UseFetchOptions<SyncTask[]> = {}) =>
-  useFetchApi<SyncTask[]>("/syncTasks", options)
+export const useFetchSyncTasks = (limit: number, offset: number, options: UseFetchOptions<SyncTask[]> = {}) =>
+  useFetchApi<SyncTask[]>("/syncTasks?limit=" + limit + "&offset=" + offset, options)
 export const useFetchSyncTask = (id: number, options: UseFetchOptions<SyncTask> = {}) =>
   useFetchApi<SyncTask>("/syncTasks/" + id, options)
 export const useFetchSyncTaskLog = (id: number, options: UseFetchOptions<string> = {}) =>
