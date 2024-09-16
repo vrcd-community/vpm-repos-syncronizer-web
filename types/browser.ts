@@ -1,6 +1,11 @@
 import type { Author, Sample } from "./packages"
 import type { SyncStatus } from "./status"
 
+export interface PageResult<T> {
+  items: T[]
+  totalCount: number
+}
+
 export interface BrowserRepo {
   name: string
   author: string

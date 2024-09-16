@@ -1,16 +1,14 @@
 import type { UseFetchOptions } from "#app"
-import type { BrowserPackage, BrowserRepo } from "@/types/browser"
+import type { BrowserPackage, BrowserRepo, PageResult } from "@/types/browser"
 import type { SyncStatus, SyncTask } from "~/types/status"
 import { hash } from "ohash"
 
-export const useFetchRepos = (options: UseFetchOptions<BrowserRepo[]> = {}) =>
-  useFetchApi<BrowserRepo[]>("/repos", options)
+export const useFetchRepos = (options: UseFetchOptions<PageResult<BrowserRepo>> = {}) =>
+  useFetchApi<PageResult<BrowserRepo>>("/repos", options)
 export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
-export const useFetchSyncTasks = (limit: number, offset: number, options: UseFetchOptions<SyncTask[]> = {}) =>
-  useFetchApi<SyncTask[]>("/syncTasks?limit=" + limit + "&offset=" + offset, options)
-export const useFetchRepoSyncTasks = (repo: string, limit: number, offset: number, options: UseFetchOptions<SyncTask[]> = {}) =>
-  useFetchApi<SyncTask[]>("/syncTasks?limit=" + limit + "&offset=" + offset + "&repoId=" + repo, options)
+export const useFetchSyncTasks = (options: UseFetchOptions<PageResult<SyncTask>> = {}) =>
+  useFetchApi<PageResult<SyncTask>>("/syncTasks", options)
 export const useFetchSyncTask = (id: number, options: UseFetchOptions<SyncTask> = {}) =>
   useFetchApi<SyncTask>("/syncTasks/" + id, options)
 export const useFetchSyncTaskLog = (id: number, options: UseFetchOptions<string> = {}) =>
@@ -21,8 +19,8 @@ export const useFetchRepo = (
 ) => useFetchApi<BrowserRepo>("/repos/" + repoId, options)
 export const useFetchRepoPackages = (
   repoId: string,
-  options: UseFetchOptions<BrowserPackage[]> = {}
-) => useFetchApi<BrowserPackage[]>(`/repos/${repoId}/packages`, options)
+  options: UseFetchOptions<PageResult<BrowserPackage>> = {}
+) => useFetchApi<PageResult<BrowserPackage>>(`/repos/${repoId}/packages`, options)
 export const useFetchRepoPackage = (
   repoId: string,
   packageName: string,
@@ -46,7 +44,7 @@ export function useFetchApi<T>(url: string, options: UseFetchOptions<T> = {}) {
 
   const config = useRuntimeConfig()
 
-  options.key = hash(["api-fetch", url, options])
+  options.key = hash(["api-fetch", url])
 
   return useFetch(config.public.apiBaseUrl + url, { headers, ...options })
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Icon, NDivider, NuxtLink } from '#components';
+import { Icon, NuxtLink } from '#components';
 
-const { data: repos, pending: loading } = await useFetchRepos({ lazy: true })
+const { data: repos } = await useFetchRepos({ lazy: true })
 
 const route = useRoute()
 
@@ -27,7 +27,7 @@ const items = computed(() => {
       }
     ]
 
-  repos.value?.forEach((repo) => {
+  repos.value?.items.forEach((repo) => {
     navItems.push({
       label: repo.apiId,
       route: `/status/repos/${repo.apiId}`,
@@ -42,7 +42,7 @@ const menuOptions = computed(() => items.value?.map((item) => ({
   type: item.type,
   label: () => renderLabel(item.label ?? '', item.route ?? ''),
   key: item.route,
-  icon: item.icon ? () => h(Icon, { name: item.icon }) : undefined
+  icon: item.icon ? () => h(Icon, { name: item.icon ?? '' }) : undefined
 })))
 
 function renderLabel(label: string, route: string) {
