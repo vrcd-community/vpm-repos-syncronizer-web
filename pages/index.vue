@@ -29,9 +29,14 @@ const repoPageItems = computed(() => {
         </template>
       </n-spin>
       <div v-else-if="status === 'success' && repos" class="space-y-4">
-        <n-collapse accordion>
-          <repo-item v-for="repo in repoPageItems" :repo="repo" :key="repo.apiId" />
-        </n-collapse>
+        <client-only>
+          <n-collapse accordion>
+            <repo-item v-for="repo in repoPageItems" :repo="repo" :key="repo.apiId" />
+          </n-collapse>
+          <template #fallback>
+            <repo-item v-for="repo in repoPageItems" :repo="repo" :key="repo.apiId" />
+          </template>
+        </client-only>
         <div class="flex justify-end">
           <n-pagination v-model:page="pagePlus" :page-count="Math.ceil(repos.totalCount / count)" />
         </div>
