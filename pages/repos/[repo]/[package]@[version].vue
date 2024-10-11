@@ -34,14 +34,16 @@
         <div class="flex items-center">
           <package-header class="flex-1" :pkg="selectedPackageVersion" />
           <div class="flex space-x-2 items-center">
-            <n-button secondary tag="a" :href="selectedPackageVersion.url" target="_blank">
-              <template #icon>
-                <n-icon>
-                  <icon name="i-mdi:download" />
-                </n-icon>
-              </template>
-              下载 Zip
-            </n-button>
+            <client-only>
+              <n-button secondary tag="a" :href="selectedPackageVersion.url" target="_blank">
+                <template #icon>
+                  <n-icon>
+                    <icon name="i-mdi:download" />
+                  </n-icon>
+                </template>
+                下载 Zip
+              </n-button>
+            </client-only>
             <n-divider vertical />
             <repo-header-action :repo-api-id="pkg.repoId" :repo-url="pkg.repoUrl" />
           </div>
