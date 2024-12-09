@@ -14,7 +14,7 @@
 - [vrc-get](#vrc-get)
 - [ALCOM (vrc-get-gui)](#alcom-vrc-get-gui)
 
-### VRChat Creator Companion
+### VRChat Creator Companion (不推荐,patcher 现不再维护,请使用 ALCOM)
 
 ![图片](/images/setup-guide/getting-started-vcc.png)
 
