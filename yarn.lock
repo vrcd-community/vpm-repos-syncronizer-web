@@ -6815,9 +6815,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"naive-ui@npm:2.40.1":
-  version: 2.40.1
-  resolution: "naive-ui@npm:2.40.1"
+"naive-ui@npm:2.40.3":
+  version: 2.40.3
+  resolution: "naive-ui@npm:2.40.3"
   dependencies:
     "@css-render/plugin-bem": "npm:^0.15.14"
     "@css-render/vue3-ssr": "npm:^0.15.14"
@@ -6840,7 +6840,7 @@ __metadata:
     vueuc: "npm:^0.4.63"
   peerDependencies:
     vue: ^3.0.0
-  checksum: 10c0/06f75292aab94bf5c2b76ec934f9570fc840362dfaee06e6b95df883e6ab96b9797d8b85733653738a1fbf33b2e9d4ba824625babf6954230d2d532ae93f1962
+  checksum: 10c0/47d0624de64d08caf482d164f636c76b96b9ecb77c5b316c9aacf0f856db29602398539f967769d26951e019a2390555eca094b1ae9b962cf0fe77061a8d3012
   languageName: node
   linkType: hard
 
@@ -10385,7 +10385,7 @@ __metadata:
     "@tailwindcss/typography": "npm:^0.5.15"
     "@vueuse/core": "npm:^12.0.0"
     "@vueuse/nuxt": "npm:^12.0.0"
-    naive-ui: "npm:2.40.1"
+    naive-ui: "npm:2.40.3"
     nuxt: "npm:^3.15.0"
     nuxt-time: "npm:^1.0.3"
     typescript: "npm:^5.7.2"
