@@ -48,6 +48,10 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    serverBundle: 'local',
+  },
+
   runtimeConfig: {
     public: {
       apiBaseUrl: "https://vpm.vrczh.org",
