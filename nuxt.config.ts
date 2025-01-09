@@ -50,7 +50,6 @@ export default defineNuxtConfig({
 
   icon: {
     serverBundle: 'local',
-    fetchTimeout: 500,
   },
 
   runtimeConfig: {
