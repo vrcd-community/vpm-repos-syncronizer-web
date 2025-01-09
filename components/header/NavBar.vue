@@ -13,6 +13,14 @@ const items = [{
 }, {
   label: '文档',
   route: '/docs'
+},
+{
+  label: '对象存储状态',
+  route: '/status/ros'
+},
+{
+  label: 'API 状态',
+  route: '/status/api'
 }, {
   label: '同步状态',
   route: '/status'
