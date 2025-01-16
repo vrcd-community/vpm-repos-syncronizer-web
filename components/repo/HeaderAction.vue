@@ -9,10 +9,10 @@ const { copy } = useClipboard()
 </script>
 
 <template>
-  <div class="space-x-2 flex items-center">
+  <div class="flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-2">
     <n-tooltip>
       <template #trigger>
-        <n-button secondary @click.stop="copy(`https://vpm.vrczh.org/vpm/${repoApiId}`)">
+        <n-button secondary class="w-full xl:w-auto" @click.stop="copy(`https://vpm.vrczh.org/vpm/${repoApiId}`)">
           <template #icon>
             <n-icon>
               <icon name="i-mdi:content-copy" />
@@ -23,7 +23,7 @@ const { copy } = useClipboard()
       </template>
       <code>{{ repoUrl }}</code>
     </n-tooltip>
-    <n-button secondary type="primary" tag="a" :href="'vcc://vpm/addRepo?url=' + repoUrl" @click.stop>
+    <n-button secondary type="primary" tag="a" class="w-full xl:w-auto" :href="'vcc://vpm/addRepo?url=' + repoUrl" @click.stop>
       <template #icon>
         <n-icon>
           <icon name="i-mdi:plus" />
@@ -31,9 +31,11 @@ const { copy } = useClipboard()
       </template>
       添加到 VCC
     </n-button>
-    <n-divider v-if="showBrowserButton" vertical />
-    <NuxtLink v-if="showBrowserButton" :to="'/repos/' + repoApiId" @click.stop>
-      <n-button tag="div" secondary type="info">
+    <div class="hidden xl:block">
+      <n-divider vertical />
+    </div>
+    <NuxtLink v-if="showBrowserButton" :to="'/repos/' + repoApiId" class="w-full xl:w-auto" @click.stop>
+      <n-button tag="div" secondary type="info" class="w-full">
         <template #icon>
           <n-icon>
             <icon name="i-mdi:arrow-right" />

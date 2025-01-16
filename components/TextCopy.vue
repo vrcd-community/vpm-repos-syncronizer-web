@@ -10,8 +10,8 @@ function copy() {
 </script>
 
 <template>
-  <div class="space-x-1">
-    <code>{{ text }}</code>
+  <div class="space-x-1 flex items-center">
+    <code class="text-sm">{{ text }}</code>
     <n-tooltip>
       <template #trigger>
         <n-button secondary circle size="tiny" @click.stop="() => copy()">
