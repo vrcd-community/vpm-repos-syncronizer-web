@@ -23,6 +23,8 @@ const statusText = computed(() => {
       return `同步失败于 `
     case 3:
       return '同步中断'
+    case 4:
+      return '等待开始'
     default:
       return '未知'
   }
@@ -38,6 +40,8 @@ const badgeColor = computed(() => {
       return `danger`
     case 3:
       return 'warn'
+    case 4:
+      return 'secondary'
     default:
       return 'warn'
   }
@@ -45,7 +49,8 @@ const badgeColor = computed(() => {
 </script>
 
 <template>
-  <Tag size="small" :severity="badgeColor" :value="statusText">
+  <Tag size="small" :severity="badgeColor">
+    {{ statusText }}
     <nuxt-time :datetime="time" dateStyle="full" time-style="long" />
   </Tag>
 </template>
