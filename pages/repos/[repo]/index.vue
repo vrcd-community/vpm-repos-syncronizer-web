@@ -4,20 +4,14 @@
     <Title>{{ repo?.name }} 仓库</Title>
   </Head>
   <div class="space-y-4">
-    <n-breadcrumb>
-      <n-breadcrumb-item clickable>
-        <NuxtLink to="/">
-          <Icon name="i-mdi:home" />
-          镜像列表
-        </NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item clickable>
-        <NuxtLink :to="'/repos/' + route.params.repo">
-          <Icon name="i-mdi:package" />
-          {{ route.params.repo }}
-        </NuxtLink>
-      </n-breadcrumb-item>
-    </n-breadcrumb>
+    <Breadcrumb :model="[
+      { label: '镜像列表', icon: 'pi pi-home', route: '/' },
+      { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() }
+    ]">
+      <template #item="{ item, props }">
+        <BreadcrumbTemplate :item="item" :props="props" />
+      </template>
+    </Breadcrumb>
     <n-spin v-if="repoLoadingStatus === 'pending'" class="w-full pt-14">
       <template #description>
         神奇仓库在哪里？
