@@ -3,7 +3,6 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
-  <PageFooter />
 </template>
 
 <script setup lang="ts">
