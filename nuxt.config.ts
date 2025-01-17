@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
@@ -13,7 +12,21 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/image",
     "@nuxtjs/robots",
+    "@primevue/nuxt-module",
   ],
+
+  css: [
+    'primeicons/primeicons.css',
+    'assets/css/main.css',
+    'assets/css/primevue-vars.css'
+  ],
+
+  primevue: {
+    options: {
+      // https://github.com/primefaces/primevue-tailwind/releases
+      theme: 'none'
+    }
+  },
 
   routeRules: {
     "/docs/**": { isr: true },

@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="flex">
-    <repo-header-title :repo="repo" class="flex-1" />
-    <repo-header-action :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
+    <RepoHeaderTitle :repo="repo" class="flex-1" />
+    <RepoHeaderAction :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
   </div>
 </template>

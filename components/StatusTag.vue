@@ -10,7 +10,7 @@ const time = computed(() => {
     return props.startedTime
   }
 
-  return props.endedTime
+  return props.endedTime ?? 0
 })
 
 const statusText = computed(() => {
@@ -35,18 +35,17 @@ const badgeColor = computed(() => {
     case 1:
       return `success`
     case 2:
-      return `error`
+      return `danger`
     case 3:
-      return 'warning'
+      return 'warn'
     default:
-      return 'warning'
+      return 'warn'
   }
 })
 </script>
 
 <template>
-  <n-tag size="small" :bordered="false" :type="badgeColor">
-    {{ statusText }}
+  <Tag size="small" :severity="badgeColor" :value="statusText">
     <nuxt-time :datetime="time" dateStyle="full" time-style="long" />
-  </n-tag>
+  </Tag>
 </template>

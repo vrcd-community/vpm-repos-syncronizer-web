@@ -8,9 +8,9 @@
         </div>
       </n-affix>
     </div>
-    <n-card class="flex-1">
+    <Panel class="flex-1">
       <content-doc class="prose dark:prose-invert max-w-none" />
-    </n-card>
+    </Panel>
     <div class="w-72">
       <n-affix listen-to=".n-scrollbar-container" :top="80">
         <div class="space-y-2 pt-12">

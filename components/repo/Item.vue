@@ -7,23 +7,19 @@ defineProps<{
 </script>
 
 <template>
-  <client-only>
-    <n-collapse-item>
-      <template #header>
-        <repo-header-title :repo="repo" />
-      </template>
-      <template #header-extra>
-        <repo-header-action show-browser-button :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
-      </template>
+  <AccordionPanel :key="repo.apiId" :value="repo.apiId">
+    <AccordionHeader as="div" class="flex-row-reverse">
+      <div class="flex w-full ml-4">
+        <div class="flex-1">
+          <RepoHeaderTitle :repo="repo" />
+        </div>
+        <RepoHeaderAction show-browser-button :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
+      </div>
+    </AccordionHeader>
+    <AccordionContent>
       <div class="mx-5">
-        <repo-description :repo="repo" />
+        <RepoDescription :repo="repo" />
       </div>
-    </n-collapse-item>
-    <template #fallback>
-      <div class="flex pb-4 border-b-[1px] border-[#ffffff17]">
-        <repo-header-title class="flex-1" :repo="repo" />
-        <repo-header-action show-browser-button :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
-      </div>
-    </template>
-  </client-only>
+    </AccordionContent>
+  </AccordionPanel>
 </template>

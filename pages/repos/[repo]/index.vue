@@ -24,11 +24,14 @@
       </template>
     </n-spin>
     <div v-else-if="repoLoadingStatus === 'success' && repo" class="space-y-4">
-      <n-card>
-        <repo-header :repo="repo" />
-        <n-divider />
-        <repo-description :repo="repo" />
-      </n-card>
+      <Panel>
+        <template #header>
+          <div class="w-full">
+            <RepoHeader :repo="repo" />
+          </div>
+        </template>
+        <RepoDescription :repo="repo" />
+      </Panel>
       <!-- <n-input v-model:value="keyword" :placeholder="`搜索 ${repo.name} 仓库中的包...`" size="large">
         <template #prefix>
           <n-icon>
@@ -42,11 +45,7 @@
         </template>
       </n-spin>
       <div v-else-if="packagesLoadingStatus === 'success' && packages" class="flex flex-col space-y-4">
-        <n-list hoverable clickable>
-          <n-list-item v-for="pkg in packages?.items">
-            <package-item :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
-          </n-list-item>
-        </n-list>
+        <PackageItem v-for="pkg in packages?.items" :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
         <div class="flex justify-end">
           <n-pagination v-model:page="pagePlus" :page-count="Math.ceil(packages.totalCount / count)" />
         </div>

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/repos/${repoId}/${pkg.name}@latest`">
-    <n-thing>
+    <Card>
       <template #header>
         <package-header :pkg="pkg" />
       </template>
@@ -15,7 +15,7 @@
         </n-button>
       </template>
       <n-text>{{ pkg.description }}</n-text>
-    </n-thing>
+    </Card>
   </NuxtLink>
 </template>
 

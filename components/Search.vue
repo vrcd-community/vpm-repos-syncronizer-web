@@ -5,7 +5,7 @@ const router = useRouter()
 const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 const actualKeyword = ref(keyword.value)
 
-const { data: packages, pending: packagesLoading, execute } = await useSearchPackages(actualKeyword, { lazy: true, immediate: false })
+const { data: packages, status, execute } = await useSearchPackages(actualKeyword, { lazy: true, immediate: false })
 
 let lastTypeTime = Date.now()
 let searchRateLimitLock = false
@@ -44,16 +44,13 @@ async function tryInvokeSearch() {
 </script>
 
 <template>
-  <n-input v-model:value="keyword" placeholder="搜索仓库或包" size="large">
-    <template #prefix>
-      <n-icon>
-        <icon name="i-mdi:search" />
-      </n-icon>
-    </template>
-  </n-input>
+  <IconField>
+    <InputIcon class="pi pi-search" />
+    <InputText v-model="keyword" class="w-full" placeholder="搜索仓库或包" />
+  </IconField>
 
   <div v-if="keyword">
-    <n-spin v-if="packagesLoading" class="w-full pt-14">
+    <n-spin v-if="status !== 'success'" class="w-full pt-14">
       <template #description>
         神奇仓库的包都在哪里？
       </template>

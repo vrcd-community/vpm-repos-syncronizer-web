@@ -1,39 +1,12 @@
 <template>
-  <naive-config>
-    <n-notification-provider>
-      <n-message-provider>
-        <n-layout position="absolute">
-          <n-layout-header bordered>
-            <page-header />
-          </n-layout-header>
-          <n-layout position="absolute" style="top: 70px;" :native-scrollbar="false">
-            <nuxt-layout>
-              <nuxt-page />
-            </nuxt-layout>
-          </n-layout>
-          <n-layout-footer>
-            <page-footer />
-          </n-layout-footer>
-        </n-layout>
-      </n-message-provider>
-    </n-notification-provider>
-  </naive-config>
+  <PageHeader />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+  <PageFooter />
 </template>
 
-<style>
-@import url("/assets/css/main.css");
-</style>
-
 <script setup lang="ts">
-const colorMode = useColorMode()
-
-onMounted(() => updateColorMode())
-watch(colorMode, () => updateColorMode())
-
-function updateColorMode() {
-  useNaiveColorMode().colorModePreference.set(colorMode.preference)
-}
-
 const route = useRoute()
 
 useHead({
