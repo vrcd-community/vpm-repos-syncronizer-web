@@ -10,27 +10,24 @@ defineProps<{
   <div>
     <div class="flex items-center space-x-2">
       <span class="font-semibold text-lg">{{ pkg.displayName }}</span>
-      <n-tag size="small" type="success" :bordered="false">v{{ pkg.version }}</n-tag>
-      <n-tag v-if="pkg.license" size="small" type="info" :bordered="false">
-        <template #icon>
-          <icon name="i-mdi:scale-balance" />
-          <!-- i-mdi:license -->
-        </template>
-        {{ pkg.license }} 许可证
-      </n-tag>
-      <n-tag v-if="pkg.unity" size="small" :bordered="false">
-        <template #icon>
-          <icon name="i-mdi:unity" />
-        </template>
-        最低支持 Unity {{ pkg.unity }}
-      </n-tag>
+      <div class="*:text-xs *:font-medium flex items-center space-x-2">
+        <Tag severity="success" :value="`v${pkg.version}`" />
+        <Tag v-if="pkg.license" severity="info">
+          <IconLicense class="size-4" />
+          {{ pkg.license }} 许可证
+        </Tag>
+        <Tag v-if="pkg.unity" severity="contrast">
+          <IconUnity class="size-4" />
+          最低支持 Unity {{ pkg.unity }}
+        </Tag>
+      </div>
     </div>
     <div class="flex items-center space-x-2 text-sm">
-      <n-text depth="3">
+      <span class="text-zinc-500">
         由 {{ pkg.author?.name }} 制作
-      </n-text>
-      <n-divider vertical />
-      <text-copy :text="pkg.name" tooltip="复制包 ID" />
+      </span>
+      <Divider layout="vertical" />
+      <TextCopy :text="pkg.name" tooltip="复制包 ID" />
     </div>
   </div>
 </template>
