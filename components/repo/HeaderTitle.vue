@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="flex flex-col">
-    <div class="space-x-2">
+    <div class="space-x-2 xl:space-x-2 flex flex-row justify-between xl:justify-start">
       <n-text class="font-semibold">{{ repo.apiId }}</n-text>
       <status-tag :status="repo.syncStatus.status" :ended-time="repo.syncStatus.syncEnded"
         :started-time="repo.syncStatus.syncStarted" />

@@ -47,6 +47,6 @@ const badgeColor = computed(() => {
 <template>
   <n-tag size="small" :bordered="false" :type="badgeColor">
     {{ statusText }}
-    <nuxt-time :datetime="time" dateStyle="full" time-style="long" />
+    <nuxt-time :datetime="time as string" dateStyle="short" time-style="medium" />
   </n-tag>
 </template>
