@@ -1,5 +1,5 @@
 <template>
-  <div class="flex p-4">
+  <div class="sticky top-0 z-50 flex p-4">
     <div class="flex-1"></div>
     <Menubar :model="items">
       <template #item="{ item, props, hasSubmenu }">
