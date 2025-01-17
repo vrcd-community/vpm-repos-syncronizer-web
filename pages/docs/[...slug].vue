@@ -1,32 +1,37 @@
 <template>
-  <div class="flex space-x-8">
-    <div class="w-72">
-      <n-affix listen-to=".n-scrollbar-container" :top="80">
-        <div class="space-y-2 pt-12">
-          <span class="font-semibold ml-8">所有文档</span>
-          <n-menu class="w-72" :options="options" :value="selected" />
-        </div>
-      </n-affix>
-    </div>
+  <div class="flex space-x-4">
+    <Menu class="w-72 sticky top-5 h-min" :model="items">
+      <template #item="{ item, props }">
+        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <span :class="item.icon" />
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </NuxtLink>
+        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+          <span :class="item.icon" />
+          <span class="ml-2">{{ item.label }}</span>
+        </a>
+      </template>
+    </Menu>
     <Panel class="flex-1">
-      <content-doc class="prose dark:prose-invert max-w-none" />
+      <ContentDoc class="prose dark:prose-invert max-w-none" />
     </Panel>
     <div class="w-72">
-      <n-affix listen-to=".n-scrollbar-container" :top="80">
+      <!-- <n-affix listen-to=".n-scrollbar-container" :top="80">
         <div class="space-y-2 pt-12">
           <span class="font-semibold">本页目录</span>
           <n-anchor>
             <doc-anchor-link-item v-for="item in page?.body?.toc?.links" :link="item" />
           </n-anchor>
         </div>
-      </n-affix>
+      </n-affix> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type MenuOption } from 'naive-ui'
-import { RouterLink } from 'vue-router';
+import { type MenuItem } from 'primevue/menuitem'
 
 definePageMeta({
   layout: 'docs',
@@ -40,37 +45,24 @@ const { data: navigation } = await useAsyncData('navigation', () => fetchContent
 // @ts-expect-error
 useContentHead(page)
 
-const options = computed(() => {
+const items = computed(() => {
   if (navigation.value === null) {
     return []
   }
 
-  const navLinks: MenuOption[] = []
+  const navLinks: MenuItem[] = []
   navigation.value.forEach(item => {
-    // navLinks.push({
-    //   label: item.title,
-    //   key: item._path
-    // })
-
     item.children?.forEach(item => {
       if (navLinks.findIndex(navLinkItem => navLinkItem.to === item._path) !== -1)
         return
 
       navLinks.push({
-        label: () => renderLabel(item.title, item._path),
-        key: item._path
+        label: item.title,
+        route: item._path
       })
     })
   })
 
   return navLinks.reverse()
 })
-
-const selected = computed(() => {
-  return options.value.find(option => option.key === route.path)?.key
-})
-
-function renderLabel(title: string, route: string) {
-  return h(RouterLink, { to: route }, title)
-}
 </script>
