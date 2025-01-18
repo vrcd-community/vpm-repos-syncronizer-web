@@ -1,24 +1,47 @@
 <template>
   <div class="sticky top-0 z-50 flex p-4">
-    <div class="flex-1"></div>
+    <div class="flex-1" />
     <Menubar :model="items">
       <template #item="{ item, props, hasSubmenu }">
-        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+        <NuxtLink
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+        >
+          <a
+            v-ripple
+            :href="href"
+            v-bind="props.action"
+            @click="navigate"
+          >
             <span :class="item.icon" />
             <span>{{ item.label }}</span>
           </a>
         </NuxtLink>
-        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+        >
           <span :class="item.icon" />
           <span>{{ item.label }}</span>
-          <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+          <span
+            v-if="hasSubmenu"
+            class="pi pi-fw pi-angle-down"
+          />
         </a>
       </template>
       <template #end>
         <div class="flex items-center gap-2">
-          <SplitButton outlined severity="secondary"
-            @click="$colorMode.preference = $colorMode.value !== 'dark' ? 'dark' : 'light'" :model="colorModeItems">
+          <SplitButton
+            outlined
+            severity="secondary"
+            :model="colorModeItems"
+            @click="$colorMode.preference = $colorMode.value !== 'dark' ? 'dark' : 'light'"
+          >
             <i class="dark:!inline !hidden pi pi-moon" />
             <i class="dark:!hidden !inline pi pi-sun" />
           </SplitButton>
@@ -32,15 +55,15 @@
 const items = [{
   label: '镜像',
   icon: 'pi pi-home',
-  route: '/'
+  route: '/',
 }, {
   label: '文档',
   icon: 'pi pi-book',
-  route: '/docs'
+  route: '/docs',
 }, {
   label: '同步状态',
   icon: 'pi pi-refresh',
-  route: '/status'
+  route: '/status',
 }, {
   label: '服务状态',
   icon: 'pi pi-cog',
@@ -48,14 +71,14 @@ const items = [{
     {
       label: '对象存储状态',
       icon: 'pi pi-cloud',
-      route: '/status/ros'
+      route: '/status/ros',
     },
     {
       label: 'API 状态',
       icon: 'pi pi-bolt',
-      route: '/status/api'
-    }
-  ]
+      route: '/status/api',
+    },
+  ],
 }]
 
 const colorMode = useColorMode()
@@ -66,25 +89,24 @@ const colorModeItems = [
     icon: 'pi pi-box',
     command: () => {
       colorMode.preference = 'system'
-    }
+    },
   },
   {
-    separator: true
+    separator: true,
   },
   {
     label: 'Dark',
     icon: 'pi pi-moon',
     command: () => {
       colorMode.preference = 'dark'
-    }
+    },
   },
   {
     label: 'Light',
     icon: 'pi pi-sun',
     command: () => {
       colorMode.preference = 'light'
-    }
-  }
-];
-
+    },
+  },
+]
 </script>

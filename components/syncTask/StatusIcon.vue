@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { SyncTaskStatus } from '~/types/status';
+import type { SyncTaskStatus } from '~/types/status'
 
 const props = defineProps<{
-  status: SyncTaskStatus,
+  status: SyncTaskStatus
   showDescription?: boolean
 }>()
 
@@ -61,7 +61,10 @@ const syncTaskColor = computed(() => {
 <template>
   <div class="flex flex-col items-center">
     <!-- text-green-500 text-red-500 text-gray-400 text-amber-400 text-current -->
-    <i class="text-2xl pi" :class="[syncTaskColor, syncTaskIcon]" />
+    <i
+      class="text-2xl pi"
+      :class="[syncTaskColor, syncTaskIcon]"
+    />
     <span v-if="showDescription">{{ syncTaskDescription }}</span>
   </div>
 </template>

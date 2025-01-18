@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type MenuItem } from 'primevue/menuitem'
+import type { MenuItem } from 'primevue/menuitem'
 
 const { data: repos } = await useFetchVpmRepos({ lazy: true })
 
@@ -9,7 +9,7 @@ const items = computed(() => {
     items.push({
       label: key,
       route: `/status/repos/${key}`,
-      icon: 'pi pi-box'
+      icon: 'pi pi-box',
     })
   }
 
@@ -26,8 +26,8 @@ const items = computed(() => {
     },
     {
       label: '所有仓库',
-      items
-    }
+      items,
+    },
   ]
 
   return navItems
@@ -36,15 +36,37 @@ const items = computed(() => {
 
 <template>
   <ScrollPanel class="sticky top-0 mx-5 max-h-[calc(100vh-100px)]">
-    <Menu class="my-5" :model="items">
+    <Menu
+      class="my-5"
+      :model="items"
+    >
       <template #item="{ item, props }">
-        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
-            <i :class="item.icon" class="opacity-40" />
+        <NuxtLink
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+        >
+          <a
+            v-ripple
+            :href="href"
+            v-bind="props.action"
+            @click="navigate"
+          >
+            <i
+              :class="item.icon"
+              class="opacity-40"
+            />
             <span class="ml-2">{{ item.label }}</span>
           </a>
         </NuxtLink>
-        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+        >
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
         </a>

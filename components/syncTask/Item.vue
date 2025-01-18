@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SyncTask } from '~/types/status';
+import type { SyncTask } from '~/types/status'
 
 defineProps<{
   task: SyncTask
@@ -7,7 +7,10 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink :to="`/status/tasks/${task.id}`" class="block">
+  <NuxtLink
+    :to="`/status/tasks/${task.id}`"
+    class="block"
+  >
     <Card>
       <template #content>
         <div class="flex items-center space-x-4">
@@ -20,7 +23,10 @@ defineProps<{
             <!-- <n-text class="mb-1 text-xs" depth="3">{{ task }}</n-text> -->
             <!-- <n-text class="text-xs" depth="2">{{ task.message ? task.message : '无状态消息' }}</n-text> -->
           </div>
-          <SyncTaskItemTime :start-time="task.startTime" :end-time="task.endTime" />
+          <SyncTaskItemTime
+            :start-time="task.startTime"
+            :end-time="task.endTime"
+          />
         </div>
       </template>
     </Card>

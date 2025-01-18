@@ -1,5 +1,5 @@
-export default defineNuxtRouteMiddleware((to, from) => {
-  if (to.path === "/repos") {
-    return navigateTo("/")
+export default defineNuxtRouteMiddleware((to, _) => {
+  if (to.path === '/repos') {
+    return navigateTo('/')
   }
 })

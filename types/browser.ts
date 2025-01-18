@@ -1,5 +1,5 @@
-import type { Author, Sample } from "./packages"
-import type { SyncStatus } from "./status"
+import type { Author, Sample } from './packages'
+import type { SyncStatus } from './status'
 
 export interface PageResult<T> {
   items: T[]

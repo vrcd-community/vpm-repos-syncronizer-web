@@ -1,14 +1,33 @@
 <template>
   <div class="flex space-x-4">
-    <Menu class="w-72 sticky top-5 h-min" :model="items">
+    <Menu
+      class="w-72 sticky top-5 h-min"
+      :model="items"
+    >
       <template #item="{ item, props }">
-        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+        <NuxtLink
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+        >
+          <a
+            v-ripple
+            :href="href"
+            v-bind="props.action"
+            @click="navigate"
+          >
             <span :class="item.icon" />
             <span class="ml-2">{{ item.label }}</span>
           </a>
         </NuxtLink>
-        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+        >
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
         </a>
@@ -31,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { type MenuItem } from 'primevue/menuitem'
+import type { MenuItem } from 'primevue/menuitem'
 
 definePageMeta({
   layout: 'docs',
@@ -42,8 +61,8 @@ const route = useRoute()
 const { data: page } = await useAsyncData(route.path, queryContent(route.path).findOne)
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation(queryContent('docs')))
 
-// @ts-expect-error
-useContentHead(page)
+if (page.value !== null)
+  useContentHead(page.value)
 
 const items = computed(() => {
   if (navigation.value === null) {
@@ -51,14 +70,14 @@ const items = computed(() => {
   }
 
   const navLinks: MenuItem[] = []
-  navigation.value.forEach(item => {
-    item.children?.forEach(item => {
+  navigation.value.forEach((item) => {
+    item.children?.forEach((item) => {
       if (navLinks.findIndex(navLinkItem => navLinkItem.to === item._path) !== -1)
         return
 
       navLinks.push({
         label: item.title,
-        route: item._path
+        route: item._path,
       })
     })
   })

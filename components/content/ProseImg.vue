@@ -6,20 +6,20 @@ import { withTrailingSlash, withLeadingSlash, joinURL } from 'ufo'
 const props = defineProps({
   src: {
     type: String,
-    default: ''
+    default: '',
   },
   alt: {
     type: String,
-    default: ''
+    default: '',
   },
   width: {
     type: [String, Number],
-    default: undefined
+    default: undefined,
   },
   height: {
     type: [String, Number],
-    default: undefined
-  }
+    default: undefined,
+  },
 })
 
 const refinedSrc = computed(() => {
@@ -35,7 +35,13 @@ const refinedSrc = computed(() => {
 
 <template>
   <div>
-    <NuxtImg :src="refinedSrc" :alt="alt" :width="width" :height="height" class="m-0 mx-auto rounded-md" />
+    <NuxtImg
+      :src="refinedSrc"
+      :alt="alt"
+      :width="width"
+      :height="height"
+      class="m-0 mx-auto rounded-md"
+    />
     <span class="block text-center text-xs my-2">{{ alt }}</span>
   </div>
 </template>
