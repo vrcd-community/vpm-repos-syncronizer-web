@@ -2,12 +2,9 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
     "@nuxtjs/color-mode",
-    "@nuxt/icon",
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
-    "@nuxtjs/sitemap",
     // "nuxt-og-image"
-    "@bg-dev/nuxt-naiveui",
     "nuxt-time",
     "@vueuse/nuxt",
     "@nuxt/image",
@@ -40,12 +37,6 @@ export default defineNuxtConfig({
     strictNuxtContentPaths: true,
   },
 
-  sitemap: {
-    sources: [
-      '/api/__sitemap__/urls'
-    ]
-  },
-
   colorMode: {
     preference: "system",
     fallback: "dark",
@@ -59,10 +50,6 @@ export default defineNuxtConfig({
         searchDepth: 5,
       },
     },
-  },
-
-  icon: {
-    serverBundle: 'local',
   },
 
   runtimeConfig: {
