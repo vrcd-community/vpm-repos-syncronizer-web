@@ -55,7 +55,7 @@ const selectedPackageVersion = computed(() => {
           <TabPanel value="versions">
             <NuxtLink v-for="version in package.versions" :key="version.version"
               class="flex gap-2 py-2 items-center text-primary" :to="version.name + '@' + version.version">
-              <i v-if="version.version === selectedVersion" class="pi pi-check text-xs" />
+              <i v-if="version.version === selectedPackageVersion.version" class="pi pi-check text-xs" />
               <span>{{ version.version }}</span>
               <div class="*:text-xs *:font-medium *:whitespace-nowrap flex items-center space-x-2">
                 <Tag v-if="version.version === package.latest.version" severity="success" value="最新版本"
