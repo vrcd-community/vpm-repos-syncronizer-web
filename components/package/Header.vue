@@ -8,9 +8,9 @@ defineProps<{
 
 <template>
   <div>
-    <div class="flex items-center space-x-2">
+    <div class="flex items-start space-x-2">
       <span class="font-semibold text-lg">{{ pkg.displayName }}</span>
-      <div class="*:text-xs *:font-medium flex items-center space-x-2">
+      <div class="*:text-xs *:font-medium *:whitespace-nowrap flex items-start space-x-2">
         <Tag severity="success" :value="`v${pkg.version}`" />
         <Tag v-if="pkg.license" severity="info">
           <IconLicense class="size-4" />
