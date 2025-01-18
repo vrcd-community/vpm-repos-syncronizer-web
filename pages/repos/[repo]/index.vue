@@ -12,11 +12,7 @@
         <BreadcrumbTemplate :item="item" :props="props" />
       </template>
     </Breadcrumb>
-    <n-spin v-if="repoLoadingStatus === 'pending'" class="w-full pt-14">
-      <template #description>
-        神奇仓库在哪里？
-      </template>
-    </n-spin>
+    <ProgressSpinner v-if="repoLoadingStatus === 'pending'" class="w-full pt-14" />
     <div v-else-if="repoLoadingStatus === 'success' && repo" class="space-y-4">
       <Panel>
         <template #header>
@@ -33,11 +29,7 @@
           </n-icon>
         </template>
       </n-input> -->
-      <n-spin v-if="packagesLoadingStatus === 'pending'" class="w-full pt-14">
-        <template #description>
-          神奇仓库的包都在哪里？
-        </template>
-      </n-spin>
+      <ProgressSpinner v-if="packagesLoadingStatus === 'pending'" class="w-full pt-14" />
       <div v-else-if="packagesLoadingStatus === 'success' && packages" class="flex flex-col space-y-4">
         <PackageItem v-for="pkg in packages?.items" :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
         <div class="flex justify-end">
