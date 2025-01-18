@@ -20,7 +20,8 @@ onMounted(() => {
 
     if (keyword.value === '') {
       router.replace({ query: {} })
-    } else {
+    }
+    else {
       router.replace({ query: { keyword: keyword.value } })
     }
 
@@ -37,7 +38,8 @@ async function tryInvokeSearch() {
   if (timeout > 200) {
     actualKeyword.value = keyword.value
     searchRateLimitLock = false
-  } else {
+  }
+  else {
     setTimeout(tryInvokeSearch, 100)
   }
 }
@@ -46,20 +48,35 @@ async function tryInvokeSearch() {
 <template>
   <IconField>
     <InputIcon class="pi pi-search" />
-    <InputText v-model="keyword" class="w-full" placeholder="搜索仓库或包" />
+    <InputText
+      v-model="keyword"
+      class="w-full"
+      placeholder="搜索仓库或包"
+    />
   </IconField>
 
   <div v-if="keyword">
-    <n-spin v-if="status !== 'success'" class="w-full pt-14">
-      <template #description>
-        神奇仓库的包都在哪里？
-      </template>
-    </n-spin>
-    <n-list v-else-if="packages?.length !== 0" hoverable clickable>
-      <n-list-item v-for="pkg in packages">
-        <package-item :pkg="pkg.latest" :repoId="pkg.repoId" :repoUrl="pkg.repoUrl" />
-      </n-list-item>
-    </n-list>
-    <n-empty v-else description="没有找到匹配的包" class="w-full pt-14" />
+    <ProgressSpinner
+      v-if="status === 'pending'"
+      class="w-full pt-14"
+    />
+    <div
+      v-else-if="packages?.length !== 0"
+      class="space-y-2"
+    >
+      <PackageItem
+        v-for="pkg in packages"
+        :key="pkg.latest.name"
+        :pkg="pkg.latest"
+        :repo-id="pkg.repoId"
+        :repo-url="pkg.repoUrl"
+      />
+    </div>
+    <p
+      v-else
+      class="pt-12 w-full text-center"
+    >
+      没有找到匹配的包
+    </p>
   </div>
 </template>

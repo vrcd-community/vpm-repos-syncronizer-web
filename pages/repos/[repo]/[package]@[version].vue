@@ -1,32 +1,57 @@
 <template>
-
   <Head>
     <Title>{{ pkg?.latest.name }}@{{ selectedVersion }}</Title>
   </Head>
   <div class="space-y-4">
-    <Breadcrumb :model="[
-      { label: '镜像列表', icon: 'pi pi-home', route: '/' },
-      { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() },
-      { label: `${route.params.package.toString()}@${selectedVersion}`, icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() + '/' + route.params.package.toString() + '@' + selectedVersion }
-    ]">
+    <Breadcrumb
+      :model="[
+        { label: '镜像列表', icon: 'pi pi-home', route: '/' },
+        { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() },
+        { label: `${route.params.package.toString()}@${selectedVersion}`, icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() + '/' + route.params.package.toString() + '@' + selectedVersion },
+      ]"
+    >
       <template #item="{ item, props }">
-        <BreadcrumbTemplate :item="item" :props="props" />
+        <BreadcrumbTemplate
+          :item="item"
+          :props="props"
+        />
       </template>
     </Breadcrumb>
-    <ProgressSpinner v-if="packageLoadingStatus === 'pending'" class="w-full pt-14" />
-    <div v-else-if="pkg && selectedPackageVersion" class="space-y-4">
+    <ProgressSpinner
+      v-if="packageLoadingStatus === 'pending'"
+      class="w-full pt-14"
+    />
+    <div
+      v-else-if="pkg && selectedPackageVersion"
+      class="space-y-4"
+    >
       <Panel>
         <template #header>
           <div class="flex items-start w-full">
-            <PackageHeader class="flex-1" :pkg="selectedPackageVersion" />
+            <PackageHeader
+              class="flex-1"
+              :pkg="selectedPackageVersion"
+            />
             <div class="flex space-x-2 items-center">
-              <Button icon="pi pi-download" label="下载 Zip" severity="secondary" @click="downloadZip()" />
+              <Button
+                icon="pi pi-download"
+                label="下载 Zip"
+                severity="secondary"
+                @click="downloadZip()"
+              />
               <Divider layout="vertical" />
-              <RepoHeaderAction :repo-api-id="pkg.repoId" :repo-url="pkg.repoUrl" />
+              <RepoHeaderAction
+                :repo-api-id="pkg.repoId"
+                :repo-url="pkg.repoUrl"
+              />
             </div>
           </div>
         </template>
-        <PackageDetail v-model:tab="currentTab" :package="pkg" :selected-version="selectedVersion" />
+        <PackageDetail
+          v-model:tab="currentTab"
+          :package="pkg"
+          :selected-version="selectedVersion"
+        />
       </Panel>
     </div>
   </div>
@@ -49,19 +74,19 @@ const selectedPackageVersion = computed(() => {
 useSeoMeta({
   description: selectedPackageVersion.value?.description,
   ogDescription: selectedPackageVersion.value?.description,
-  twitterDescription: selectedPackageVersion.value?.description
+  twitterDescription: selectedPackageVersion.value?.description,
 })
 
 const currentTab = ref((route.query.tab?.toString() ?? 'description') || 'description')
 
-watch(currentTab, tab => {
+watch(currentTab, (tab) => {
   if (route.params.tab === tab) return
 
   router.replace({
     query: {
       ...route.query,
-      tab: tab !== 'description' ? tab : undefined
-    }
+      tab: tab !== 'description' ? tab : undefined,
+    },
   })
 })
 
@@ -69,7 +94,7 @@ function downloadZip() {
   if (!selectedPackageVersion.value?.url)
     return
 
-  // @ts-expect-error
+  // @ts-expect-error I don't know why type check fail
   window.open(selectedPackageVersion.value.url, '_blank').focus()
 }
 </script>

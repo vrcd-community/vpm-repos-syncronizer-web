@@ -1,19 +1,29 @@
 <template>
-
   <Head>
     <Title>{{ repo?.name }} 仓库</Title>
   </Head>
   <div class="space-y-4">
-    <Breadcrumb :model="[
-      { label: '镜像列表', icon: 'pi pi-home', route: '/' },
-      { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() }
-    ]">
+    <Breadcrumb
+      :model="[
+        { label: '镜像列表', icon: 'pi pi-home', route: '/' },
+        { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() },
+      ]"
+    >
       <template #item="{ item, props }">
-        <BreadcrumbTemplate :item="item" :props="props" />
+        <BreadcrumbTemplate
+          :item="item"
+          :props="props"
+        />
       </template>
     </Breadcrumb>
-    <ProgressSpinner v-if="repoLoadingStatus === 'pending'" class="w-full pt-14" />
-    <div v-else-if="repoLoadingStatus === 'success' && repo" class="space-y-4">
+    <ProgressSpinner
+      v-if="repoLoadingStatus === 'pending'"
+      class="w-full pt-14"
+    />
+    <div
+      v-else-if="repoLoadingStatus === 'success' && repo"
+      class="space-y-4"
+    >
       <Panel>
         <template #header>
           <div class="w-full">
@@ -29,17 +39,32 @@
           </n-icon>
         </template>
       </n-input> -->
-      <ProgressSpinner v-if="packagesLoadingStatus === 'pending'" class="w-full pt-14" />
-      <div v-else-if="packagesLoadingStatus === 'success' && packages" class="flex flex-col space-y-4">
-        <PackageItem v-for="pkg in packages?.items" :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
+      <ProgressSpinner
+        v-if="packagesLoadingStatus === 'pending'"
+        class="w-full pt-14"
+      />
+      <div
+        v-else-if="packagesLoadingStatus === 'success' && packages"
+        class="flex flex-col space-y-4"
+      >
+        <PackageItem
+          v-for="pkg in packages?.items"
+          :key="pkg.latest.name"
+          :pkg="pkg.latest"
+          :repo-id="repo.apiId"
+          :repo-url="repo.repoUrl"
+        />
         <div class="flex justify-end">
-          <Paginator v-model:first="first" v-model:rows="count" :totalRecords="packages.totalCount"
-            :rowsPerPageOptions="[10, 20, 30]" />
+          <Paginator
+            v-model:first="first"
+            v-model:rows="count"
+            :total-records="packages.totalCount"
+            :rows-per-page-options="[10, 20, 30]"
+          />
         </div>
       </div>
     </div>
-    <div v-else>
-    </div>
+    <div v-else />
   </div>
 </template>
 
@@ -47,7 +72,7 @@
 const { page, count, first } = usePageResult()
 
 const route = useRoute()
-const router = useRouter()
+// const router = useRouter()
 
 // const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 

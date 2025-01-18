@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'empty'
+  layout: 'empty',
 })
 </script>
 
 <template>
-
   <Head>
     <Title>API 状态</Title>
   </Head>

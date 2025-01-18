@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BrowserRepo } from '~/types/browser';
+import type { BrowserRepo } from '~/types/browser'
 
 defineProps<{
   repo: BrowserRepo
@@ -7,13 +7,23 @@ defineProps<{
 </script>
 
 <template>
-  <AccordionPanel :key="repo.apiId" :value="repo.apiId">
-    <AccordionHeader as="div" class="flex-row-reverse">
+  <AccordionPanel
+    :key="repo.apiId"
+    :value="repo.apiId"
+  >
+    <AccordionHeader
+      as="div"
+      class="flex-row-reverse"
+    >
       <div class="flex w-full ml-4">
         <div class="flex-1">
           <RepoHeaderTitle :repo="repo" />
         </div>
-        <RepoHeaderAction show-browser-button :repo-api-id="repo.apiId" :repo-url="repo.repoUrl" />
+        <RepoHeaderAction
+          show-browser-button
+          :repo-api-id="repo.apiId"
+          :repo-url="repo.repoUrl"
+        />
       </div>
     </AccordionHeader>
     <AccordionContent>

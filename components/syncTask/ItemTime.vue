@@ -13,12 +13,23 @@ const endTimeDate = computed(() => props.endTime ? new Date(props.endTime) : und
     <p class="text-xs opacity-60">
       <i class="pi pi-calendar-plus text-xs" />
       同步开始于
-      <NuxtTime :datetime="startTimeDate" dateStyle="full" time-style="long" />
+      <NuxtTime
+        :datetime="startTimeDate"
+        date-style="full"
+        time-style="long"
+      />
     </p>
-    <p v-if="endTimeDate" class="text-xs opacity-60">
+    <p
+      v-if="endTimeDate"
+      class="text-xs opacity-60"
+    >
       <i class="pi pi-check-circle text-xs" />
       同步结束于
-      <NuxtTime :datetime="endTimeDate" dateStyle="full" time-style="long" />
+      <NuxtTime
+        :datetime="endTimeDate"
+        date-style="full"
+        time-style="long"
+      />
     </p>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  tooltip: string,
+  tooltip: string
   text: string
 }>()
 
@@ -12,7 +12,14 @@ function copy() {
 <template>
   <div class="flex items-center space-x-1">
     <code>{{ text }}</code>
-    <Button icon="text-xs pi pi-copy" severity="secondary" class="!size-4" v-tooltip.top="tooltip" :aria-label="tooltip"
-      rounded @click.stop="copy" />
+    <Button
+      v-tooltip.top="tooltip"
+      icon="text-xs pi pi-copy"
+      severity="secondary"
+      class="!size-4"
+      :aria-label="tooltip"
+      rounded
+      @click.stop="copy"
+    />
   </div>
 </template>
