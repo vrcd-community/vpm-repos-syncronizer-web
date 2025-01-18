@@ -1,0 +1,26 @@
+name: Lint Check
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-check:
+    name: Lint Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install step
+        run: "yarn install"
+
+      - name: Lint Check
+        run: "yarn run lint"
