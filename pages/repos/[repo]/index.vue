@@ -4,31 +4,24 @@
     <Title>{{ repo?.name }} 仓库</Title>
   </Head>
   <div class="space-y-4">
-    <n-breadcrumb>
-      <n-breadcrumb-item clickable>
-        <NuxtLink to="/">
-          <Icon name="i-mdi:home" />
-          镜像列表
-        </NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item clickable>
-        <NuxtLink :to="'/repos/' + route.params.repo">
-          <Icon name="i-mdi:package" />
-          {{ route.params.repo }}
-        </NuxtLink>
-      </n-breadcrumb-item>
-    </n-breadcrumb>
-    <n-spin v-if="repoLoadingStatus === 'pending'" class="w-full pt-14">
-      <template #description>
-        神奇仓库在哪里？
+    <Breadcrumb :model="[
+      { label: '镜像列表', icon: 'pi pi-home', route: '/' },
+      { label: route.params.repo.toString(), icon: 'pi pi-box', route: '/repos/' + route.params.repo.toString() }
+    ]">
+      <template #item="{ item, props }">
+        <BreadcrumbTemplate :item="item" :props="props" />
       </template>
-    </n-spin>
+    </Breadcrumb>
+    <ProgressSpinner v-if="repoLoadingStatus === 'pending'" class="w-full pt-14" />
     <div v-else-if="repoLoadingStatus === 'success' && repo" class="space-y-4">
-      <n-card>
-        <repo-header :repo="repo" />
-        <n-divider />
-        <repo-description :repo="repo" />
-      </n-card>
+      <Panel>
+        <template #header>
+          <div class="w-full">
+            <RepoHeader :repo="repo" />
+          </div>
+        </template>
+        <RepoDescription :repo="repo" />
+      </Panel>
       <!-- <n-input v-model:value="keyword" :placeholder="`搜索 ${repo.name} 仓库中的包...`" size="large">
         <template #prefix>
           <n-icon>
@@ -36,19 +29,12 @@
           </n-icon>
         </template>
       </n-input> -->
-      <n-spin v-if="packagesLoadingStatus === 'pending'" class="w-full pt-14">
-        <template #description>
-          神奇仓库的包都在哪里？
-        </template>
-      </n-spin>
+      <ProgressSpinner v-if="packagesLoadingStatus === 'pending'" class="w-full pt-14" />
       <div v-else-if="packagesLoadingStatus === 'success' && packages" class="flex flex-col space-y-4">
-        <n-list hoverable clickable>
-          <n-list-item v-for="pkg in packages?.items">
-            <package-item :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
-          </n-list-item>
-        </n-list>
+        <PackageItem v-for="pkg in packages?.items" :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
         <div class="flex justify-end">
-          <n-pagination v-model:page="pagePlus" :page-count="Math.ceil(packages.totalCount / count)" />
+          <Paginator v-model:first="first" v-model:rows="count" :totalRecords="packages.totalCount"
+            :rowsPerPageOptions="[10, 20, 30]" />
         </div>
       </div>
     </div>
@@ -58,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-const { count, page, pagePlus } = usePageResult()
+const { page, count, first } = usePageResult()
 
 const route = useRoute()
 const router = useRouter()

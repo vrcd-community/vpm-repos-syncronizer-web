@@ -1,19 +1,29 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
     "@nuxtjs/color-mode",
-    "@nuxt/icon",
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
-    "@nuxtjs/sitemap",
     // "nuxt-og-image"
-    "@bg-dev/nuxt-naiveui",
     "nuxt-time",
     "@vueuse/nuxt",
     "@nuxt/image",
     "@nuxtjs/robots",
+    "@primevue/nuxt-module",
   ],
+
+  css: [
+    'primeicons/primeicons.css',
+    'assets/css/main.css',
+    'assets/css/primevue-vars.css'
+  ],
+
+  primevue: {
+    options: {
+      // https://github.com/primefaces/primevue-tailwind/releases
+      theme: 'none'
+    }
+  },
 
   routeRules: {
     "/docs/**": { isr: true },
@@ -25,12 +35,6 @@ export default defineNuxtConfig({
   site: {
     url: "https://vcc.vrczh.org",
     strictNuxtContentPaths: true,
-  },
-
-  sitemap: {
-    sources: [
-      '/api/__sitemap__/urls'
-    ]
   },
 
   colorMode: {
@@ -46,10 +50,6 @@ export default defineNuxtConfig({
         searchDepth: 5,
       },
     },
-  },
-
-  icon: {
-    serverBundle: 'local',
   },
 
   runtimeConfig: {

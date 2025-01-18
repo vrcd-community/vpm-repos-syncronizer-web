@@ -10,7 +10,7 @@ const time = computed(() => {
     return props.startedTime
   }
 
-  return props.endedTime
+  return props.endedTime ?? 0
 })
 
 const statusText = computed(() => {
@@ -23,6 +23,8 @@ const statusText = computed(() => {
       return `同步失败于 `
     case 3:
       return '同步中断'
+    case 4:
+      return '等待开始'
     default:
       return '未知'
   }
@@ -35,18 +37,20 @@ const badgeColor = computed(() => {
     case 1:
       return `success`
     case 2:
-      return `error`
+      return `danger`
     case 3:
-      return 'warning'
+      return 'warn'
+    case 4:
+      return 'secondary'
     default:
-      return 'warning'
+      return 'warn'
   }
 })
 </script>
 
 <template>
-  <n-tag size="small" :bordered="false" :type="badgeColor">
+  <Tag size="small" :severity="badgeColor">
     {{ statusText }}
-    <nuxt-time :datetime="time as string" dateStyle="short" time-style="medium" />
-  </n-tag>
+    <nuxt-time :datetime="time" dateStyle="full" time-style="long" />
+  </Tag>
 </template>
