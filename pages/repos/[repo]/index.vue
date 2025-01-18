@@ -41,7 +41,8 @@
       <div v-else-if="packagesLoadingStatus === 'success' && packages" class="flex flex-col space-y-4">
         <PackageItem v-for="pkg in packages?.items" :pkg="pkg.latest" :repoId="repo.apiId" :repoUrl="repo.repoUrl" />
         <div class="flex justify-end">
-          <n-pagination v-model:page="pagePlus" :page-count="Math.ceil(packages.totalCount / count)" />
+          <Paginator v-model:first="first" v-model:rows="count" :totalRecords="packages.totalCount"
+            :rowsPerPageOptions="[10, 20, 30]" />
         </div>
       </div>
     </div>
@@ -51,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-const { count, page, pagePlus } = usePageResult()
+const { page, count, first } = usePageResult()
 
 const route = useRoute()
 const router = useRouter()
