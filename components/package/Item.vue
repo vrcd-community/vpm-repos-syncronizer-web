@@ -15,7 +15,7 @@
       </div>
     </template>
     <template #content>
-      <p>{{ pkg.description }}</p>
+      <p class="overflow-hidden text-ellipsis whitespace-nowrap">{{ pkg.description }}</p>
     </template>
   </Card>
 </template>
