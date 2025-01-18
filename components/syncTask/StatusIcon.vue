@@ -9,17 +9,17 @@ const props = defineProps<{
 const syncTaskIcon = computed(() => {
   switch (props.status) {
     case 0:
-      return 'mdi:sync'
+      return 'pi-refresh'
     case 1:
-      return 'mdi:checkbox-marked-circle'
+      return 'pi-check-circle'
     case 2:
-      return 'mdi:close-circle'
+      return 'pi-times-circle'
     case 3:
-      return 'mdi:alert-circle'
+      return 'pi-exclamation-circle'
     case 4:
-      return 'mdi:clock-time-four-outline'
+      return 'pi-clock'
     default:
-      return 'mdi:help-circle'
+      return 'pi-question-circle'
   }
 })
 
@@ -59,9 +59,9 @@ const syncTaskColor = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center space-y-1">
+  <div class="flex flex-col items-center">
     <!-- text-green-500 text-red-500 text-gray-400 text-amber-400 text-current -->
-    <Icon :name="syncTaskIcon" class="size-6" :class="syncTaskColor" />
+    <i class="text-2xl pi" :class="[syncTaskColor, syncTaskIcon]" />
     <span v-if="showDescription">{{ syncTaskDescription }}</span>
   </div>
 </template>

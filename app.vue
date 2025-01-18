@@ -1,6 +1,6 @@
 <template>
   <PageHeader />
-  <NuxtLayout>
+  <NuxtLayout class="text-color">
     <NuxtPage />
   </NuxtLayout>
 </template>

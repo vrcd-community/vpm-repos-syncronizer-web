@@ -5,6 +5,8 @@ import { hash } from "ohash"
 
 export const useFetchRepos = (options: UseFetchOptions<PageResult<BrowserRepo>> = {}) =>
   useFetchApi<PageResult<BrowserRepo>>("/repos", options)
+export const useFetchVpmRepos = (options: UseFetchOptions<Record<string, string>> = {}) =>
+  useFetchApi<Record<string, string>>("/vpm/repos", options)
 export const useFetchStatus = (options: UseFetchOptions<SyncStatus[]> = {}) =>
   useFetchApi<SyncStatus[]>("/status/sync", options)
 export const useFetchSyncTasks = (options: UseFetchOptions<PageResult<SyncTask>> = {}) =>

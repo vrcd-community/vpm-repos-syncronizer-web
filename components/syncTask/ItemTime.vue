@@ -10,13 +10,15 @@ const endTimeDate = computed(() => props.endTime ? new Date(props.endTime) : und
 
 <template>
   <div class="flex flex-col">
-    <n-text class="text-xs" depth="2">
-      <Icon name="mdi:calendar-clock" />
-      同步开始于 <nuxt-time :datetime="startTimeDate" dateStyle="full" time-style="long" />
-    </n-text>
-    <n-text v-if="endTime" class="text-xs" depth="2">
-      <Icon name="mdi:calendar-check" />
-      同步结束于 <nuxt-time :datetime="endTimeDate" dateStyle="full" time-style="long" />
-    </n-text>
+    <p class="text-xs opacity-60">
+      <i class="pi pi-calendar-plus text-xs" />
+      同步开始于
+      <NuxtTime :datetime="startTimeDate" dateStyle="full" time-style="long" />
+    </p>
+    <p v-if="endTimeDate" class="text-xs opacity-60">
+      <i class="pi pi-check-circle text-xs" />
+      同步结束于
+      <NuxtTime :datetime="endTimeDate" dateStyle="full" time-style="long" />
+    </p>
   </div>
 </template>

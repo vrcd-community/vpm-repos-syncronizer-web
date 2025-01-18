@@ -1,64 +1,54 @@
 <script setup lang="ts">
-import { Icon, NuxtLink } from '#components';
+import { type MenuItem } from 'primevue/menuitem'
 
-const { data: repos } = await useFetchRepos({ lazy: true })
-
-const route = useRoute()
+const { data: repos } = await useFetchVpmRepos({ lazy: true })
 
 const items = computed(() => {
-  const navItems: {
-    type?: 'divider',
-    label?: string,
-    route?: string,
-    icon?: string
-  }[] = [
-      {
-        label: '总览',
-        route: '/status',
-        icon: 'mdi:monitor-dashboard',
-      },
-      {
-        label: '所有同步任务',
-        route: '/status/tasks',
-        icon: 'mdi:format-list-bulleted-type',
-      },
-      {
-        type: 'divider',
-      }
-    ]
-
-  repos.value?.items.forEach((repo) => {
-    navItems.push({
-      label: repo.apiId,
-      route: `/status/repos/${repo.apiId}`,
-      icon: 'mdi:package'
+  const items: MenuItem[] = []
+  for (const key in repos.value) {
+    items.push({
+      label: key,
+      route: `/status/repos/${key}`,
+      icon: 'pi pi-box'
     })
-  })
-
-  return navItems
-})
-
-const menuOptions = computed(() => items.value?.map((item) => ({
-  type: item.type,
-  label: () => renderLabel(item.label ?? '', item.route ?? ''),
-  key: item.route,
-  icon: item.icon ? () => h(Icon, { name: item.icon ?? '' }) : undefined
-})))
-
-function renderLabel(label: string, route: string) {
-  return h(NuxtLink, { to: route }, { default: () => label })
-}
-
-const selected = computed(() => {
-  const index = items.value?.findIndex((item) => item.route === route.path)
-  if (index === -1) {
-    return '/'
   }
 
-  return items.value?.at(index)?.route
+  const navItems: MenuItem[] = [
+    {
+      label: '总览',
+      route: '/status',
+      icon: 'pi pi-home',
+    },
+    {
+      label: '所有同步任务',
+      route: '/status/tasks',
+      icon: 'pi pi-list',
+    },
+    {
+      label: '所有仓库',
+      items
+    }
+  ]
+
+  return navItems
 })
 </script>
 
 <template>
-  <n-menu class="mt-8" :options="menuOptions" :value="selected" />
+  <ScrollPanel class="sticky top-0 mx-5 max-h-[calc(100vh-100px)]">
+    <Menu class="my-5" :model="items">
+      <template #item="{ item, props }">
+        <NuxtLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <i :class="item.icon" class="opacity-40" />
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </NuxtLink>
+        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+          <span :class="item.icon" />
+          <span class="ml-2">{{ item.label }}</span>
+        </a>
+      </template>
+    </Menu>
+  </ScrollPanel>
 </template>
