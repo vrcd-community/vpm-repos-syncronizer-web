@@ -75,4 +75,8 @@ export default defineNuxtConfig({
       theme: 'none',
     },
   },
+
+  robots: {
+    disallow: ['/status'],
+  },
 })

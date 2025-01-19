@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const rule = useRobotsRule()
+rule.value = 'noindex, nofollow'
+</script>
+
 <template>
   <div class="flex">
     <SyncTaskNavMenu />
