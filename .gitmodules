@@ -1,3 +1,0 @@
-[submodule "server/plugins/vrcd-nitro-server-side-logging"]
-	path = server/plugins/vrcd-nitro-server-side-logging
-	url = https://github.com/vrcd-community/nitro-server-side-logging.git
