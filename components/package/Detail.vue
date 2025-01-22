@@ -15,7 +15,7 @@ const selectedPackageVersion = computed(() => {
 
 <template>
   <div class="flex">
-    <div class="flex-1">
+    <div class="flex-1 w-0 overflow-clip">
       <Tabs v-model:value="tabModel">
         <TabList>
           <Tab value="description">
@@ -39,7 +39,7 @@ const selectedPackageVersion = computed(() => {
         </TabList>
         <TabPanels>
           <TabPanel value="description">
-            <p class="whitespace-pre-wrap">
+            <p class="whitespace-pre-wrap break-words">
               {{ selectedPackageVersion.description }}
             </p>
           </TabPanel>
@@ -87,7 +87,9 @@ const selectedPackageVersion = computed(() => {
               </h3>
               <p>请注意，这里显示的 package.json 信息是由 API 返回的，并不是原始 package.json 数据。这意味着某些字段可能会被修改或删除。</p>
             </Message>
-            <code class="whitespace-pre-wrap">{{ JSON.stringify(selectedPackageVersion, null, 2) }}</code>
+            <code class="whitespace-pre-wrap break-words">
+              {{ JSON.stringify(selectedPackageVersion, null, 2) }}
+            </code>
           </TabPanel>
           <TabPanel value="versions">
             <NuxtLink
