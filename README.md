@@ -1,40 +1,33 @@
-# vpm-repos-syncronizer-web
+# vpm-repos-syncronizer
+
 The frontend for [VPMReposSyncronizer](https://github.com/vrcd-community/VPMReposSynchronizer)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Development
 
-## Setup
+1. Clone the repository:
+  ```sh
+  git clone https://github.com/vrcd-community/VPMReposSynchronizer.git
+  ```
+2. Install dependencies:
+  ```sh
+  yarn install
+  ```
+3. Run the application in development mode:
+  ```sh
+  yarn run dev
+  ```
 
-Make sure to install the dependencies:
+## Build
 
-```bash
-yarn install
+Just run:
+```sh
+  yarn run build
 ```
 
-## Development Server
+## Contributing
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
+Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
 
 ## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvrcd-community%2Fvpm-repos-syncronizer-web?ref=badge_large)
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
