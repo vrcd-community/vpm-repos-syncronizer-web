@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy To Deno Deploy
 on:
   push:
     branches: ["main", "dev"]
@@ -37,6 +37,8 @@ jobs:
 
       - name: Build step
         run: "NITRO_PRESET=deno-deploy yarn run build"
+        env:
+          DISABLE_NUXT_HUB: "true"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1

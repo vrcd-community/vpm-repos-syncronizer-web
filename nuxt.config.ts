@@ -1,4 +1,4 @@
-export default defineNuxtConfig({
+const config = defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/content',
@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/robots',
     '@primevue/nuxt-module',
-    '@nuxthub/core',
   ],
 
   devtools: { enabled: true },
@@ -81,3 +80,9 @@ export default defineNuxtConfig({
     disallow: ['/status'],
   },
 })
+
+if (import.meta.env.DISABLE_NUXT_HUB !== 'true') {
+  config.modules?.push('@nuxthub/core')
+}
+
+export default config
