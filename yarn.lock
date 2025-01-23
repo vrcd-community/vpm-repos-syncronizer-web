@@ -413,6 +413,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cloudflare/workers-types@npm:^4.20250121.0":
+  version: 4.20250121.0
+  resolution: "@cloudflare/workers-types@npm:4.20250121.0"
+  checksum: 10c0/83fcc7fe5b591adf8e358abe667de047d97553b43286fcfc0589c3b1cb9f1fa4a92a44c7ef3094b58709b2ccdf759e26de698a64985b8c7e01766dd091f210aa
+  languageName: node
+  linkType: hard
+
 "@csstools/selector-resolve-nested@npm:^3.0.0":
   version: 3.0.0
   resolution: "@csstools/selector-resolve-nested@npm:3.0.0"
@@ -1614,6 +1621,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxthub/core@npm:0.8.14":
+  version: 0.8.14
+  resolution: "@nuxthub/core@npm:0.8.14"
+  dependencies:
+    "@cloudflare/workers-types": "npm:^4.20250121.0"
+    "@nuxt/devtools-kit": "npm:^1.7.0"
+    "@nuxt/kit": "npm:^3.15.2"
+    "@uploadthing/mime-types": "npm:^0.3.4"
+    citty: "npm:^0.1.6"
+    confbox: "npm:^0.1.8"
+    defu: "npm:^6.1.4"
+    destr: "npm:^2.0.3"
+    h3: "npm:^1.13.1"
+    mime: "npm:^4.0.6"
+    nitro-cloudflare-dev: "npm:^0.2.1"
+    ofetch: "npm:^1.4.1"
+    pathe: "npm:^2.0.2"
+    pkg-types: "npm:^1.3.1"
+    std-env: "npm:^3.8.0"
+    ufo: "npm:^1.5.4"
+    uncrypto: "npm:^0.1.3"
+    unstorage: "npm:^1.14.4"
+    zod: "npm:^3.24.1"
+  checksum: 10c0/96ef585aa68487c96644e85c1eafb9ad4a2dd8de6c942f671d7dc6f0c5db1ed63d5c5ccfc32104b2e3c5e530b621ae02326c09962c8b809d95acdbfc2101cbc0
+  languageName: node
+  linkType: hard
+
 "@nuxtjs/color-mode@npm:^3.5.2":
   version: 3.5.2
   resolution: "@nuxtjs/color-mode@npm:3.5.2"
@@ -2674,6 +2708,13 @@ __metadata:
   peerDependencies:
     vue: ">=2.7 || >=3"
   checksum: 10c0/d6a61781cab0da56ce593860986aae580c750f66a82c4cdf54b26c080488a6456267f38f0aca537edad28097ce86c1e28f887b8120281fdad32202b06ec90426
+  languageName: node
+  linkType: hard
+
+"@uploadthing/mime-types@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "@uploadthing/mime-types@npm:0.3.4"
+  checksum: 10c0/1d173bb43bae57915e030e2ba25ba5ccc2d635a67950a8035e399e58e8aebcbea0b630407aa3297133e410bfb69e39f43ec3615168b0eab1dce2808df67745ab
   languageName: node
   linkType: hard
 
@@ -7801,7 +7842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime@npm:^4.0.4":
+"mime@npm:^4.0.4, mime@npm:^4.0.6":
   version: 4.0.6
   resolution: "mime@npm:4.0.6"
   bin:
@@ -8110,6 +8151,17 @@ __metadata:
   version: 1.0.0
   resolution: "negotiator@npm:1.0.0"
   checksum: 10c0/4c559dd52669ea48e1914f9d634227c561221dd54734070791f999c52ed0ff36e437b2e07d5c1f6e32909fc625fe46491c16e4a8f0572567d4dd15c3a4fda04b
+  languageName: node
+  linkType: hard
+
+"nitro-cloudflare-dev@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "nitro-cloudflare-dev@npm:0.2.1"
+  dependencies:
+    consola: "npm:^3.2.3"
+    mlly: "npm:^1.7.2"
+    pkg-types: "npm:^1.2.1"
+  checksum: 10c0/67e25379282fc344dcb7c07edbb99e938f28b9eb0d76450c05dbc954b74fd9ab1cc612f7e1855141f84c971ae32c19ca86220503ed233d8e3479a97147a22ab9
   languageName: node
   linkType: hard
 
@@ -12067,6 +12119,7 @@ __metadata:
     "@nuxt/devtools": "npm:^2.0.0-beta.3"
     "@nuxt/eslint": "npm:^0.7.5"
     "@nuxt/image": "npm:^1.9.0"
+    "@nuxthub/core": "npm:0.8.14"
     "@nuxtjs/color-mode": "npm:^3.5.2"
     "@nuxtjs/robots": "npm:^5.2.0"
     "@nuxtjs/tailwindcss": "npm:^6.13.1"
@@ -12481,6 +12534,13 @@ __metadata:
     compress-commons: "npm:^6.0.2"
     readable-stream: "npm:^4.0.0"
   checksum: 10c0/50f2fb30327fb9d09879abf7ae2493705313adf403e794b030151aaae00009162419d60d0519e807673ec04d442e140c8879ca14314df0a0192de3b233e8f28b
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.24.1":
+  version: 3.24.1
+  resolution: "zod@npm:3.24.1"
+  checksum: 10c0/0223d21dbaa15d8928fe0da3b54696391d8e3e1e2d0283a1a070b5980a1dbba945ce631c2d1eccc088fdbad0f2dfa40155590bf83732d3ac4fcca2cc9237591b
   languageName: node
   linkType: hard
 

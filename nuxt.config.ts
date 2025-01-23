@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/robots',
     '@primevue/nuxt-module',
+    '@nuxthub/core',
   ],
 
   devtools: { enabled: true },
