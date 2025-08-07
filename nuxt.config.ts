@@ -1,4 +1,4 @@
-const config = defineNuxtConfig({
+export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/content',
@@ -80,9 +80,3 @@ const config = defineNuxtConfig({
     disallow: ['/status'],
   },
 })
-
-if (import.meta.env.DISABLE_NUXT_HUB !== 'true') {
-  config.modules?.push('@nuxthub/core')
-}
-
-export default config
