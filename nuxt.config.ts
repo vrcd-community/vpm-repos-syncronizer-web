@@ -1,29 +1,34 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from '@primeuix/themes/aura'
+
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/content',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt',
-    // "nuxt-og-image"
-    'nuxt-time',
-    '@vueuse/nuxt',
-    '@nuxt/image',
-    '@nuxtjs/robots',
-    '@primevue/nuxt-module',
-  ],
-
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
-  css: [
-    'primeicons/primeicons.css',
-    'assets/css/main.css',
-    'assets/css/primevue-vars.css',
+  modules: [
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@nuxt/image',
+    '@nuxtjs/color-mode',
+    '@primevue/nuxt-module',
+    '@vueuse/nuxt',
+    '@nuxtjs/tailwindcss',
+    'nuxt-time',
+    '@nuxtjs/robots',
   ],
 
-  site: {
-    url: 'https://vcc.vrczh.org',
-    strictNuxtContentPaths: true,
+  primevue: {
+    options: {
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark-mode',
+          cssLayer: {
+            name: 'primevue',
+            order: 'theme, base, primevue'
+          }
+        }
+      }
+    }
   },
 
   colorMode: {
@@ -31,52 +36,9 @@ export default defineNuxtConfig({
     fallback: 'dark',
   },
 
-  content: {
-    markdown: {
-      anchorLinks: false,
-      toc: {
-        depth: 5,
-        searchDepth: 5,
-      },
-    },
-  },
-
   runtimeConfig: {
     public: {
       apiBaseUrl: 'https://vpm.vrczh.org',
-    },
-    vrcdServerSideLogging: {
-      enabled: false,
-      postLogEnabled: false,
-      baseUrl: '',
-      prefix: '',
-      zone: '',
-      apiKey: '',
-      pipeline: '',
-    },
-  },
-
-  routeRules: {
-    '/docs/**': { isr: true },
-    '/docs': { isr: true },
-  },
-
-  compatibilityDate: '2024-08-30',
-
-  eslint: {
-    config: {
-      stylistic: true,
-    },
-  },
-
-  primevue: {
-    options: {
-      // https://github.com/primefaces/primevue-tailwind/releases
-      theme: 'none',
-    },
-  },
-
-  robots: {
-    disallow: ['/status'],
+    }
   },
 })

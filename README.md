@@ -1,33 +1,75 @@
-# vpm-repos-syncronizer
+# Nuxt Minimal Starter
 
-The frontend for [VPMReposSyncronizer](https://github.com/vrcd-community/VPMReposSynchronizer)
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Development
+## Setup
 
-1. Clone the repository:
-  ```sh
-  git clone https://github.com/vrcd-community/VPMReposSynchronizer.git
-  ```
-2. Install dependencies:
-  ```sh
-  yarn install
-  ```
-3. Run the application in development mode:
-  ```sh
-  yarn run dev
-  ```
+Make sure to install dependencies:
 
-## Build
+```bash
+# npm
+npm install
 
-Just run:
-```sh
-  yarn run build
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-## Contributing
+## Development Server
 
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
+Start the development server on `http://localhost:3000`:
 
-## License
+```bash
+# npm
+npm run dev
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
