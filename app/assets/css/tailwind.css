@@ -3,4 +3,6 @@
 
 @import 'primeicons/primeicons.css';
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:where(.dark-mode, .dark-mode *));

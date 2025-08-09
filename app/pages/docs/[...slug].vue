@@ -34,7 +34,8 @@
       </template>
     </Menu>
     <Panel class="flex-1">
-      <ContentDoc class="prose dark:prose-invert max-w-none" />
+      <ContentRenderer v-if="page" :value="page" class="prose dark:prose-invert max-w-none" />
+      <p v-else>Page Not Found</p>
     </Panel>
     <div class="w-72">
       <!-- <n-affix listen-to=".n-scrollbar-container" :top="80">
@@ -58,28 +59,23 @@ definePageMeta({
 
 const route = useRoute()
 
-const { data: page } = await useAsyncData(route.path, queryContent(route.path).findOne)
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation(queryContent('docs')))
-
-if (page.value !== null)
-  useContentHead(page.value)
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
+const { data: navigation } = await useAsyncData('navigation', () => {
+  return queryCollectionNavigation('docs')
+})
 
 const items = computed(() => {
-  if (navigation.value === null) {
+  if (!navigation.value || !navigation.value[0]?.children?.length) {
     return []
   }
 
-  const navLinks: MenuItem[] = []
-  navigation.value.forEach((item) => {
-    item.children?.forEach((item) => {
-      if (navLinks.findIndex(navLinkItem => navLinkItem.to === item._path) !== -1)
-        return
-
-      navLinks.push({
-        label: item.title,
-        route: item._path,
-      })
-    })
+  const navLinks: MenuItem[] = navigation.value[0].children.map((item) => {
+    return {
+      label: item.title,
+      route: item.path,
+    }
   })
 
   return navLinks.reverse()
