@@ -41,4 +41,11 @@ export default defineNuxtConfig({
       apiBaseUrl: 'https://vpm.vrczh.org',
     }
   },
+
+  nitro: {
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true
+    }
+  },
 })
