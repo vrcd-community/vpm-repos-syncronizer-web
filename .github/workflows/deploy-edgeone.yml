@@ -1,4 +1,4 @@
-name: Deploy to Deno
+name: Deploy to EdgeOne
 
 on:
   push:
@@ -11,7 +11,6 @@ permissions:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
-
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
@@ -26,14 +25,15 @@ jobs:
           name: website-artifact
           path: ${{ env.artifact_path }}
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          deno-version: lts
+          node-version: 24
+          cache: pnpm
 
-      - name: Deploy to Deno
-        run: deno deploy --prod --org ${{ secrets.DENO_ORG_ID }} --app ${{ secrets.DENO_PROJECT_ID }} --token ${{ secrets.DENO_API_TOKEN }} ${{ env.artifact_path }}
+      - name: Deploy to EdgeOne
+        run: pnpm dlx edgeone pages deploy $artifact_path -n ${{ secrets.EDGEONE_PROJECT_NAME }} -t ${{ secrets.EDGEONE_API_TOKEN }}
         shell: bash
