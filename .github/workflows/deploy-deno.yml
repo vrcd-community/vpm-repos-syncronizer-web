@@ -1,4 +1,4 @@
-name: Deploy to EdgeOne
+name: Deploy to Deno
 
 on:
   push:
@@ -29,6 +29,11 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Deploy to EdgeOne
-        run: bunx edgeone pages deploy "$artifact_path" -n "${{ secrets.EDGEONE_PROJECT_NAME }}" -t "${{ secrets.EDGEONE_API_TOKEN }}"
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: lts
+
+      - name: Deploy to Deno
+        run: deno deploy --prod --org ${{ secrets.DENO_ORG_ID }} --app ${{ secrets.DENO_PROJECT_ID }} --token ${{ secrets.DENO_API_TOKEN }} ${{ env.artifact_path }}
         shell: bash
