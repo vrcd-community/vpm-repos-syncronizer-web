@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import Message from 'primevue/message'
+import Tab from 'primevue/tab'
+import TabList from 'primevue/tablist'
+import TabPanel from 'primevue/tabpanel'
+import TabPanels from 'primevue/tabpanels'
+import Tabs from 'primevue/tabs'
 import type { BrowserPackage } from '~/types/browser'
 
 const props = defineProps<{
@@ -39,7 +45,7 @@ const selectedPackageVersion = computed(() => {
         </TabList>
         <TabPanels>
           <TabPanel value="description">
-            <p class="whitespace-pre-wrap break-words">
+            <p class="whitespace-pre-wrap wrap-break-word">
               {{ selectedPackageVersion.description }}
             </p>
           </TabPanel>
@@ -82,12 +88,14 @@ const selectedPackageVersion = computed(() => {
               icon="pi pi-exclamation-circle"
               class="mb-4"
             >
-              <h3 class="font-semibold">
-                该 package.json 并不是包原始 package.json 数据
-              </h3>
-              <p>请注意，这里显示的 package.json 信息是由 API 返回的，并不是原始 package.json 数据。这意味着某些字段可能会被修改或删除。</p>
+              <div class="flex flex-col gap-0.5">
+                <span class="font-medium">API 返回的 package.json</span>
+                <span class="text-sm leading-5 opacity-80">
+                  以下内容并非包内的原始文件，部分字段可能经过 API 修改或过滤。
+                </span>
+              </div>
             </Message>
-            <code class="whitespace-pre-wrap break-words">
+            <code class="whitespace-pre-wrap wrap-break-word">
               {{ JSON.stringify(selectedPackageVersion, null, 2) }}
             </code>
           </TabPanel>

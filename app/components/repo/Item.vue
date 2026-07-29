@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import Accordion from 'primevue/accordion'
+import AccordionContent from 'primevue/accordioncontent'
+import AccordionHeader from 'primevue/accordionheader'
+import AccordionPanel from 'primevue/accordionpanel'
 import type { BrowserRepo } from '~/types/browser'
 
 defineProps<{
