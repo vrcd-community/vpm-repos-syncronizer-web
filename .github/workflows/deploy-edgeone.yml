@@ -26,7 +26,9 @@ jobs:
           path: ${{ env.artifact_path }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
+        with:
+          version: latest
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
