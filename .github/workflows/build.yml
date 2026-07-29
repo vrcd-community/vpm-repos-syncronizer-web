@@ -35,5 +35,5 @@ jobs:
         with:
           name: website-artifact
           path: ./.output
-          include-hidden-files: 
+          include-hidden-files: true
           if-no-files-found: error
