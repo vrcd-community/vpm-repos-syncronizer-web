@@ -1,13 +1,12 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'sync-status',
-})
-
 const route = useRoute()
+const taskId = computed(() => Number(route.params.id))
 
-const { data: task } = await useFetchSyncTask(Number(route.params.id))
-const { data: log } = await useFetchSyncTaskLog(Number(route.params.id), { lazy: true })
-const { data: repo } = await useFetchRepo(task.value?.repoId ?? '', { lazy: true })
+const { data: task } = useFetchSyncTask(taskId)
+const { data: log } = useFetchSyncTaskLog(taskId, { lazy: true })
+const { data: repo } = useFetchRepo(() => task.value?.repoId ?? '', { lazy: true, immediate: false })
+
+useHead({ title: computed(() => task.value ? `${task.value.repoId} #${task.value.id}` : '同步任务') })
 
 const lines = computed(() => {
   return log.value?.split('\n')
@@ -26,9 +25,6 @@ const lines = computed(() => {
 </script>
 
 <template>
-  <Head>
-    <Title>所有同步任务</Title>
-  </Head>
   <div
     v-if="task"
     class="mb-4 space-y-3"
@@ -64,7 +60,7 @@ const lines = computed(() => {
       </div>
       <div>
         <h3>同步开始时间</h3>
-        <NuxtTime
+        <AppTime
           :datetime="task.startTime"
           date-style="full"
           time-style="long"
@@ -72,7 +68,7 @@ const lines = computed(() => {
       </div>
       <div>
         <h3>同步结束时间</h3>
-        <NuxtTime
+        <AppTime
           v-if="task.endTime"
           :datetime="task.endTime"
           date-style="full"

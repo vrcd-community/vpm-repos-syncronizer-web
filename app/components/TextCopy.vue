@@ -10,8 +10,8 @@ function copy() {
 </script>
 
 <template>
-  <div class="flex items-center space-x-1">
-    <code>{{ text }}</code>
+  <div class="flex min-w-0 items-center space-x-1">
+    <code class="min-w-0 flex-1 truncate">{{ text }}</code>
     <Button
       v-tooltip.top="tooltip"
       icon="text-xs pi pi-copy"

@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <Title>{{ pkg?.latest.name }}@{{ selectedVersion }}</Title>
-  </Head>
   <div class="space-y-4">
     <Breadcrumb
       :model="[
@@ -65,16 +62,18 @@ const repoId = ref(route.params.repo as string)
 const packageId = ref(route.params.package as string)
 const selectedVersion = ref(route.params.version as string)
 
-const { data: pkg, status: packageLoadingStatus } = await useFetchRepoPackage(repoId.value, packageId.value, { lazy: true })
+const { data: pkg, status: packageLoadingStatus } = useFetchRepoPackage(repoId.value, packageId.value, { lazy: true })
 
 const selectedPackageVersion = computed(() => {
   return route.params.version === 'latest' ? pkg.value?.latest : pkg.value?.versions.find(ver => ver.version === route.params.version)
 })
 
+useHead({ title: computed(() => `${pkg.value?.latest.name || packageId.value}@${selectedVersion.value}`) })
+
 useSeoMeta({
-  description: selectedPackageVersion.value?.description,
-  ogDescription: selectedPackageVersion.value?.description,
-  twitterDescription: selectedPackageVersion.value?.description,
+  description: computed(() => selectedPackageVersion.value?.description || undefined),
+  ogDescription: computed(() => selectedPackageVersion.value?.description || undefined),
+  twitterDescription: computed(() => selectedPackageVersion.value?.description || undefined),
 })
 
 const currentTab = ref((route.query.tab?.toString() ?? 'description') || 'description')

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MenuItem } from 'primevue/menuitem'
 
-const { data: repos } = await useFetchVpmRepos({ lazy: true })
+const { data: repos } = useFetchVpmRepos({ lazy: true })
 
 const items = computed(() => {
   const items: MenuItem[] = []
@@ -41,7 +41,7 @@ const items = computed(() => {
       :model="items"
     >
       <template #item="{ item, props }">
-        <NuxtLink
+        <RouterLink
           v-if="item.route"
           v-slot="{ href, navigate }"
           :to="item.route"
@@ -59,7 +59,7 @@ const items = computed(() => {
             />
             <span class="ml-2">{{ item.label }}</span>
           </a>
-        </NuxtLink>
+        </RouterLink>
         <a
           v-else
           v-ripple

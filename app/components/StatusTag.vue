@@ -54,7 +54,7 @@ const badgeColor = computed(() => {
     :severity="badgeColor"
   >
     {{ statusText }}
-    <nuxt-time
+    <AppTime
       :datetime="time"
       date-style="full"
       time-style="long"

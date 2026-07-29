@@ -15,8 +15,8 @@ defineProps<{
       as="div"
       class="flex-row-reverse"
     >
-      <div class="flex w-full ml-4">
-        <div class="flex-1">
+      <div class="flex flex-col gap-3 w-full ml-2 sm:ml-4 lg:flex-row lg:items-center">
+        <div class="flex-1 min-w-0">
           <RepoHeaderTitle :repo="repo" />
         </div>
         <RepoHeaderAction
@@ -27,7 +27,7 @@ defineProps<{
       </div>
     </AccordionHeader>
     <AccordionContent>
-      <div class="mx-5">
+      <div class="mx-1 sm:mx-5">
         <RepoDescription :repo="repo" />
       </div>
     </AccordionContent>

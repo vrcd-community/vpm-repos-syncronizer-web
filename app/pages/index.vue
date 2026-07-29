@@ -1,7 +1,9 @@
 <script setup lang="ts">
 const { page, count, first } = usePageResult()
 
-const { data: repos, status } = await useFetchRepos({ lazy: true, query: { page, count } })
+const { data: repos, status } = useFetchRepos({ lazy: true, query: { page, count } })
+
+useHead({ title: '镜像列表' })
 
 const repoPageItems = computed(() => {
   return repos.value?.items
@@ -9,9 +11,6 @@ const repoPageItems = computed(() => {
 </script>
 
 <template>
-  <Head>
-    <Title>镜像列表</Title>
-  </Head>
   <div class="space-y-4">
     <AppSearch />
     <div
@@ -20,10 +19,12 @@ const repoPageItems = computed(() => {
     >
       <Panel header="初来乍到？">
         <p>
-          请阅读我们的<NuxtLink
+          请阅读我们的<RouterLink
             class="text-primary hover:underline"
             to="/docs"
-          >文档</NuxtLink>来了解如何使用这个镜像站。
+          >
+            文档
+          </RouterLink>来了解如何使用这个镜像站。
         </p>
       </Panel>
       <h1 class="font-semibold text-2xl text-color">

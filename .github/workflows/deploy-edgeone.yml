@@ -11,6 +11,7 @@ permissions:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
+
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
@@ -29,5 +30,5 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Deploy to EdgeOne
-        run: bunx edgeone pages deploy $artifact_path -n ${{ secrets.EDGEONE_PROJECT_NAME }} -t ${{ secrets.EDGEONE_API_TOKEN }}
+        run: bunx edgeone pages deploy "$artifact_path" -n "${{ secrets.EDGEONE_PROJECT_NAME }}" -t "${{ secrets.EDGEONE_API_TOKEN }}"
         shell: bash

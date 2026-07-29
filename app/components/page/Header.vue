@@ -3,7 +3,7 @@
     <div class="flex-1" />
     <Menubar :model="items">
       <template #item="{ item, props, hasSubmenu }">
-        <NuxtLink
+        <RouterLink
           v-if="item.route"
           v-slot="{ href, navigate }"
           :to="item.route"
@@ -18,7 +18,7 @@
             <span :class="item.icon" />
             <span>{{ item.label }}</span>
           </a>
-        </NuxtLink>
+        </RouterLink>
         <a
           v-else
           v-ripple
@@ -40,7 +40,7 @@
             outlined
             severity="secondary"
             :model="colorModeItems"
-            @click="$colorMode.preference = $colorMode.value !== 'dark' ? 'dark' : 'light'"
+            @click="colorMode.preference = colorMode.value !== 'dark' ? 'dark' : 'light'"
           >
             <i class="dark:!inline !hidden pi pi-moon" />
             <i class="dark:!hidden !inline pi pi-sun" />

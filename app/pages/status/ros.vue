@@ -1,13 +1,8 @@
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'empty',
-})
+useHead({ title: '对象存储状态' })
 </script>
 
 <template>
-  <Head>
-    <Title>对象存储状态</Title>
-  </Head>
   <iframe
     class="w-full border-none overflow-hidden"
     style="height: calc(100vh - 90px);"

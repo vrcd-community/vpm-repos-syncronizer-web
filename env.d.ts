@@ -1,14 +1,9 @@
-/// <reference types="./worker-configuration.d.ts" />
+/// <reference types="vite/client" />
 
-declare module "h3" {
-  interface H3EventContext {
-    cf: CfProperties;
-    cloudflare: {
-      request: Request;
-      env: Env;
-      context: ExecutionContext;
-    };
-  }
+interface ImportMetaEnv {
+  readonly VITE_API_BASE_URL?: string
 }
 
-export {};
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}

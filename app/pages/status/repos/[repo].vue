@@ -1,20 +1,15 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'sync-status',
-})
-
 const { page, count, first } = usePageResult()
 
 const route = useRoute()
 
-const { data: tasks, status: syncTaskLoadingStatus } = await useFetchSyncTasks({ lazy: true, query: { page, count, repoId: route.params.repo } })
-const { data: repo, status: repoLoadingStatus } = await useFetchRepo(String(route.params.repo), { lazy: true })
+const { data: tasks, status: syncTaskLoadingStatus } = useFetchSyncTasks({ lazy: true, query: { page, count, repoId: () => route.params.repo } })
+const { data: repo, status: repoLoadingStatus } = useFetchRepo(() => String(route.params.repo), { lazy: true })
+
+useHead({ title: computed(() => `${String(route.params.repo)} 的所有同步任务`) })
 </script>
 
 <template>
-  <Head>
-    <Title>{{ route.params.repo }} 的所有同步任务</Title>
-  </Head>
   <div class="mb-4">
     <h1 class="font-semibold text-3xl">
       {{ route.params.repo }} 的所有同步任务

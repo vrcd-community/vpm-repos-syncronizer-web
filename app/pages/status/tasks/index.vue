@@ -1,17 +1,12 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'sync-status',
-})
-
 const { page, count, first } = usePageResult()
 
-const { data: tasks, status } = await useFetchSyncTasks({ lazy: true, query: { page, count } })
+const { data: tasks, status } = useFetchSyncTasks({ lazy: true, query: { page, count } })
+
+useHead({ title: '所有同步任务' })
 </script>
 
 <template>
-  <Head>
-    <Title>所有同步任务</Title>
-  </Head>
   <div class="mb-4">
     <h1 class="font-semibold text-3xl">
       所有同步任务

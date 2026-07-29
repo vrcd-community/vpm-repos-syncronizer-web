@@ -92,7 +92,7 @@ const selectedPackageVersion = computed(() => {
             </code>
           </TabPanel>
           <TabPanel value="versions">
-            <NuxtLink
+            <RouterLink
               v-for="version in package.versions"
               :key="version.version"
               class="flex gap-2 py-2 items-center text-primary"
@@ -125,7 +125,7 @@ const selectedPackageVersion = computed(() => {
                   最低支持 Unity {{ version.unity }}
                 </Tag>
               </div>
-            </NuxtLink>
+            </RouterLink>
           </TabPanel>
         </TabPanels>
       </Tabs>

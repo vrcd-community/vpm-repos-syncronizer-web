@@ -1,11 +1,34 @@
+<script setup lang="ts">
+import type { MenuItem } from 'primevue/menuitem'
+import { docs, getDoc } from '@/app/lib/docs'
+
+const route = useRoute()
+const router = useRouter()
+const page = computed(() => getDoc(route.params.slug as string | string[] | undefined))
+const items: MenuItem[] = docs.map(doc => ({
+  label: doc.title,
+  route: doc.path,
+}))
+
+useHead({ title: computed(() => page.value?.title || '文档') })
+</script>
+
 <template>
-  <div class="flex space-x-4">
+  <div class="flex flex-col gap-4 md:flex-row">
+    <Select
+      class="w-full md:hidden"
+      :model-value="page?.path"
+      :options="docs"
+      option-label="title"
+      option-value="path"
+      @update:model-value="router.push($event)"
+    />
     <Menu
-      class="w-72 sticky top-5 h-min"
+      class="hidden w-64 shrink-0 sticky top-5 h-min md:block"
       :model="items"
     >
       <template #item="{ item, props }">
-        <NuxtLink
+        <RouterLink
           v-if="item.route"
           v-slot="{ href, navigate }"
           :to="item.route"
@@ -20,64 +43,19 @@
             <span :class="item.icon" />
             <span class="ml-2">{{ item.label }}</span>
           </a>
-        </NuxtLink>
-        <a
-          v-else
-          v-ripple
-          :href="item.url"
-          :target="item.target"
-          v-bind="props.action"
-        >
-          <span :class="item.icon" />
-          <span class="ml-2">{{ item.label }}</span>
-        </a>
+        </RouterLink>
       </template>
     </Menu>
-    <Panel class="flex-1">
-      <ContentRenderer v-if="page" :value="page" class="prose dark:prose-invert max-w-none" />
-      <p v-else>Page Not Found</p>
+    <Panel class="flex-1 min-w-0">
+      <MarkdownContent
+        v-if="page"
+        :source="page.source"
+        class="prose dark:prose-invert max-w-none"
+      />
+      <p v-else>
+        Page Not Found
+      </p>
     </Panel>
-    <div class="w-72">
-      <!-- <n-affix listen-to=".n-scrollbar-container" :top="80">
-        <div class="space-y-2 pt-12">
-          <span class="font-semibold">本页目录</span>
-          <n-anchor>
-            <doc-anchor-link-item v-for="item in page?.body?.toc?.links" :link="item" />
-          </n-anchor>
-        </div>
-      </n-affix> -->
-    </div>
+    <div class="hidden w-64 shrink-0 xl:block" />
   </div>
 </template>
-
-<script setup lang="ts">
-import type { MenuItem } from 'primevue/menuitem'
-
-definePageMeta({
-  layout: 'docs',
-})
-
-const route = useRoute()
-
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('docs').path(route.path).first()
-})
-const { data: navigation } = await useAsyncData('navigation', () => {
-  return queryCollectionNavigation('docs')
-})
-
-const items = computed(() => {
-  if (!navigation.value || !navigation.value[0]?.children?.length) {
-    return []
-  }
-
-  const navLinks: MenuItem[] = navigation.value[0].children.map((item) => {
-    return {
-      label: item.title,
-      route: item.path,
-    }
-  })
-
-  return navLinks.reverse()
-})
-</script>

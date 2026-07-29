@@ -1,47 +1,59 @@
-<template>
-  <PageHeader />
-  <NuxtLayout class="text-color">
-    <NuxtPage />
-  </NuxtLayout>
-</template>
-
 <script setup lang="ts">
+import DefaultLayout from './layouts/default.vue'
+import DocsLayout from './layouts/docs.vue'
+import EmptyLayout from './layouts/empty.vue'
+import SyncStatusLayout from './layouts/syncStatus.vue'
+
 const route = useRoute()
+const layouts = {
+  default: DefaultLayout,
+  docs: DocsLayout,
+  empty: EmptyLayout,
+  'sync-status': SyncStatusLayout,
+}
+
+const layout = computed(() => {
+  const name = String(route.meta.layout || 'default') as keyof typeof layouts
+  return layouts[name] || DefaultLayout
+})
 
 useHead({
-  titleTemplate: titleChunk => titleChunk ? `${titleChunk} - VPM Repos Synchronizer - 一个 VPM 镜像站` : 'VPM Repos Synchronizer - 一个 VPM 镜像站',
-  script: [
-    { 'defer': true, 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "3168db74ae4a4271991b1639a4044784"}' },
-  ],
-  htmlAttrs: {
-    lang: 'cmn-Hans-CN',
-  },
-  link: [
-    { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-    { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-    { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-    { rel: 'manifest', href: '/site.webmanifest' },
+  titleTemplate: title => title
+    ? `${title} - VPM Repos Synchronizer - 一个 VPM 镜像站`
+    : 'VPM Repos Synchronizer - 一个 VPM 镜像站',
+  meta: [
+    {
+      name: 'robots',
+      content: computed(() => String(route.meta.robots || 'index, follow')),
+    },
   ],
 })
 
-watch(() => route.fullPath, () => updateSeo())
-updateSeo()
-
-function updateSeo() {
-  useSeoMeta({
-    ogTitle: '%s - VPM Repos Synchronizer - 一个 VPM 镜像站',
-    twitterTitle: '%s - VPM Repos Synchronizer - 一个 VPM 镜像站',
-    description: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
-    ogDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
-    twitterDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包的过程的 VPM 仓库源镜像。',
-    ogImage: '/icon.svg',
-    twitterImage: '/icon.svg',
-    twitterCard: 'summary',
-    ogImageHeight: 300,
-    ogImageWidth: 300,
-    ogImageType: 'image/svg+xml',
-    ogLocale: 'zh_Hans',
-    ogUrl: 'https://vcc.vrczh.org' + route.fullPath,
-  })
-}
+useSeoMeta({
+  description: '一个能够加速 VCC（VRChat Creator Companion）下载包过程的 VPM 仓库源镜像。',
+  ogDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包过程的 VPM 仓库源镜像。',
+  twitterDescription: '一个能够加速 VCC（VRChat Creator Companion）下载包过程的 VPM 仓库源镜像。',
+  ogImage: '/icon.svg',
+  twitterImage: '/icon.svg',
+  twitterCard: 'summary',
+  ogImageHeight: 300,
+  ogImageWidth: 300,
+  ogLocale: 'zh_Hans',
+  ogUrl: computed(() => `https://vcc.vrczh.org${route.fullPath}`),
+})
 </script>
+
+<template>
+  <PageHeader />
+  <component
+    :is="layout"
+    class="text-color"
+  >
+    <RouterView v-slot="{ Component }">
+      <component
+        :is="Component"
+        :key="route.path"
+      />
+    </RouterView>
+  </component>
+</template>

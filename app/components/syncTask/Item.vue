@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink
+  <RouterLink
     :to="`/status/tasks/${task.id}`"
     class="block"
   >
@@ -17,7 +17,9 @@ defineProps<{
           <SyncTaskStatusIcon :status="task.status" />
           <div class="flex-1 flex flex-col">
             <div class="flex items-baseline space-x-1">
-              <h2 class="text-xl font-semibold">{{ task.repoId }}</h2>
+              <h2 class="text-xl font-semibold">
+                {{ task.repoId }}
+              </h2>
               <span class="text-md opacity-40">#{{ task.id }}</span>
             </div>
             <!-- <n-text class="mb-1 text-xs" depth="3">{{ task }}</n-text> -->
@@ -30,5 +32,5 @@ defineProps<{
         </div>
       </template>
     </Card>
-  </NuxtLink>
+  </RouterLink>
 </template>

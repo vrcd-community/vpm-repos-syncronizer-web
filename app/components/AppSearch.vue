@@ -5,13 +5,13 @@ const router = useRouter()
 const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 const actualKeyword = ref(keyword.value)
 
-const { data: packages, status, execute } = await useSearchPackages(actualKeyword, { lazy: true, immediate: false })
+const { data: packages, status, execute } = useSearchPackages(actualKeyword, { lazy: true, immediate: false })
 
 let lastTypeTime = Date.now()
 let searchRateLimitLock = false
 
 if (keyword.value) {
-  await execute()
+  void execute()
 }
 
 onMounted(() => {

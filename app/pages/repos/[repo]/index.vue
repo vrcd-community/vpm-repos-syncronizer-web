@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <Title>{{ repo?.name }} 仓库</Title>
-  </Head>
   <div class="space-y-4">
     <Breadcrumb
       :model="[
@@ -76,8 +73,10 @@ const route = useRoute()
 
 // const keyword = ref(route.query.keyword as string | undefined | null ?? '')
 
-const { data: repo, status: repoLoadingStatus } = await useFetchRepo(route.params.repo as string, { lazy: true })
-const { data: packages, status: packagesLoadingStatus } = await useFetchRepoPackages(route.params.repo as string, { lazy: true, query: { page, count } })
+const { data: repo, status: repoLoadingStatus } = useFetchRepo(route.params.repo as string, { lazy: true })
+const { data: packages, status: packagesLoadingStatus } = useFetchRepoPackages(route.params.repo as string, { lazy: true, query: { page, count } })
+
+useHead({ title: computed(() => repo.value ? `${repo.value.name} 仓库` : '仓库') })
 
 // const lowerKeyword = computed(() => keyword.value.toLowerCase())
 // const filterPackages = computed(() => {

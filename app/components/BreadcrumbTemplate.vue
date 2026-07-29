@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink
+  <RouterLink
     v-if="item.route"
     v-slot="{ href, navigate }"
     :to="item.route"
@@ -23,7 +23,7 @@ defineProps<{
       <span :class="[item.icon, 'text-color']" />
       <span class="font-semibold">{{ item.label }}</span>
     </a>
-  </NuxtLink>
+  </RouterLink>
   <a
     v-else
     :href="item.url"

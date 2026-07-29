@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <div>
       <h3>上游地址</h3>
       <TextCopy
@@ -28,7 +28,7 @@ defineProps<{
     </div>
     <div>
       <h3>同步开始时间</h3>
-      <NuxtTime
+      <AppTime
         :datetime="repo.syncStatus.syncStarted"
         date-style="full"
         time-style="long"
@@ -36,7 +36,7 @@ defineProps<{
     </div>
     <div>
       <h3>同步结束时间</h3>
-      <NuxtTime
+      <AppTime
         v-if="repo.syncStatus.syncEnded"
         :datetime="repo.syncStatus.syncEnded"
         date-style="full"

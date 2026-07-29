@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <Title>同步状态</Title>
-  </Head>
   <div class="mb-4">
     <h1 class="font-semibold text-3xl">
       同步状态
@@ -16,7 +13,7 @@
     v-else
     class="space-y-2"
   >
-    <NuxtLink
+    <RouterLink
       v-for="task in status"
       :key="task.syncTaskId"
       :to="'/status/tasks/' + task.syncTaskId"
@@ -31,11 +28,17 @@
             />
             <div class="flex-1 flex flex-col">
               <div class="flex items-baseline space-x-1">
-                <h2 class="text-xl font-semibold">{{ task.repoId }}</h2>
+                <h2 class="text-xl font-semibold">
+                  {{ task.repoId }}
+                </h2>
                 <span class="text-md opacity-50">#{{ task.syncTaskId }}</span>
               </div>
-              <p class="mb-1 text-xs  opacity-50">{{ task.repoUpstreamUrl }}</p>
-              <p class="text-xs opacity-60">{{ task.message ? task.message : '无状态消息' }}</p>
+              <p class="mb-1 text-xs  opacity-50">
+                {{ task.repoUpstreamUrl }}
+              </p>
+              <p class="text-xs opacity-60">
+                {{ task.message ? task.message : '无状态消息' }}
+              </p>
             </div>
             <SyncTaskItemTime
               :start-time="task.syncStarted"
@@ -44,14 +47,12 @@
           </div>
         </template>
       </Card>
-    </NuxtLink>
+    </RouterLink>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: 'sync-status',
-})
+useHead({ title: '同步状态' })
 
-const { data: status, status: loadingStatus } = await useFetchStatus({ lazy: true })
+const { data: status, status: loadingStatus } = useFetchStatus({ lazy: true })
 </script>

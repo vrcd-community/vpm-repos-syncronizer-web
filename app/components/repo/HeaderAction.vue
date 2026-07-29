@@ -9,8 +9,8 @@ const { copy } = useClipboard()
 </script>
 
 <template>
-  <div class="flex items-center">
-    <div class="flex space-x-4">
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
       <Button
         v-tooltip.top="repoUrl"
         label="复制镜像仓库地址"
@@ -28,9 +28,12 @@ const { copy } = useClipboard()
     </div>
     <div
       v-if="showBrowserButton"
-      class="flex"
+      class="flex flex-col gap-2 sm:flex-row sm:items-center"
     >
-      <Divider layout="vertical" />
+      <Divider
+        layout="vertical"
+        class="hidden sm:flex"
+      />
       <Button
         as="router-link"
         :to="'/repos/' + repoApiId"
