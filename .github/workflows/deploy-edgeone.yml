@@ -32,7 +32,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: pnpm
 
       - name: Deploy to EdgeOne
         run: pnpm dlx edgeone pages deploy $artifact_path -n ${{ secrets.EDGEONE_PROJECT_NAME }} -t ${{ secrets.EDGEONE_API_TOKEN }}
